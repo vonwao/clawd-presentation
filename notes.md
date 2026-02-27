@@ -1,84 +1,75 @@
 # Speaker Notes — Clawd: When Intelligence Grew Hands (12-15 min)
 
 ## Delivery Targets
-- Target length: 13:30-14:30 with pauses
+- Target length: 13:00-14:30 with pauses
 - Hard cap: 15:00
-- Tone: calm, precise, no hype
+- Tone: calm, concrete, no hype
 
-## Pacing Rules
-- Keep Slides 6 and 8 concrete and fast.
-- One example only per slide unless explicitly listed.
-- If behind time, trim Slides 10 and 13 first.
+## Narrative Spine
+- Act I: Something changed.
+- Act II: Here is how it works and proof that it is real.
+- Act III: Here is how to think about it safely.
+- Act IV: Here is what to do next.
 
 ## Slide 1 — Title (0:30)
-Pause, then open:
+Pause.
 "I want to tell you about a moment that already happened. Most people missed it."
 
-## Slide 2 — A Brain in a Jar (0:50)
+## Slide 2 — A Brain in a Jar (0:45)
 "AI could think and talk, but it couldn't act in the world. Then it got hands."
 Land: "That changes everything."
 
-## Slide 3 — What Changed (0:50)
+## Slide 3 — What Changed (0:45)
 Before: question to answer.
 Now: goal to plan to action to feedback.
 Land: "This is a new class of system, not a better chatbot."
 
-## Slide 4 — AGI Confusion (1:10)
-Define quickly:
-- Intelligence
-- Capability
-- Agency
-- Autonomy
-- Reliability
-Line: "Most AGI arguments mix five separate variables into one word."
+## Slide 4 — What Hands Mean (0:55)
+Define concretely: tools + loops.
+Land: "Hands means operating capability, not better prose."
 
-## Slide 5 — Agency Changes Tuesday (0:55)
-Give one workflow example (inbox/calendar/follow-up).
-Land: "Agency is what changes your Tuesday morning."
+## Slide 5 — Agency Changes Tuesday (0:50)
+One practical workflow example only.
+Land: "Agency is what changes daily life."
 
 ## Slide 6 — Personal Story (1:00)
-Tell the shift moment:
-first real delegation, then changed behavior.
-Land: "My role moved from producing to directing and judging."
+Tell first true delegation moment.
+Then behavior change: producer to reviewer.
 
-## Slide 7 — Agent Loop (1:00)
+## Slide 7 — Agent Loop (0:55)
 Walk once through: goal, context, plan, act, observe, evaluate.
-Line: "The shift is looped behavior, not single-turn output."
+Transition line: "Now let's test this with a real workflow."
 
-## Slide 8 — Mini-Case: Competitor Brief (1:20)
-Run in four beats:
-task, before flow, agent flow, delta.
-Add guardrails: links required, human approval on output.
-Land: "~2.5 hours to ~35 minutes; human effort moves to judgment."
+## Slide 8 — Mini-Case: Competitor Brief (1:15)
+Four beats: task, before, after, delta.
+Guardrails: source links + human approval.
+Land: "~2.5 hours to ~35 minutes; effort shifts to judgment."
 
-## Slide 9 — What General Means (0:50)
+## Slide 9 — What General Means (0:45)
 "General" means transferable, not omniscient.
-One system moves across domains by reasoning over goals and tools.
+Transition line: "This is where AGI debates usually get confused."
 
-## Slide 10 — Small Shifts in Friction (0:55)
-Give two examples only:
-"I'll look into it" becomes pre-computed.
-"Let me draft" becomes approve-and-send.
+## Slide 10 — Why AGI Debates Feel Stuck (1:00)
+Define five variables quickly:
+intelligence, capability, agency, autonomy, reliability.
+Land: "One word, five different questions."
 
-## Slide 11 — The Uncanny Middle (0:55)
-Name the tension: sounds human, has no stake.
-Line: "The errors feel confident and alien at the same time."
+## Slide 11 — The Uncanny Middle (1:00)
+Name failure texture:
+confident wrong actions, permission creep, quiet failures, accountability blur.
+Calm tone: risk is governance, not sci-fi.
 
-## Slide 12 — The Mirror (0:50)
-Ask quickly:
-judgment vs routine, meaningful work, authorship.
-Land: "AI pressures our definitions of skill and responsibility."
+## Slide 12 — The Human Shift (0:55)
+Slow down and ask the delegation questions.
+Land: "The bottleneck becomes judgment and responsibility."
 
-## Slide 13 — Reorganization (1:00)
-Historical pattern fast:
-electricity reorganized factories,
-internet reorganized media,
-agentic AI reorganizes work.
-Land: "Advantage shifts from doing to directing."
+## Slide 13 — The Trust Threshold (1:00)
+Question shift: "Is it smart?" to "Can I trust it?"
+Trust = scope + visibility + reversibility.
 
-## Slide 14 — What To Watch For (0:45)
-Deliver as checklist.
-Do not elaborate each bullet.
+## Slide 14 — What To Do With This (0:50)
+Use the 3 take-home questions.
+Keep it universal: life, work, creativity.
 
 ## Slide 15 — Closing (0:45)
 Read slowly:
@@ -88,5 +79,5 @@ The hands are here. The question is what we build with them."
 Pause.
 
 ## Total Script Time
-- Base delivery: ~13:35
-- With pauses and transitions: ~14:30
+- Base delivery: ~13:10
+- With pauses and transitions: ~14:15
