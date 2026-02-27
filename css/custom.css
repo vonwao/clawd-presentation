@@ -1,19 +1,25 @@
 /* Custom theme for reveal.js deck */
 :root {
-  --bg: #000;
-  --fg: #fff;
-  --accent: #e74c3c;
+  --bg: #040608;
+  --fg: #f4f3ef;
+  --muted: #9aa1a7;
+  --accent: #e46a43;
+  --accent-cool: #57a4b2;
+  --panel: rgba(8, 11, 14, 0.68);
 }
 
 .reveal {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   color: var(--fg);
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
+  font-family: 'Syne', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   text-transform: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .reveal h1 { font-size: 2.8em; }
@@ -24,6 +30,26 @@
   font-size: 1.2em;
   line-height: 1.6;
   font-weight: 300;
+  text-wrap: pretty;
+}
+
+.reveal em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.reveal .slides section.ambient {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(228, 106, 67, 0.18), transparent 33%),
+    radial-gradient(circle at 82% 86%, rgba(87, 164, 178, 0.14), transparent 31%),
+    linear-gradient(140deg, #030405 0%, #090d11 50%, #020304 100%) !important;
+}
+
+.reveal .slides section[data-background-image] h1,
+.reveal .slides section[data-background-image] h2,
+.reveal .slides section[data-background-image] h3,
+.reveal .slides section[data-background-image] p {
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
 }
 
 /* Full-bleed image text overlay */
@@ -54,7 +80,7 @@
 
 /* Diagram container */
 .diagram {
-  max-width: 80%;
+  max-width: 86%;
   margin: 0 auto;
 }
 .diagram svg {
@@ -64,7 +90,27 @@
 
 /* Subtle fragment animation */
 .reveal .fragment {
-  transition: opacity 0.4s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal .fragment:not(.visible) {
+  transform: translateY(12px);
+}
+
+.reveal .slide-number {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: var(--fg);
+  padding: 0.25em 0.7em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .fragment,
+  .reveal .fragment:not(.visible) {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* Print / PDF fixes */
