@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawd: When Intelligence Grew Hands</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============================================ -->
+      <!-- ACT I — THE HOOK                             -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 1: TITLE -->
+      <section data-background-image="images/00-title.jpg" data-background-size="cover" data-background-opacity="0.5">
+        <h1 style="font-size:2.4em; line-height:1.1;">Clawd</h1>
+        <p style="font-size:1.6em; font-weight:300; opacity:0.8;">When Intelligence Grew Hands</p>
+        <p style="font-size:0.9em; opacity:0.4; margin-top:2em;">Otto von Wachter</p>
+        <aside class="notes">
+          Welcome. Don't explain the title yet — let it sit. The image does the work.
+          Pause for 3 seconds before speaking. Let the audience read the slide.
+          Then: "I want to tell you about a moment that already happened. Most people missed it."
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: THE MOMENT -->
+      <section data-background-image="images/01-brain-in-jar.jpg" data-background-size="cover" data-background-opacity="0.4">
+        <h2>A brain in a jar</h2>
+        <aside class="notes">
+          "For sixty years, artificial intelligence was a brain in a jar.
+          It could think. It could speak. It could pass tests, write poetry, explain quantum physics.
+          But it couldn't DO anything. It had no hands.
+
+          Then — quietly, not with a press conference but with a software update — it got them.
+
+          And that changes everything."
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: WHAT CHANGED -->
+      <section data-background-color="#000">
+        <div style="display:flex; justify-content:center; gap:120px; align-items:center;">
+          <div style="text-align:center;">
+            <p style="font-size:1.4em; opacity:0.5;">Before</p>
+            <p style="font-size:2em;">Question → Answer</p>
+          </div>
+          <div style="font-size:3em; opacity:0.3;">→</div>
+          <div style="text-align:center;">
+            <p style="font-size:1.4em; color:#e74c3c;">Now</p>
+            <p style="font-size:2em;">Goal → Plan → Act → Learn</p>
+          </div>
+        </div>
+        <aside class="notes">
+          "Here's the shift in one picture.
+          Before: you ask a question, you get an answer. That's a search engine with better grammar.
+          Now: you describe what you want done. The AI makes a plan. It picks up tools. It acts.
+          It checks whether it worked. It tries again if it didn't.
+
+          That's not a better chatbot. That's a different kind of thing entirely."
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT II — THE INTELLECTUAL SPINE              -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 4: THE AGI CONFUSION -->
+      <section data-background-color="#000">
+        <h2 style="margin-bottom:0.8em;">What people argue about</h2>
+        <div style="text-align:left; max-width:700px; margin:0 auto; font-size:1.3em; line-height:2.2;">
+          <p><span style="color:#e74c3c;">Intelligence</span> <span style="opacity:0.5;">— Can it reason?</span></p>
+          <p><span style="color:#e74c3c;">Capability</span> <span style="opacity:0.5;">— What can it do?</span></p>
+          <p><span style="color:#e74c3c;">Agency</span> <span style="opacity:0.5;">— Can it act?</span></p>
+          <p><span style="color:#e74c3c;">Autonomy</span> <span style="opacity:0.5;">— Does it act alone?</span></p>
+          <p><span style="color:#e74c3c;">Reliability</span> <span style="opacity:0.5;">— Can we trust it?</span></p>
+        </div>
+        <aside class="notes">
+          "Everyone argues about AGI — Artificial General Intelligence. Will it happen? When? Is it dangerous?
+
+          But most of those arguments are confused, because people are mixing up five different things.
+
+          Intelligence: can it reason well? That's one question.
+          Capability: what tasks can it perform? Different question.
+          Agency: can it act in the world — touch files, send emails, use tools? Different again.
+          Autonomy: does it act without asking permission?
+          Reliability: when it acts, can we trust the result?
+
+          You can have high intelligence with zero agency. That's a philosophy professor.
+          You can have high agency with mediocre intelligence. That's a Roomba.
+
+          The interesting — and the slightly unsettling — zone is where they start to overlap."
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: AGENCY IS THE REVOLUTION -->
+      <section data-background-image="images/04-empty-office.jpg" data-background-size="cover" data-background-opacity="0.3">
+        <h2>Agency changes your Tuesday</h2>
+        <aside class="notes">
+          "'General intelligence' gets the headlines. But agency is what changes your Tuesday.
+
+          An AI that can reason beautifully but can't touch anything? That's interesting at a dinner party.
+
+          An AI that can read your email, check your calendar, draft a reply, research a question,
+          and send a follow-up — all while you're in the shower? That's an operator.
+
+          The shift from interface to actor is the real story. Not 'is it smart enough?'
+          but 'can it do things in the world?' That's already happening. Right now."
+        </aside>
+      </section>
+
+      <!-- SLIDE 6: THE AGENT LOOP -->
+      <section data-background-color="#000">
+        <h3 style="margin-bottom:0.6em; opacity:0.7;">The architecture of doing</h3>
+        <div class="diagram">
+          <svg viewBox="0 0 1400 350" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <style>
+              text { font-family: 'Inter', 'Helvetica Neue', sans-serif; fill: #fff; font-size: 22px; text-anchor: middle; dominant-baseline: central; }
+              .box { stroke: #fff; stroke-width: 2; rx: 16; fill: none; }
+              .accent-box { stroke: #e74c3c; stroke-width: 2; rx: 16; fill: rgba(231,76,60,0.12); }
+              .arrow { stroke: #555; stroke-width: 2; marker-end: url(#ah); }
+              .return-arrow { stroke: #e74c3c; stroke-width: 2; stroke-dasharray: 8,4; marker-end: url(#ah-red); }
+              .small { font-size: 16px; fill: #888; }
+            </style>
+            <defs>
+              <marker id="ah" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+              </marker>
+              <marker id="ah-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+              </marker>
+            </defs>
+            <!-- Boxes -->
+            <rect class="accent-box" x="40" y="120" width="160" height="70"/>
+            <text x="120" y="155">Goal</text>
+
+            <rect class="box" x="260" y="120" width="160" height="70"/>
+            <text x="340" y="155">Context</text>
+
+            <rect class="box" x="480" y="120" width="160" height="70"/>
+            <text x="560" y="155">Plan</text>
+
+            <rect class="accent-box" x="700" y="120" width="160" height="70"/>
+            <text x="780" y="155">Act</text>
+
+            <rect class="box" x="920" y="120" width="160" height="70"/>
+            <text x="1000" y="155">Observe</text>
+
+            <rect class="box" x="1140" y="120" width="180" height="70"/>
+            <text x="1230" y="155">Evaluate</text>
+
+            <!-- Forward arrows -->
+            <line class="arrow" x1="200" y1="155" x2="258" y2="155"/>
+            <line class="arrow" x1="420" y1="155" x2="478" y2="155"/>
+            <line class="arrow" x1="640" y1="155" x2="698" y2="155"/>
+            <line class="arrow" x1="860" y1="155" x2="918" y2="155"/>
+            <line class="arrow" x1="1080" y1="155" x2="1138" y2="155"/>
+
+            <!-- Return loop -->
+            <path class="return-arrow" d="M 1230 190 L 1230 280 L 340 280 L 340 192" fill="none"/>
+            <text class="small" x="780" y="268">repeat until done</text>
+          </svg>
+        </div>
+        <aside class="notes">
+          "This is the agent loop. It's the architecture of doing — not just for AI, but for everything that acts.
+
+          Start with a goal. Gather context. Make a plan. Act — actually do something in the world.
+          Observe what happened. Evaluate: did it work? Do I need to try again?
+
+          This is how humans work. You don't write an email in one draft with no re-reading.
+          You draft, review, revise, send. Maybe check if they replied.
+
+          Now machines work this way too. Not one prompt, one response.
+          A loop of intention, action, and feedback. That's agency."
+        </aside>
+      </section>
+
+      <!-- SLIDE 7: WHAT GENERAL MEANS -->
+      <section data-background-color="#000">
+        <h2 style="margin-bottom:0.3em;">General ≠ omniscient</h2>
+        <p style="font-size:1.5em; font-weight:300; opacity:0.7;">General means <em style="color:#e74c3c;">transferable</em></p>
+        <aside class="notes">
+          "'General' doesn't mean it knows everything. It means it can transfer.
+
+          The same system that writes code can also research your competitors,
+          draft outreach emails, analyze a spreadsheet, plan a trip, and debug a server.
+
+          Not because it was trained on each task separately — but because it can
+          reason about tools and goals in the abstract.
+
+          That's what 'general' actually means. And we're much closer than most people realize.
+          We may spend years arguing about whether we've achieved AGI
+          while the real transition is already reshaping daily life."
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT III — THE TEXTURE OF THE NEAR FUTURE     -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 8: WHAT IT FEELS LIKE -->
+      <section data-background-image="images/07-texture-future.jpg" data-background-size="cover" data-background-opacity="0.3">
+        <h2>Small shifts in friction</h2>
+        <aside class="notes">
+          "The future doesn't arrive as a movie scene. No robots marching down the street.
+          It arrives as small changes in friction, timing, and expectation.
+
+          'I'll look into it' — already looked into. Your agent checked while you were talking.
+          'Let me draft something' — the draft is waiting when you sit down.
+          'I need to hire someone for that' — maybe you don't.
+
+          The meaning of effort gets blurrier. Did you write that email, or did you approve it?
+          Did you research that topic, or did you read the summary your system made?
+
+          These are small changes. But they compound. And they're happening now."
+        </aside>
+      </section>
+
+      <!-- SLIDE 9: THE UNCANNY MIDDLE -->
+      <section data-background-image="images/08-uncanny-middle.jpg" data-background-size="cover" data-background-opacity="0.3">
+        <h2>The uncanny middle</h2>
+        <aside class="notes">
+          "Right now, we're in the uncanny middle.
+
+          AI sounds like a person, but it isn't one.
+          It acts like an employee, but it has no stake in the outcome.
+          It makes mistakes that feel human — but they're alien errors.
+          Confident, consistent, and wrong in ways no human would be.
+
+          We haven't built the social norms yet. We're improvising.
+          When your AI sends an email on your behalf, who wrote it? What does 'I' mean in that email?
+
+          This is the weird part. We're living through it right now, and we're making up the rules as we go."
+        </aside>
+      </section>
+
+      <!-- SLIDE 10: THE MIRROR -->
+      <section data-background-color="#000">
+        <h2>What it reveals about us</h2>
+        <div style="margin-top:1em; font-size:1.3em; line-height:2.2; max-width:800px; margin-left:auto; margin-right:auto; text-align:left;">
+          <p style="opacity:0.6;">What is judgment vs. routine?</p>
+          <p style="opacity:0.6;">What work is worth doing ourselves?</p>
+          <p style="opacity:0.6;">What does "I did this" mean?</p>
+        </div>
+        <aside class="notes">
+          "Here's what I find most interesting. As we build agents, we're forced to answer
+          questions we've been avoiding for decades.
+
+          What is judgment versus routine? If an AI can do 80% of a job,
+          what's the 20% that actually requires a human?
+
+          What work is worth doing ourselves — not because we have to, but because
+          the doing is part of the meaning?
+
+          What does 'I did this' mean when your agent did the work and you approved it?
+
+          AI doesn't just automate tasks. It pressurizes our definitions of skill, craft, and dignity.
+          It holds up a mirror and asks: what is it that you actually do?"
+        </aside>
+      </section>
+
+      <!-- SLIDE 11: THE REORGANIZATION -->
+      <section data-background-color="#000">
+        <h3 style="opacity:0.5; margin-bottom:0.3em;">This has happened before</h3>
+        <div style="font-size:1.3em; line-height:2.4; max-width:900px; margin:0 auto; text-align:left;">
+          <p><span style="color:#e74c3c;">Electricity</span> <span style="opacity:0.5;">reorganized factories</span></p>
+          <p><span style="color:#e74c3c;">Internet</span> <span style="opacity:0.5;">reorganized media</span></p>
+          <p><span style="color:#e74c3c;">Agentic AI</span> <span style="opacity:0.5;">reorganizes work itself</span></p>
+        </div>
+        <aside class="notes">
+          "This kind of reorganization has happened before.
+
+          Electricity didn't just make factories brighter. It let you put a motor on every machine
+          instead of running everything off one central steam shaft. That changed the entire layout
+          of factories, then cities, then society.
+
+          The internet didn't just make newspapers digital. It changed who could publish,
+          what 'news' meant, how information moved.
+
+          Agentic AI reorganizes work itself. Not just 'faster typing' — but what it means
+          to have a team, to delegate, to manage.
+
+          The competitive unit shifts from 'who can do the work' to 'who can direct the system.'"
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT IV — THE CLOSE                           -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 12: WHAT TO WATCH FOR -->
+      <section data-background-color="#000">
+        <h2 style="margin-bottom:0.8em;">What to watch for</h2>
+        <div style="font-size:1.2em; line-height:2.4; max-width:800px; margin:0 auto; text-align:left;">
+          <p class="fragment">When you stop <em>doing</em> and start <em>checking</em></p>
+          <p class="fragment">When small teams outperform large ones</p>
+          <p class="fragment">When "I'll handle it" means something different</p>
+          <p class="fragment">When your first non-human colleague arrives</p>
+        </div>
+        <aside class="notes">
+          "So what should you pay attention to? Not the benchmarks. Not the model names.
+
+          Watch for when you stop doing a task and start checking that it was done correctly.
+          That's the shift from operator to supervisor.
+
+          Watch for small teams — three people — outperforming companies of thirty.
+          Because those three have agents.
+
+          Watch for when 'I'll handle it' starts meaning 'I'll tell my system to handle it.'
+
+          And watch for the first business you interact with that has more agents than employees.
+          That's coming sooner than you think."
+        </aside>
+      </section>
+
+      <!-- SLIDE 13: CLOSING -->
+      <section data-background-image="images/12-closing.jpg" data-background-size="cover" data-background-opacity="0.4">
+        <div style="max-width:800px; margin:0 auto;">
+          <p style="font-size:1.8em; font-weight:300; line-height:1.6;">
+            The future is not AI replacing humans.
+          </p>
+          <p style="font-size:1.8em; font-weight:300; line-height:1.6; margin-top:0.5em;">
+            It's humans learning to direct<br>
+            <span style="color:#e74c3c;">intelligence that acts.</span>
+          </p>
+          <p style="font-size:1.4em; font-weight:300; opacity:0.6; margin-top:1.5em;">
+            The hands are here.<br>The question is what we build with them.
+          </p>
+        </div>
+        <aside class="notes">
+          Let this breathe. Read it slowly, or let the audience read it.
+
+          "The future is not AI replacing humans.
+          It's humans learning to direct intelligence that acts.
+
+          The hands are here. The question is what we build with them.
+
+          Thank you."
+
+          [Pause. Don't rush off. Let it land.]
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      width: 1920,
+      height: 1080,
+      margin: 0,
+      center: true,
+      transition: 'fade',
+      transitionSpeed: 'slow',
+      backgroundTransition: 'fade',
+    });
+  </script>
+</body>
+</html>

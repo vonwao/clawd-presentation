@@ -1,0 +1,75 @@
+/* Custom theme for reveal.js deck */
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --accent: #e74c3c;
+}
+
+.reveal {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--fg);
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.reveal h1 { font-size: 2.8em; }
+.reveal h2 { font-size: 2em; }
+.reveal h3 { font-size: 1.4em; }
+
+.reveal p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Full-bleed image text overlay */
+.overlay-text {
+  background: rgba(0,0,0,0.6);
+  padding: 0.4em 0.8em;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Quote styling */
+.reveal blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0.5em 1em;
+  font-style: italic;
+  font-size: 1.4em;
+  background: transparent;
+  box-shadow: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.attribution {
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-top: 0.5em;
+}
+
+/* Diagram container */
+.diagram {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.diagram svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Subtle fragment animation */
+.reveal .fragment {
+  transition: opacity 0.4s ease;
+}
+
+/* Print / PDF fixes */
+@media print {
+  .reveal .slides section {
+    page-break-after: always;
+  }
+}
