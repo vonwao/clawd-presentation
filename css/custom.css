@@ -214,8 +214,8 @@
 .agent-stream {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8em;
-  max-width: 1060px;
+  gap: 0.55em;
+  max-width: 1160px;
   margin: 0 auto;
 }
 
@@ -223,7 +223,7 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left: 3px solid var(--accent);
   border-radius: 10px;
-  padding: 0.7em 1em;
+  padding: 0.5em 1em;
   background: rgba(0, 0, 0, 0.55);
   text-align: left;
   backdrop-filter: blur(8px);
@@ -258,8 +258,8 @@
 .use-pill {
   border: 1px solid rgba(228, 106, 67, 0.35);
   border-radius: 999px;
-  padding: 0.4em 1.1em;
-  font-size: 1.05em !important;
+  padding: 0.3em 1em;
+  font-size: 1em !important;
   font-weight: 400;
   color: var(--fg);
   background: rgba(228, 106, 67, 0.08);
