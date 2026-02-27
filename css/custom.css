@@ -313,6 +313,65 @@
   }
 }
 
+/* ── Delegation spectrum (Alt C) ── */
+.spectrum {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0.4em auto 0 auto;
+}
+
+.spectrum-zone {
+  flex: 1;
+  padding: 0.8em 1em;
+  text-align: center;
+}
+
+.spectrum-zone:first-child {
+  border-radius: 14px 0 0 14px;
+}
+
+.spectrum-zone:last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+.spectrum-zone-ok {
+  background: rgba(87, 164, 178, 0.15);
+  border: 1px solid rgba(87, 164, 178, 0.3);
+}
+
+.spectrum-zone-uneasy {
+  background: rgba(228, 180, 67, 0.12);
+  border: 1px solid rgba(228, 180, 67, 0.25);
+  border-left: none;
+  border-right: none;
+}
+
+.spectrum-zone-no {
+  background: rgba(228, 106, 67, 0.12);
+  border: 1px solid rgba(228, 106, 67, 0.3);
+}
+
+.spectrum-zone-label {
+  font-size: 0.85em !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 0.4em 0 !important;
+}
+
+.spectrum-zone-ok .spectrum-zone-label { color: var(--accent-cool); }
+.spectrum-zone-uneasy .spectrum-zone-label { color: #e4b443; }
+.spectrum-zone-no .spectrum-zone-label { color: var(--accent); }
+
+.spectrum-zone-items {
+  font-size: 0.9em !important;
+  line-height: 1.65 !important;
+  opacity: 0.65;
+  margin: 0 !important;
+}
+
 /* Print / PDF fixes */
 @media print {
   .reveal .slides section {

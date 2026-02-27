@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawd: When Intelligence Grew Hands (C)</title>
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/black.css">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============================================ -->
+      <!-- ACT I — THE PROVOCATION                      -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 1: TITLE -->
+      <section data-background-image="images/00-title.jpg" data-background-size="cover" data-background-opacity="0.5">
+        <h1 style="font-size:2.4em; line-height:1.1;">Clawd</h1>
+        <p style="font-size:1.6em; font-weight:300; opacity:0.8;">When Intelligence Grew Hands</p>
+        <p style="font-size:0.9em; opacity:0.4; margin-top:2em;">Otto von Wachter</p>
+        <aside class="notes">
+          Pause 3 seconds.
+          "I want to start with a question. Actually, five questions."
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: THE PROVOCATION -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.5em; opacity:0.7;">Would you let software...</h2>
+        <div style="max-width:1000px; margin:0 auto; text-align:left; font-size:1.35em; line-height:2.0;">
+          <p class="fragment">send an email on your behalf?</p>
+          <p class="fragment">draft a contract?</p>
+          <p class="fragment">hire a contractor?</p>
+          <p class="fragment">make a medical appointment?</p>
+          <p class="fragment" style="color:#e46a43;">invest your money?</p>
+        </div>
+        <aside class="notes">
+          Let each one land. Watch the room shift.
+          "Everyone has a line somewhere on that list. Notice where yours fell."
+          "That line — where it is, why it's there, whether it's moving — that's what this talk is about."
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: SOMETHING ALREADY CHANGED -->
+      <section data-background-image="images/01-brain-in-jar.jpg" data-background-size="cover" data-background-opacity="0.65">
+        <h2>Something already changed.</h2>
+        <p class="fragment" style="font-size:1.2em; opacity:0.75; max-width:900px; margin:0.8em auto 0 auto;">
+          For decades, AI was a brain in a jar.<br>
+          It could think. It could speak. It couldn't <em>do</em>.
+        </p>
+        <p class="fragment" style="font-size:1.2em; max-width:900px; margin:0.6em auto 0 auto;">
+          Then &mdash; not with a press conference,<br>but with a software update &mdash; it got hands.
+        </p>
+        <aside class="notes">
+          Brief. Set up the "how" with minimal words.
+          "And once it had hands, the question stopped being 'is it smart?'
+          and started being 'what do I let it do?'"
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT II — THE MECHANISM                       -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 4: THE AGENT LOOP -->
+      <section class="ambient" data-background-color="#000">
+        <h3 style="margin-bottom:0.6em; opacity:0.7;">The architecture of doing</h3>
+        <div class="diagram">
+          <svg viewBox="0 0 1400 350" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <style>
+              text { font-family: 'Manrope', 'Helvetica Neue', sans-serif; fill: #fff; font-size: 22px; text-anchor: middle; dominant-baseline: central; }
+              .box { stroke: #fff; stroke-width: 2; rx: 16; fill: none; }
+              .accent-box { stroke: #e46a43; stroke-width: 2; rx: 16; fill: rgba(228,106,67,0.12); }
+              .arrow { stroke: #555; stroke-width: 2; marker-end: url(#ah); }
+              .return-arrow { stroke: #e46a43; stroke-width: 2; stroke-dasharray: 8,4; marker-end: url(#ah-red); }
+              .small { font-size: 16px; fill: #888; }
+            </style>
+            <defs>
+              <marker id="ah" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+              </marker>
+              <marker id="ah-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e46a43"/>
+              </marker>
+            </defs>
+            <rect class="accent-box" x="40" y="120" width="160" height="70"/>
+            <text x="120" y="155">Goal</text>
+            <rect class="box" x="260" y="120" width="160" height="70"/>
+            <text x="340" y="155">Context</text>
+            <rect class="box" x="480" y="120" width="160" height="70"/>
+            <text x="560" y="155">Plan</text>
+            <rect class="accent-box" x="700" y="120" width="160" height="70"/>
+            <text x="780" y="155">Act</text>
+            <rect class="box" x="920" y="120" width="160" height="70"/>
+            <text x="1000" y="155">Observe</text>
+            <rect class="box" x="1140" y="120" width="180" height="70"/>
+            <text x="1230" y="155">Evaluate</text>
+            <line class="arrow" x1="200" y1="155" x2="258" y2="155"/>
+            <line class="arrow" x1="420" y1="155" x2="478" y2="155"/>
+            <line class="arrow" x1="640" y1="155" x2="698" y2="155"/>
+            <line class="arrow" x1="860" y1="155" x2="918" y2="155"/>
+            <line class="arrow" x1="1080" y1="155" x2="1138" y2="155"/>
+            <path class="return-arrow" d="M 1230 190 L 1230 280 L 340 280 L 340 192" fill="none"/>
+            <text class="small" x="780" y="268">repeat until done</text>
+          </svg>
+        </div>
+        <p class="fragment" style="font-size:1.05em; opacity:0.5; margin-top:0.6em;">This is how you work on a hard problem. Now machines work this way too.</p>
+        <aside class="notes">
+          Walk the loop once: goal, context, plan, act, observe, evaluate.
+          "This is the architecture of doing. Not one prompt. A loop."
+          Show the mechanism early so everything after is grounded.
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: MINI-CASE — HIRING A FREELANCER -->
+      <section class="ambient" data-background-color="#000">
+        <h3 style="margin-bottom:0.5em; opacity:0.7;">Mini-case: hiring a freelancer</h3>
+        <div class="mini-case-grid">
+          <div class="mini-case-card">
+            <p class="mini-case-title">Before (~4h over 2 days)</p>
+            <p>Write job description</p>
+            <p>Post on 2-3 platforms</p>
+            <p>Review 15+ portfolios</p>
+            <p>Shortlist 3-4 candidates</p>
+            <p>Send outreach messages</p>
+          </div>
+          <div class="mini-case-card">
+            <p class="mini-case-title mini-case-title-accent">With agent (~45 min)</p>
+            <p>Drafts job post from project brief</p>
+            <p>Searches platforms, ranks portfolios</p>
+            <p>Drafts shortlist with reasoning</p>
+            <p>Prepares personalized outreach</p>
+            <p>Human reviews, adjusts, approves</p>
+          </div>
+        </div>
+        <p class="mini-case-result">The agent did the <span style="color:#e46a43;">work</span>. You made every <span style="color:#e46a43;">decision</span>.</p>
+        <aside class="notes">
+          This example is about delegation specifically. It models the talk's central question.
+          "Notice: the agent can't send anything. You approve every outbound action."
+          "The question isn't 'can it do this?' It's 'am I comfortable letting it?'"
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT III — THE TRUST FRAMEWORK                -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 6: WHERE'S YOUR LINE? -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.5em;">Where's your line?</h2>
+        <div class="spectrum">
+          <div class="spectrum-zone spectrum-zone-ok">
+            <p class="spectrum-zone-label">Comfortable</p>
+            <p class="spectrum-zone-items">draft emails<br>summarize docs<br>schedule meetings</p>
+          </div>
+          <div class="spectrum-zone spectrum-zone-uneasy">
+            <p class="spectrum-zone-label">Uneasy</p>
+            <p class="spectrum-zone-items">send emails<br>make purchases<br>post publicly</p>
+          </div>
+          <div class="spectrum-zone spectrum-zone-no">
+            <p class="spectrum-zone-label">Not yet</p>
+            <p class="spectrum-zone-items">legal decisions<br>medical choices<br>financial commitments</p>
+          </div>
+        </div>
+        <p class="fragment" style="font-size:1.1em; opacity:0.55; margin-top:0.8em;">
+          Everyone has a line. The question is: what determines where it falls?
+        </p>
+        <aside class="notes">
+          Interactive moment. Let the audience place themselves.
+          "Look at that spectrum. Where did your gut put you?"
+          "The line isn't about capability. It's about stakes, reversibility, and who's accountable."
+          "That's the trust question."
+        </aside>
+      </section>
+
+      <!-- SLIDE 7: THE TRUST EQUATION -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.4em;">The trust equation</h2>
+        <div class="trust-pillars" style="margin-top:0.8em;">
+          <div class="trust-pillar">
+            <p class="trust-pillar-label">Scope</p>
+            <p class="trust-pillar-detail">what it's allowed to do</p>
+          </div>
+          <div class="trust-pillar">
+            <p class="trust-pillar-label">Visibility</p>
+            <p class="trust-pillar-detail">can I see what it did and why</p>
+          </div>
+          <div class="trust-pillar">
+            <p class="trust-pillar-label">Reversibility</p>
+            <p class="trust-pillar-detail">can I undo a mistake quickly</p>
+          </div>
+        </div>
+        <p class="fragment" style="font-size:1.15em; opacity:0.6; margin-top:1.2em; max-width:1000px; margin-left:auto; margin-right:auto;">
+          This is the same framework you use for human delegation.<br>
+          Manager to employee. Parent to teenager.<br>
+          <span style="color:#e46a43;">The variables are identical. The delegate is new.</span>
+        </p>
+        <aside class="notes">
+          This is the key insight of the talk.
+          "Delegation isn't new. We've been doing it forever. Scope, visibility, reversibility."
+          "The only thing that changed is WHO you're delegating to."
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT IV — SENSEMAKING                         -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 8: THE FIVE THINGS PEOPLE CONFUSE -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.5em;">Five things people confuse</h2>
+        <div style="text-align:left; max-width:1050px; margin:0 auto; font-size:1.2em; line-height:1.85;">
+          <p><span style="color:#e46a43;">Intelligence</span> <span style="opacity:0.52;">&mdash; can it reason?</span></p>
+          <p><span style="color:#e46a43;">Capability</span> <span style="opacity:0.52;">&mdash; what can it do?</span></p>
+          <p><span style="color:#e46a43;">Agency</span> <span style="opacity:0.52;">&mdash; can it act in the world?</span></p>
+          <p><span style="color:#e46a43;">Autonomy</span> <span style="opacity:0.52;">&mdash; does it act without asking?</span></p>
+          <p><span style="color:#e46a43;">Reliability</span> <span style="opacity:0.52;">&mdash; does it get it right?</span></p>
+        </div>
+        <p class="fragment" style="font-size:1.05em; opacity:0.5; margin-top:0.8em;">
+          A brain in a jar: high intelligence, zero agency.<br>
+          A Roomba: high agency, mediocre intelligence.<br>
+          <span style="color:#e46a43;">The interesting zone is where they overlap.</span>
+        </p>
+        <aside class="notes">
+          Run through each quickly.
+          "When people argue about AGI, they're arguing about five different things using one word."
+          The brain-in-jar vs Roomba contrast is the memorable line. Land it.
+        </aside>
+      </section>
+
+      <!-- SLIDE 9: GENERAL = TRANSFERABLE -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.3em;">General = transferable</h2>
+        <p style="font-size:1.15em; opacity:0.6; margin-bottom:0.8em;">The same system that found your freelancer could also:</p>
+        <div class="creative-uses">
+          <div class="use-pill fragment">research a legal question</div>
+          <div class="use-pill fragment">prepare a financial summary</div>
+          <div class="use-pill fragment">draft a project plan</div>
+          <div class="use-pill fragment">debug your code</div>
+        </div>
+        <p class="fragment" style="font-size:1.1em; opacity:0.55; margin-top:1.2em; max-width:1000px; margin-left:auto; margin-right:auto;">
+          Not because it learned each task &mdash;<br>
+          because it reasons about <span style="color:#e46a43;">goals and tools</span>.
+        </p>
+        <aside class="notes">
+          Tie directly back to the hiring example.
+          "General doesn't mean omniscient. It means transferable."
+          "One system, moving across domains by reasoning about what to do and how."
+        </aside>
+      </section>
+
+      <!-- SLIDE 10: THE DANGERS OF HANDS -->
+      <section data-background-image="images/08-uncanny-middle.jpg" data-background-size="cover" data-background-opacity="0.65">
+        <h2>The dangers of hands</h2>
+        <div style="margin-top:0.5em; font-size:1.08em; line-height:1.8; max-width:1050px; margin-left:auto; margin-right:auto; text-align:left;">
+          <p class="fragment"><span style="color:#e46a43;">confident wrong actions</span> <span style="opacity:0.5;">&mdash; it doesn't hesitate</span></p>
+          <p class="fragment"><span style="color:#e46a43;">permission creep</span> <span style="opacity:0.5;">&mdash; small grants compound into large access</span></p>
+          <p class="fragment"><span style="color:#e46a43;">quiet failures</span> <span style="opacity:0.5;">&mdash; errors nobody notices until they matter</span></p>
+          <p class="fragment"><span style="color:#e46a43;">accountability blur</span> <span style="opacity:0.5;">&mdash; "who did this?" has no clear answer</span></p>
+        </div>
+        <aside class="notes">
+          "These aren't future risks. They're happening right now, in every team using agents."
+          Calm tone. Not fear. Clarity.
+          "Remember the trust equation? This is what happens when you skip it."
+        </aside>
+      </section>
+
+      <!-- SLIDE 11: THE HUMAN SHIFT -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.5em;">What humans are left holding</h2>
+        <div style="text-align:left; max-width:1050px; margin:0 auto; font-size:1.2em; line-height:1.85;">
+          <p class="fragment"><span style="color:#e46a43;">Judgment</span> <span style="opacity:0.52;">&mdash; is this good enough?</span></p>
+          <p class="fragment"><span style="color:#e46a43;">Taste</span> <span style="opacity:0.52;">&mdash; is this what we actually want?</span></p>
+          <p class="fragment"><span style="color:#e46a43;">Values</span> <span style="opacity:0.52;">&mdash; should we be doing this at all?</span></p>
+          <p class="fragment"><span style="color:#e46a43;">Responsibility</span> <span style="opacity:0.52;">&mdash; it acted, but I'm accountable</span></p>
+        </div>
+        <p class="fragment" style="font-size:1.1em; opacity:0.5; margin-top:0.8em;">The bottleneck was effort. Now the bottleneck is <span style="color:#e46a43;">meaning</span>.</p>
+        <aside class="notes">
+          "When the doing is delegated, these are what remain. These are the human parts."
+          "Notice: none of these can be automated. They require a person who cares."
+        </aside>
+      </section>
+
+      <!-- SLIDE 12: THE QUESTIONS BEHIND THE QUESTION -->
+      <section data-background-image="images/bg-11-water-reflection.jpg" data-background-size="cover" data-background-opacity="0.4">
+        <h2 style="margin-bottom:0.6em;">The questions behind the question</h2>
+        <div style="font-size:1.2em; line-height:2.0; max-width:1050px; margin:0 auto; text-align:left;">
+          <p class="fragment">What work is worth doing ourselves &mdash; even when we don't have to?</p>
+          <p class="fragment">What does craft mean when the craft is delegated?</p>
+          <p class="fragment">Where does pride of authorship live now?</p>
+        </div>
+        <aside class="notes">
+          SLOW DOWN. This is the quiet, slow slide. Let it breathe.
+          "These aren't technical questions. They're human questions. And they don't have answers yet."
+          Pause after each one. Let the room sit with it.
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ACT V — THE RETURN                           -->
+      <!-- ============================================ -->
+
+      <!-- SLIDE 13: BACK TO THE SPECTRUM -->
+      <section class="ambient" data-background-color="#000">
+        <h2 style="margin-bottom:0.5em; opacity:0.7;">Back to the question</h2>
+        <p style="font-size:1.4em; opacity:0.5; margin-bottom:0.6em;">"Would you let software send an email on your behalf?"</p>
+        <p class="fragment" style="font-size:1.8em; font-weight:600; color:#e46a43; margin-bottom:0.6em;">
+          Most of you already have.
+        </p>
+        <p class="fragment" style="font-size:1.15em; opacity:0.55; max-width:950px; margin:0 auto;">
+          The line isn't fixed. It moves.<br>
+          The question is whether you move it <span style="color:#e46a43;">deliberately</span> &mdash;<br>
+          or let it drift.
+        </p>
+        <aside class="notes">
+          Full circle. The provocation from the opening resolves here.
+          Let "Most of you already have" land before moving to the next fragment.
+          "Autocomplete, suggested replies, smart scheduling — the line moved and most of us didn't notice."
+          "The question is whether we're deliberate about what comes next."
+        </aside>
+      </section>
+
+      <!-- SLIDE 14: CLOSING -->
+      <section data-background-image="images/12-closing.jpg" data-background-size="cover" data-background-opacity="0.7">
+        <div style="max-width:800px; margin:0 auto;">
+          <p style="font-size:1.8em; font-weight:300; line-height:1.6;">
+            The future is not AI replacing humans.
+          </p>
+          <p style="font-size:1.8em; font-weight:300; line-height:1.6; margin-top:0.5em;">
+            It's humans learning to direct<br>
+            <span style="color:#e46a43;">intelligence that acts.</span>
+          </p>
+          <p style="font-size:1.4em; font-weight:300; opacity:0.6; margin-top:1.5em;">
+            The hands are here.<br>The question is what we build with them.
+          </p>
+        </div>
+        <aside class="notes">
+          Let audience read first.
+          Then read it slowly, out loud.
+          Pause after "intelligence that acts."
+          Final line almost whispered.
+          End. Don't add anything after.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal/reveal.js"></script>
+  <script src="vendor/reveal/notes.js"></script>
+  <script>
+    const bgOptions = {
+      0: [
+        { image: "images/00-title.jpg", opacity: 0.5 },
+      ],
+      1: [
+        null,
+      ],
+      2: [
+        { image: "images/01-brain-in-jar.jpg", opacity: 0.65 },
+      ],
+      3: [
+        null,
+      ],
+      4: [
+        null,
+      ],
+      5: [
+        null,
+        { image: "images/bg-02-crossroads.jpg", opacity: 0.35 },
+      ],
+      6: [
+        null,
+        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.35 },
+        { image: "images/bg-12-tightrope.jpg", opacity: 0.35 },
+      ],
+      7: [
+        null,
+        { image: "images/bg-09-foggy-forest.jpg", opacity: 0.35 },
+        { image: "images/bg-09-labyrinth.jpg", opacity: 0.35 },
+      ],
+      8: [
+        null,
+      ],
+      9: [
+        { image: "images/08-uncanny-middle.jpg", opacity: 0.65 },
+      ],
+      10: [
+        null,
+        { image: "images/bg-05-contemplation.jpg", opacity: 0.35 },
+      ],
+      11: [
+        { image: "images/bg-11-water-reflection.jpg", opacity: 0.4 },
+        { image: "images/bg-11-water-dark.jpg", opacity: 0.4 },
+        { image: "images/bg-11-mirror.jpg", opacity: 0.4 },
+        null,
+      ],
+      12: [
+        null,
+        { image: "images/bg-02-dark-path.jpg", opacity: 0.35 },
+      ],
+      13: [
+        { image: "images/12-closing.jpg", opacity: 0.7 },
+      ],
+    };
+
+    // Use separate localStorage key so it doesn't conflict with other decks
+    const storageKey = 'bgSelections-c';
+    let bgSelections = {};
+    try { bgSelections = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch(e) {}
+
+    const ambientSlides = new Set();
+
+    function applyBg(slideIdx, optIdx) {
+      const opts = bgOptions[slideIdx];
+      if (!opts || opts.length < 2) return;
+      const idx = ((optIdx % opts.length) + opts.length) % opts.length;
+      const opt = opts[idx];
+      const slide = Reveal.getSlides()[slideIdx];
+      if (!slide) return;
+
+      if (opt === null) {
+        slide.removeAttribute('data-background-image');
+        slide.removeAttribute('data-background-size');
+        slide.removeAttribute('data-background-opacity');
+        if (!slide.getAttribute('data-background-color')) {
+          slide.setAttribute('data-background-color', '#000');
+        }
+        if (ambientSlides.has(slideIdx)) {
+          slide.classList.add('ambient');
+        }
+      } else {
+        const img = typeof opt === 'string' ? opt : opt.image;
+        const opacity = typeof opt === 'string' ? 0.6 : (opt.opacity || 0.6);
+        slide.setAttribute('data-background-image', img);
+        slide.setAttribute('data-background-size', 'cover');
+        slide.setAttribute('data-background-opacity', String(opacity));
+        slide.classList.remove('ambient');
+      }
+
+      Reveal.sync();
+      bgSelections[slideIdx] = idx;
+      localStorage.setItem(storageKey, JSON.stringify(bgSelections));
+      showBgIndicator(slideIdx, idx, opts.length);
+    }
+
+    function showBgIndicator(slideIdx, current, total) {
+      let el = document.getElementById('bg-indicator');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'bg-indicator';
+        Object.assign(el.style, {
+          position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+          background: 'rgba(0,0,0,0.8)', color: '#fff', padding: '8px 18px',
+          borderRadius: '8px', fontSize: '16px', fontFamily: 'Manrope, sans-serif',
+          zIndex: '9999', transition: 'opacity 0.3s', pointerEvents: 'none',
+          border: '1px solid rgba(255,255,255,0.15)',
+        });
+        document.body.appendChild(el);
+      }
+      const opt = bgOptions[slideIdx][current];
+      const label = opt === null ? 'no background' : (typeof opt === 'string' ? opt : opt.image);
+      const shortLabel = label === 'no background' ? label : label.split('/').pop();
+      el.textContent = `bg ${current + 1}/${total}: ${shortLabel}`;
+      el.style.opacity = '1';
+      clearTimeout(el._timer);
+      el._timer = setTimeout(() => { el.style.opacity = '0'; }, 1800);
+    }
+
+    Reveal.initialize({
+      hash: true,
+      width: 1920,
+      height: 1080,
+      margin: 0.06,
+      center: true,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      pdfSeparateFragments: false,
+      transition: 'fade',
+      transitionSpeed: 'slow',
+      backgroundTransition: 'fade',
+      plugins: [ RevealNotes ],
+    }).then(() => {
+      Reveal.getSlides().forEach((slide, i) => {
+        if (slide.classList.contains('ambient')) ambientSlides.add(i);
+      });
+      Object.entries(bgSelections).forEach(([idx, optIdx]) => {
+        applyBg(parseInt(idx), optIdx);
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 't' || e.key === 'T') {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const idx = Reveal.getIndices().h;
+        const opts = bgOptions[idx];
+        if (!opts || opts.length < 2) return;
+        e.preventDefault();
+        const current = bgSelections[idx] || 0;
+        const next = e.shiftKey ? current - 1 : current + 1;
+        applyBg(idx, next);
+      }
+    });
+  </script>
+</body>
+</html>
