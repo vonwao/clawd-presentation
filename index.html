@@ -4,11 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clawd: When Intelligence Grew Hands</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/black.css">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
   <link rel="stylesheet" href="css/custom.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="reveal">
@@ -355,9 +354,157 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="vendor/reveal/reveal.js"></script>
+  <script src="vendor/reveal/notes.js"></script>
   <script>
+    // ── Background cycling system ──────────────────────────────
+    // Press T to cycle backgrounds on the current slide.
+    // Press Shift+T to go backwards.
+    // Current selections persist in localStorage.
+    //
+    // Each entry: slide index → array of options.
+    // An option is either a URL string (uses default opacity 0.6)
+    // or { image: "url", opacity: 0.5 }.
+    // The first entry in each array should be the current/default background.
+    // A null entry means "no background image" (text-only slide).
+
+    const bgOptions = {
+      // Slide 0 – Title
+      0: [
+        { image: "images/00-title.jpg", opacity: 0.5 },
+      ],
+      // Slide 1 – Brain in a jar
+      1: [
+        { image: "images/01-brain-in-jar.jpg", opacity: 0.7 },
+      ],
+      // Slide 2 – Before → Now
+      2: [
+        null,
+        { image: "images/bg-02-crossroads.jpg", opacity: 0.4 },
+        { image: "images/bg-02-dark-road.jpg", opacity: 0.4 },
+        { image: "images/bg-02-dark-path.jpg", opacity: 0.4 },
+      ],
+      // Slide 3 – What hands mean
+      3: [
+        null,
+        { image: "images/bg-03-craftsman.jpg", opacity: 0.45 },
+        { image: "images/bg-03-workshop.jpg", opacity: 0.45 },
+        { image: "images/bg-03-keyboard.jpg", opacity: 0.45 },
+      ],
+      // Slide 4 – Agency changes your Tuesday
+      4: [
+        { image: "images/04-empty-office.jpg", opacity: 0.7 },
+      ],
+      // Slide 5 – Personal shift
+      5: [
+        null,
+        { image: "images/bg-05-reflection.jpg", opacity: 0.4 },
+        { image: "images/bg-05-contemplation.jpg", opacity: 0.4 },
+        { image: "images/bg-05-silhouette.jpg", opacity: 0.4 },
+      ],
+      // Slide 6 – Agent loop (SVG diagram)
+      6: [
+        null,
+      ],
+      // Slide 7 – Mini-case
+      7: [
+        null,
+      ],
+      // Slide 8 – General ≠ Omniscient (has SVG)
+      8: [
+        null,
+      ],
+      // Slide 9 – AGI debates
+      9: [
+        null,
+        { image: "images/bg-09-foggy-forest.jpg", opacity: 0.35 },
+        { image: "images/bg-09-labyrinth.jpg", opacity: 0.35 },
+        { image: "images/bg-09-foggy-path.jpg", opacity: 0.35 },
+      ],
+      // Slide 10 – Uncanny middle
+      10: [
+        { image: "images/08-uncanny-middle.jpg", opacity: 0.7 },
+      ],
+      // Slide 11 – What it reveals
+      11: [
+        null,
+        { image: "images/bg-11-mirror.jpg", opacity: 0.4 },
+        { image: "images/bg-11-water-reflection.jpg", opacity: 0.4 },
+        { image: "images/bg-11-water-dark.jpg", opacity: 0.4 },
+      ],
+      // Slide 12 – Trust threshold
+      12: [
+        null,
+        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.4 },
+        { image: "images/bg-12-tightrope.jpg", opacity: 0.4 },
+        { image: "images/bg-12-anchor.jpg", opacity: 0.4 },
+      ],
+      // Slide 13 – What to do
+      13: [
+        { image: "images/07-texture-future.jpg", opacity: 0.5 },
+      ],
+      // Slide 14 – Closing
+      14: [
+        { image: "images/12-closing.jpg", opacity: 0.7 },
+      ],
+    };
+
+    let bgSelections = {};
+    try { bgSelections = JSON.parse(localStorage.getItem('bgSelections') || '{}'); } catch(e) {}
+
+    function applyBg(slideIdx, optIdx) {
+      const opts = bgOptions[slideIdx];
+      if (!opts || opts.length < 2) return; // nothing to cycle
+      const idx = ((optIdx % opts.length) + opts.length) % opts.length;
+      const opt = opts[idx];
+      const slide = Reveal.getSlides()[slideIdx];
+      if (!slide) return;
+
+      if (opt === null) {
+        slide.removeAttribute('data-background-image');
+        slide.removeAttribute('data-background-size');
+        slide.removeAttribute('data-background-opacity');
+        if (!slide.getAttribute('data-background-color')) {
+          slide.setAttribute('data-background-color', '#000');
+        }
+      } else {
+        const img = typeof opt === 'string' ? opt : opt.image;
+        const opacity = typeof opt === 'string' ? 0.6 : (opt.opacity || 0.6);
+        slide.setAttribute('data-background-image', img);
+        slide.setAttribute('data-background-size', 'cover');
+        slide.setAttribute('data-background-opacity', String(opacity));
+      }
+
+      Reveal.sync();
+      bgSelections[slideIdx] = idx;
+      localStorage.setItem('bgSelections', JSON.stringify(bgSelections));
+      showBgIndicator(slideIdx, idx, opts.length);
+    }
+
+    function showBgIndicator(slideIdx, current, total) {
+      let el = document.getElementById('bg-indicator');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'bg-indicator';
+        Object.assign(el.style, {
+          position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+          background: 'rgba(0,0,0,0.8)', color: '#fff', padding: '8px 18px',
+          borderRadius: '8px', fontSize: '16px', fontFamily: 'Manrope, sans-serif',
+          zIndex: '9999', transition: 'opacity 0.3s', pointerEvents: 'none',
+          border: '1px solid rgba(255,255,255,0.15)',
+        });
+        document.body.appendChild(el);
+      }
+      const opt = bgOptions[slideIdx][current];
+      const label = opt === null ? 'no background' : (typeof opt === 'string' ? opt : opt.image);
+      const shortLabel = label === 'no background' ? label : label.split('/').pop();
+      el.textContent = `bg ${current + 1}/${total}: ${shortLabel}`;
+      el.style.opacity = '1';
+      clearTimeout(el._timer);
+      el._timer = setTimeout(() => { el.style.opacity = '0'; }, 1800);
+    }
+
+    // ── Reveal init ────────────────────────────────────────────
     Reveal.initialize({
       hash: true,
       width: 1920,
@@ -373,6 +520,26 @@
       transitionSpeed: 'slow',
       backgroundTransition: 'fade',
       plugins: [ RevealNotes ],
+    }).then(() => {
+      // Restore saved selections
+      Object.entries(bgSelections).forEach(([idx, optIdx]) => {
+        applyBg(parseInt(idx), optIdx);
+      });
+    });
+
+    // T = cycle forward, Shift+T = cycle backward
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 't' || e.key === 'T') {
+        // Don't intercept if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const idx = Reveal.getIndices().h;
+        const opts = bgOptions[idx];
+        if (!opts || opts.length < 2) return;
+        e.preventDefault();
+        const current = bgSelections[idx] || 0;
+        const next = e.shiftKey ? current - 1 : current + 1;
+        applyBg(idx, next);
+      }
     });
   </script>
 </body>
