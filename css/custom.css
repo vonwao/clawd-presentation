@@ -210,6 +210,109 @@
   }
 }
 
+/* ── Agent notification cards (personal story) ── */
+.agent-stream {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8em;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.agent-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.7em 1em;
+  background: rgba(0, 0, 0, 0.55);
+  text-align: left;
+  backdrop-filter: blur(8px);
+}
+
+.agent-card-label {
+  font-size: 0.72em !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.25em 0 !important;
+  font-weight: 600;
+}
+
+.agent-card-detail {
+  font-size: 0.92em !important;
+  margin: 0 !important;
+  opacity: 0.8;
+  line-height: 1.4 !important;
+}
+
+/* ── Creative uses pill cloud ── */
+.creative-uses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55em;
+  max-width: 900px;
+  margin: 1em auto 0 auto;
+}
+
+.use-pill {
+  border: 1px solid rgba(228, 106, 67, 0.35);
+  border-radius: 999px;
+  padding: 0.4em 1.1em;
+  font-size: 1.05em !important;
+  font-weight: 400;
+  color: var(--fg);
+  background: rgba(228, 106, 67, 0.08);
+  white-space: nowrap;
+}
+
+/* ── Trust pillars ── */
+.trust-pillars {
+  display: flex;
+  justify-content: center;
+  gap: 1.4em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.trust-pillar {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 1em 1.2em;
+  background: var(--panel);
+  text-align: center;
+}
+
+.trust-pillar-label {
+  font-size: 1.2em !important;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.3em 0 !important;
+}
+
+.trust-pillar-detail {
+  font-size: 0.9em !important;
+  opacity: 0.6;
+  margin: 0 !important;
+}
+
+@media (max-width: 1100px) {
+  .agent-stream {
+    grid-template-columns: 1fr;
+  }
+
+  .creative-uses {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trust-pillars {
+    flex-direction: column;
+  }
+}
+
 /* Print / PDF fixes */
 @media print {
   .reveal .slides section {
