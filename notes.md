@@ -1,88 +1,79 @@
-# Speaker Notes — Clawd: When Intelligence Grew Hands
+# Speaker Notes — Clawd: When Intelligence Grew Hands (12-15 min)
 
 ## Delivery Targets
-- Total length: 20-25 minutes
-- Pace: slow opening, steady middle, deliberate close
-- Tone: wonder + precision, no hype
+- Target length: 13:00-14:00 (with natural pauses)
+- Hard cap: 15:00
+- Tone: calm, precise, no hype
 
-## Slide 1 — Title (1:00)
-Pause for three seconds before speaking.
-Open with: "I want to tell you about a moment that already happened. Most people missed it."
+## Pacing Rules
+- One idea per slide.
+- One concrete example max on Slides 5, 8, and 9.
+- If behind time, cut the second half of Slides 8 and 11.
 
-## Slide 2 — A Brain in a Jar (1:45)
-"For decades, AI could think and talk, but it couldn't do anything in the world.
-Then quietly, with software updates, it got hands."
+## Slide 1 — Title (0:35)
+Pause, then open:
+"I want to tell you about a moment that already happened. Most people missed it."
+
+## Slide 2 — A Brain in a Jar (0:55)
+"AI could think and talk, but it couldn't act in the world. Then it got hands."
 Land: "That changes everything."
 
-## Slide 3 — What Changed (1:30)
-Contrast old mode vs new mode.
-Old: question to answer.
-New: goal to plan to action to feedback loop.
-Line to stress: "This is not a better chatbot. It's a different class of system."
+## Slide 3 — What Changed (0:55)
+Old model: question to answer.
+New model: goal to plan to action to feedback.
+Land: "This is a new class of system, not a better chatbot."
 
-## Slide 4 — AGI Confusion (2:30)
-Define the five terms cleanly:
+## Slide 4 — AGI Confusion (1:25)
+Define quickly:
 - Intelligence: can it reason?
 - Capability: what can it do?
 - Agency: can it take action?
-- Autonomy: does it act without permission?
-- Reliability: can we trust output and behavior?
-Use examples:
-"High intelligence, low agency: philosophy professor."
-"High agency, lower intelligence: Roomba."
+- Autonomy: can it act without permission?
+- Reliability: can we trust it?
+Line: "Most AGI arguments mix these five into one word."
 
-## Slide 5 — Agency Changes Tuesday (1:45)
-Make it practical: inbox, calendar, follow-ups, research.
-Anchor sentence: "Agency is what changes your Tuesday morning."
+## Slide 5 — Agency Changes Tuesday (1:00)
+Give one workflow example: inbox/calendar/follow-up.
+Land: "Agency is what changes your Tuesday morning."
 
-## Slide 6 — Agent Loop (2:00)
-Walk left to right through the loop:
-goal, context, plan, act, observe, evaluate, repeat.
-Human parallel: drafting and revising an email.
-Close: "The core shift is looped behavior, not single-turn output."
+## Slide 6 — Agent Loop (1:10)
+Walk the loop once: goal, context, plan, act, observe, evaluate.
+Line: "The shift is looped behavior, not single-turn output."
 
-## Slide 7 — What General Means (1:45)
+## Slide 7 — What General Means (1:00)
 "General" means transferable, not omniscient.
-One model can handle multiple domains by reasoning over tools and goals.
-Transition line: "We'll argue about AGI labels while this behavior spreads anyway."
+A single system can move across domains by reasoning over goals and tools.
 
-## Slide 8 — Small Shifts in Friction (2:00)
-List lived examples:
+## Slide 8 — Small Shifts in Friction (1:05)
+Give two examples only:
 "I'll look into it" becomes pre-computed.
-"Let me draft something" becomes approval flow.
-Emphasize compounding effect of small frictions removed.
+"Let me draft" becomes approve-and-send.
 
-## Slide 9 — The Uncanny Middle (2:00)
-Name the discomfort:
-human-like language without human stake.
-Confident errors that feel alien.
-Prompt audience question: "When an agent writes as 'I,' who is speaking?"
+## Slide 9 — The Uncanny Middle (1:05)
+Name the tension: sounds human, has no stake.
+Line: "The errors feel confident and alien at the same time."
 
-## Slide 10 — The Mirror (2:00)
-Slow down.
-Press the three questions:
-judgment vs routine,
-work worth doing ourselves,
-meaning of authorship.
-Line to land: "AI pressures our definitions of skill, craft, and dignity."
+## Slide 10 — The Mirror (1:00)
+Ask the three questions fast:
+judgment vs routine, meaningful work, authorship.
+Land: "AI pressures our definitions of skill and responsibility."
 
-## Slide 11 — Reorganization (2:00)
-Historical analogy stack:
-electricity reorganized factories,
-internet reorganized media,
-agentic AI reorganizes work.
-End with competitive shift: direction beats execution volume.
+## Slide 11 — Reorganization (1:10)
+Historical pattern in one breath:
+electricity reorganized factories, internet reorganized media, agentic AI reorganizes work.
+Line: "Advantage shifts from doing the work to directing the system."
 
-## Slide 12 — What To Watch For (1:45)
-Deliver as checklist, one beat per line:
-doing to checking,
-small teams outperforming larger ones,
-"I'll handle it" changing meaning,
-first non-human colleague.
+## Slide 12 — What To Watch For (0:55)
+Deliver as quick checklist.
+Do not elaborate each bullet.
 
-## Slide 13 — Closing (1:00)
-Let audience read first, then speak slowly:
+## Slide 13 — Closing (0:50)
+Read slowly:
 "The future is not AI replacing humans.
 It's humans learning to direct intelligence that acts.
 The hands are here. The question is what we build with them."
-Pause before leaving stage.
+Pause.
+
+## Total Script Time
+- Base delivery: ~13:05
+- With pauses and transitions: ~14:00
