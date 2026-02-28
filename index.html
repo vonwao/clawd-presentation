@@ -19,6 +19,7 @@
     a:hover { text-decoration: underline; }
     ul { list-style: none; padding: 0; }
     li { margin-bottom: 1em; }
+    .desc { opacity: 0.5; font-size: 0.75em; font-weight: 400; margin-left: 0.5em; }
     .note {
       margin-top: 3em;
       padding: 1.2em 1.5em;
@@ -37,15 +38,17 @@
   <p class="subtitle">Otto von Wachter</p>
 
   <ul>
-    <li><a href="pres.html">A &mdash; "Start With the Human" (personal story)</a></li>
-    <li><a href="pres-c.html">C &mdash; "The Trust Arc" (Socratic, circular)</a></li>
-    <li><a href="pres-old.html">Original (earlier draft)</a></li>
+    <li><a href="pres.html">Presentation</a><span class="desc">slides only, for live delivery</span></li>
+    <li><a href="pres-audio.html">Presentation + Audio</a><span class="desc">auto-narrated version with playback controls</span></li>
+    <li><a href="script.html">Script</a><span class="desc">mobile-friendly speaker script</span></li>
   </ul>
 
   <div class="note">
-    <strong>Presenting offline:</strong> All dependencies are bundled locally.
-    Just open the HTML file directly in a browser &mdash; no server or internet connection needed.
-    Press <kbd>S</kbd> for speaker notes, <kbd>F</kbd> for fullscreen, <kbd>T</kbd> to cycle background images.
+    <strong>Keyboard shortcuts:</strong>
+    <kbd>S</kbd> speaker notes &middot;
+    <kbd>F</kbd> fullscreen &middot;
+    <kbd>T</kbd> cycle backgrounds &middot;
+    <kbd>Space</kbd> next slide
   </div>
 </body>
 </html>
