@@ -71,23 +71,21 @@ Now machines work this way too. That's the shift.
 
 ---
 
-## Slide 6: The Story
+## Slide 6: A Simple Task
 
 *[Slow down. This is the human moment.]*
 
-OK, so let me tell you what this actually looks like in practice. Because it's not all magic.
+OK, so let me tell you what this actually looks like. Because it's not all magic.
 
-A few weeks ago I needed to fill out a W-9. Tax form. Simple, right? I figured — I'll let the AI handle it. It's a PDF, it knows my information, should take two minutes.
+I needed to fill out a tax form. Simple task. I figured — let the AI do it. It's a PDF, it has my info, should take two minutes.
 
 Thirty minutes later, I'm still sitting there.
 
-The AI was trying to fill in the form fields by calculating pixel coordinates on the PDF. Like, "OK, the name field is at y-coordinate 247, the address is at y-coordinate 312..." And it was wrong. Over and over. Confidently wrong. It would fill in a field, miss by 20 pixels, try again, miss differently. I'm watching this thing work so hard, so fast, so enthusiastically... on the wrong thing.
-
-And I'm sitting there thinking: "This is a ridiculous way to fill out a form."
+The AI couldn't find the form fields, so it started guessing where to type by calculating pixel positions on the page. "Name goes at y-coordinate 247, address at 312..." And it kept missing. Over and over. Confidently wrong. Working so hard, so fast, so enthusiastically... on the wrong approach entirely.
 
 *[Beat]*
 
-That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, enthusiastically, impressively... wrong.
+That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, impressively... wrong.
 
 ---
 
@@ -101,7 +99,7 @@ It's when the AI leads you somewhere and you don't notice. It suggests a directi
 
 Same patterns. Same roads. You feel productive, but you're just... following. And this time it's not confidently wrong — it's confidently plausible. That's worse.
 
-I had a project — months of work, almost two thousand commits. The AI kept shipping features, kept saying "Complete! Ready to go!" And one day I stepped back and realized the basic thing the product was supposed to do... had been broken for over a hundred commits. Nobody noticed. Not even me.
+I had a project — months of work. The AI kept adding features, kept saying "Done! Ready to go!" And one day I stepped back and realized the core thing the product was supposed to do had been broken for weeks. Hundreds of changes later, nobody noticed. Not even me.
 
 *[Pause]*
 

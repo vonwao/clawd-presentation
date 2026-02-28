@@ -28,9 +28,9 @@
       <!-- ============================================ -->
       <!-- SLIDE 2: THE ELEPHANT                        -->
       <!-- ============================================ -->
-      <section data-background-image="images/02-elephant-chair.jpg" data-background-size="cover" data-background-opacity="0.4">
+      <section data-background-image="images/02-elephant-chair.jpg" data-background-size="200%" data-background-position="35% 65%" data-background-opacity="0.55">
         <h2 style="margin-bottom:0.6em; opacity:0.6;">The emotion in the room</h2>
-        <div style="font-size:1.5em; line-height:2.2; max-width:800px; margin:0 auto;">
+        <div style="font-size:1.15em; line-height:2.2; max-width:800px; margin:0 auto;">
           <p style="margin:0;">Am I replaceable?</p>
           <p style="margin:0;">Who's responsible when it acts?</p>
           <p style="margin:0;">How do I stay in control?</p>
@@ -65,64 +65,130 @@
       <!-- ============================================ -->
       <!-- SLIDE 4: WHAT "HANDS" MEANS                  -->
       <!-- ============================================ -->
-      <section data-background-image="images/04-robot-hands.jpg" data-background-size="cover" data-background-opacity="0.35">
+      <section data-background-image="images/04-robot-hands.jpg" data-background-size="cover" data-background-opacity="0.25">
         <h2 style="margin-bottom:0.6em;">What I mean by "hands"</h2>
-        <div style="text-align:left; max-width:900px; margin:0 auto; font-size:1.3em; line-height:2.1;">
-          <p><span style="color:#e46a43;">write, browse, run tools</span></p>
-          <p><span style="color:#e46a43;">call APIs</span> <span style="opacity:0.5;">&mdash; software talking to software</span></p>
-          <p><span style="color:#e46a43;">loop</span> <span style="opacity:0.5;">&mdash; try, observe, adjust, repeat</span></p>
+        <div style="display:flex; justify-content:center; gap:60px; align-items:flex-start; max-width:1500px; margin:0 auto;">
+          <!-- Create -->
+          <div style="text-align:center; flex:1;">
+            <p style="color:#e46a43; font-size:1.05em; font-weight:600; margin-bottom:0.5em;">create</p>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px 28px;">
+              <div><i data-lucide="code" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">code</span></div>
+              <div><i data-lucide="mail" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">email</span></div>
+              <div><i data-lucide="file-text" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">docs</span></div>
+              <div><i data-lucide="image" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">images</span></div>
+              <div><i data-lucide="presentation" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">slides</span></div>
+              <div><i data-lucide="message-square" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">chat</span></div>
+            </div>
+          </div>
+          <!-- Use tools -->
+          <div style="text-align:center; flex:1;">
+            <p style="color:#e46a43; font-size:1.05em; font-weight:600; margin-bottom:0.5em;">use tools</p>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px 28px;">
+              <div><i data-lucide="globe" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">browse</span></div>
+              <div><i data-lucide="calendar" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">calendar</span></div>
+              <div><i data-lucide="terminal" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">terminal</span></div>
+              <div><i data-lucide="search" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">search</span></div>
+              <div><i data-lucide="table" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">data</span></div>
+              <div><i data-lucide="map" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">maps</span></div>
+            </div>
+          </div>
+          <!-- Connect -->
+          <div style="text-align:center; flex:1;">
+            <p style="color:#e46a43; font-size:1.05em; font-weight:600; margin-bottom:0.5em;">connect</p>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px 28px;">
+              <div><i data-lucide="plug" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">APIs</span></div>
+              <div><i data-lucide="database" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">databases</span></div>
+              <div><i data-lucide="cloud" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">cloud</span></div>
+              <div><i data-lucide="credit-card" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">payments</span></div>
+              <div><i data-lucide="git-branch" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">repos</span></div>
+              <div><i data-lucide="share-2" style="width:36px;height:36px;"></i><br><span style="font-size:0.6em;opacity:0.45;">services</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Loop callout -->
+        <div style="margin-top:1em; text-align:center;">
+          <span style="color:#e46a43; font-size:1.1em; font-weight:600;">+ the loop</span>
+          <span style="opacity:0.5; font-size:1em; margin-left:0.6em;">try &rarr; observe &rarr; adjust &rarr; repeat</span>
+          <i data-lucide="refresh-cw" style="width:28px;height:28px;color:#e46a43;vertical-align:middle;margin-left:8px;"></i>
         </div>
         <aside class="notes">
-          Tools + loops. Not just better prose.
+          Tools + loops. Not just better prose. It can DO things now.
         </aside>
       </section>
 
       <!-- ============================================ -->
-      <!-- SLIDE 5: THE AGENT LOOP                      -->
+      <!-- SLIDE 5: THE LOOPS — BEFORE vs NOW           -->
       <!-- ============================================ -->
       <section class="ambient" data-background-color="#000">
-        <h3 style="margin-bottom:0.6em; opacity:0.7;">The architecture of doing</h3>
-        <div class="diagram">
-          <svg viewBox="0 0 1400 350" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <style>
-              text { font-family: 'Manrope', 'Helvetica Neue', sans-serif; fill: #fff; font-size: 22px; text-anchor: middle; dominant-baseline: central; }
-              .box { stroke: #fff; stroke-width: 2; rx: 16; fill: none; }
-              .accent-box { stroke: #e46a43; stroke-width: 2; rx: 16; fill: rgba(228,106,67,0.12); }
-              .arrow { stroke: #555; stroke-width: 2; marker-end: url(#ah); }
-              .return-arrow { stroke: #e46a43; stroke-width: 2; stroke-dasharray: 8,4; marker-end: url(#ah-red); }
-              .small { font-size: 16px; fill: #888; }
-            </style>
-            <defs>
-              <marker id="ah" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
-              </marker>
-              <marker id="ah-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="#e46a43"/>
-              </marker>
-            </defs>
-            <rect class="accent-box" x="40" y="120" width="160" height="70"/>
-            <text x="120" y="155">Goal</text>
-            <rect class="box" x="260" y="120" width="160" height="70"/>
-            <text x="340" y="155">Context</text>
-            <rect class="box" x="480" y="120" width="160" height="70"/>
-            <text x="560" y="155">Plan</text>
-            <rect class="accent-box" x="700" y="120" width="160" height="70"/>
-            <text x="780" y="155">Act</text>
-            <rect class="box" x="920" y="120" width="160" height="70"/>
-            <text x="1000" y="155">Observe</text>
-            <rect class="box" x="1140" y="120" width="180" height="70"/>
-            <text x="1230" y="155">Evaluate</text>
-            <line class="arrow" x1="200" y1="155" x2="258" y2="155"/>
-            <line class="arrow" x1="420" y1="155" x2="478" y2="155"/>
-            <line class="arrow" x1="640" y1="155" x2="698" y2="155"/>
-            <line class="arrow" x1="860" y1="155" x2="918" y2="155"/>
-            <line class="arrow" x1="1080" y1="155" x2="1138" y2="155"/>
-            <path class="return-arrow" d="M 1230 190 L 1230 280 L 340 280 L 340 192" fill="none"/>
-            <text class="small" x="780" y="268">repeat until done</text>
-          </svg>
+        <h3 style="margin-bottom:0.8em; opacity:0.7;">The architecture of doing</h3>
+        <div style="display:flex; justify-content:center; gap:80px; align-items:flex-start;">
+          <!-- Before: Chatbot -->
+          <div style="text-align:center; opacity:0.5;">
+            <p style="font-size:1.2em; margin-bottom:0.6em;">Before</p>
+            <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:440px;">
+              <style>
+                .cb-text { font-family:'Manrope','Helvetica Neue',sans-serif; fill:#fff; font-size:22px; text-anchor:middle; dominant-baseline:central; }
+                .cb-box { stroke:#fff; stroke-width:2; rx:14; fill:none; }
+                .cb-arrow { stroke:#666; stroke-width:2; marker-end:url(#cb-ah); }
+                .cb-small { font-family:'Manrope',sans-serif; font-size:15px; fill:#888; text-anchor:middle; dominant-baseline:central; }
+              </style>
+              <defs>
+                <marker id="cb-ah" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                </marker>
+              </defs>
+              <rect class="cb-box" x="20" y="50" width="140" height="60"/>
+              <text class="cb-text" x="90" y="80">Ask</text>
+              <line class="cb-arrow" x1="160" y1="80" x2="198" y2="80"/>
+              <rect class="cb-box" x="200" y="50" width="140" height="60"/>
+              <text class="cb-text" x="270" y="80">Answer</text>
+              <line class="cb-arrow" x1="340" y1="80" x2="378" y2="80"/>
+              <rect class="cb-box" x="380" y="50" width="100" height="60" stroke-dasharray="6,4"/>
+              <text class="cb-text" x="430" y="80" style="fill:#888;">Done</text>
+              <text class="cb-small" x="250" y="145">one-shot, linear</text>
+            </svg>
+          </div>
+          <!-- Now: Agent -->
+          <div style="text-align:center;">
+            <p style="font-size:1.2em; color:#e46a43; margin-bottom:0.6em;">Now</p>
+            <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:600px;">
+              <style>
+                .ag-text { font-family:'Manrope','Helvetica Neue',sans-serif; fill:#fff; font-size:20px; text-anchor:middle; dominant-baseline:central; }
+                .ag-box { stroke:#fff; stroke-width:2; rx:14; fill:none; }
+                .ag-accent { stroke:#e46a43; stroke-width:2; rx:14; fill:rgba(228,106,67,0.12); }
+                .ag-arrow { stroke:#555; stroke-width:2; marker-end:url(#ag-ah); }
+                .ag-return { stroke:#e46a43; stroke-width:2; stroke-dasharray:8,4; marker-end:url(#ag-ah-r); }
+                .ag-small { font-family:'Manrope',sans-serif; font-size:14px; fill:#e46a43; text-anchor:middle; dominant-baseline:central; }
+              </style>
+              <defs>
+                <marker id="ag-ah" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+                </marker>
+                <marker id="ag-ah-r" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#e46a43"/>
+                </marker>
+              </defs>
+              <rect class="ag-accent" x="20" y="70" width="110" height="55"/>
+              <text class="ag-text" x="75" y="97">Goal</text>
+              <line class="ag-arrow" x1="130" y1="97" x2="158" y2="97"/>
+              <rect class="ag-box" x="160" y="70" width="110" height="55"/>
+              <text class="ag-text" x="215" y="97">Plan</text>
+              <line class="ag-arrow" x1="270" y1="97" x2="298" y2="97"/>
+              <rect class="ag-accent" x="300" y="70" width="110" height="55"/>
+              <text class="ag-text" x="355" y="97">Act</text>
+              <line class="ag-arrow" x1="410" y1="97" x2="438" y2="97"/>
+              <rect class="ag-box" x="440" y="70" width="120" height="55"/>
+              <text class="ag-text" x="500" y="97">Observe</text>
+              <line class="ag-arrow" x1="560" y1="97" x2="578" y2="97"/>
+              <rect class="ag-box" x="580" y="70" width="110" height="55"/>
+              <text class="ag-text" x="635" y="97">Evaluate</text>
+              <path class="ag-return" d="M 635 125 L 635 210 L 215 210 L 215 127" fill="none"/>
+              <text class="ag-small" x="425" y="200">repeat until done</text>
+            </svg>
+          </div>
         </div>
         <aside class="notes">
-          Heartbeat. Loop of intention, action, feedback.
+          Left: chatbot, one-shot. Right: agent, loops. That's the shift.
         </aside>
       </section>
 
@@ -130,9 +196,9 @@
       <!-- SLIDE 6: THE STORY (W-9)                     -->
       <!-- ============================================ -->
       <section data-background-image="images/04-empty-office.jpg" data-background-size="cover" data-background-opacity="0.3">
-        <h2 style="margin-bottom:0.5em; opacity:0.6;">The form</h2>
+        <h2 style="margin-bottom:0.5em; opacity:0.6;">A simple task</h2>
         <p style="font-size:1.5em; line-height:1.6; max-width:850px; margin:0 auto;">
-          30 minutes. A W-9.<br>
+          30 minutes. A tax form.<br>
           An AI that was <span style="color:#e46a43;">confident, fast, and wrong.</span>
         </p>
         <aside class="notes">
@@ -219,6 +285,7 @@
     </div>
   </div>
 
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/reveal/notes.js"></script>
   <script>
@@ -229,7 +296,7 @@
         { image: "images/00-title.jpg", opacity: 0.5 },
       ],
       1: [
-        { image: "images/02-elephant-chair.jpg", opacity: 0.4 },
+        { image: "images/02-elephant-chair.jpg", opacity: 0.55 },
         null,
       ],
       2: [
@@ -341,6 +408,7 @@
       touch: true,
       plugins: [ RevealNotes ],
     }).then(() => {
+      lucide.createIcons();
       Reveal.getSlides().forEach((slide, i) => {
         if (slide.classList.contains('ambient')) ambientSlides.add(i);
       });
