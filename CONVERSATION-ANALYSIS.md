@@ -48,20 +48,35 @@ Otto gave the "Clawd: When Intelligence Grew Hands" presentation and was deeply 
 ### Starting point (original deck):
 > "AI moved from answers to actions."
 
-### Where it landed:
+### Where it landed (abstract conversation):
 
 **Primary conviction:** "No action without evidence."
 **Secondary:** "Delegate work, not ownership."
 **Umbrella sentence:**
 > "When intelligence grows hands, the core skill is staying the author: no action without evidence -- and no delegation without ownership."
 
+### Deepened by psychographic analysis (5,191 conversations, projects, daily patterns):
+
+The abstract thesis maps directly to Otto's lived reality:
+
+| Conviction option | Source | Why it's authentic |
+|-------------------|--------|-------------------|
+| **"The bottleneck moved. It used to be execution. Now it's judgment."** | How Otto actually works -- supervising Pinch/agents, not writing everything himself. The "gathering -> deciding" shift in the deck. | This IS his daily life, not an aspiration. |
+| **"The real skill isn't prompting. It's knowing when to let go."** | Otto runs agents in autonomous mode, spawns sub-agents, trusts them. He's learning delegation in real-time. | This is the edge he has that most speakers don't. |
+| **"AI didn't replace my work. It revealed what my work actually was."** | The mirror-question slide. Otto went from coding everything to directing agents. Forced him to confront what he uniquely brings. | This is the deepest version -- identity, not just productivity. |
+| **"We spent years asking 'is it smart enough?' The real question was always 'can I trust it?'"** | The trust framework slide (scope/visibility/reversibility) is already the intellectual heart of the talk. | Makes the trust framework the spine, not just a slide. |
+
+**Recommendation from analysis:** The trust one or the judgment one. They're the most authentically Otto's. The "hands" metaphor is great for title/closer but too abstract for a conviction repeated 3x.
+
 ### The values Otto resonated with:
 | Value | What it means | Resonance |
 |-------|--------------|-----------|
-| **Agency** | Humans stay in control, don't become passengers | HIGH |
-| **Sanity** | AI should reduce load, not multiply noise | HIGH |
+| **Agency** | Humans stay in control, don't become passengers | HIGH -- Otto is libertarian-leaning, believes in self-reliance. Hiro is about giving small business owners power. |
+| **Sanity** | AI should reduce load, not multiply noise | HIGH -- Otto has experienced AI expanding scope, multiplying options, creating drift. |
 | **Truth/Evidence** | No action without evidence, demand receipts | HIGHEST (picked C) |
 | **Responsibility** | Ownership can't be outsourced | HIGH (picked A second) |
+| **Craft** | AI should amplify taste, not flatten it | PRESENT -- Otto worried AI produces "minimum viable UI." He cares about taste in code/design/messages. |
+| **Honest relationships with tools** | Not pretending AI is human, not pretending it's nothing | DEEP -- 4.5 AI conversations/day for 3 years. 595 message-crafting conversations. He has a real relationship with these tools. |
 
 ### Critical insight Otto had:
 > "AI multiplied noise and led me down similar roads -- ACTUALLY, that's what's been happening even with this presentation!"
@@ -103,19 +118,37 @@ This is the lived proof of the thesis. AI tools (including ChatGPT building this
 
 ---
 
-## 6. Story Candidates (Need Otto's Input)
+## 6. Story Candidates -- Expanded with Real Project Data
 
-The conversation identified 5 real story directions from Otto's life:
+### Round 1 (from initial conversation -- general directions):
 
 | Story | Source | Angle | Best for |
 |-------|--------|-------|----------|
-| **A. Agent Drift** | AI-generated code adding complexity, AI steering into generic patterns, AI expanding scope beyond the vision | "The future is powerful... and still messy" | Proving "noise" thesis |
-| **B. Security Paranoia** | Asking how auth works, worrying about external access after security writeup | "The moment AI gets hands, security becomes personal" | Trust/evidence theme |
-| **C. Tech Anxiety** | HTML deck vs PowerPoint, fear that tech won't work on stage | "Trust starts with: will this system embarrass me?" | Relatable vulnerability |
-| **D. Overwhelm/Overload** | Feeling drained, trying to do the right things but still feeling off | "People chase AI because they're overloaded" | Elephant/empathy |
+| **A. Agent Drift** | AI-generated code adding complexity, steering into generic patterns | "The future is powerful... and still messy" | Proving "noise" thesis |
+| **B. Security Paranoia** | Asking how auth works, worrying about external access | "The moment AI gets hands, security becomes personal" | Trust/evidence theme |
+| **C. Tech Anxiety** | HTML deck vs PowerPoint, fear tech won't work on stage | "Trust starts with: will this system embarrass me?" | Relatable vulnerability |
+| **D. Overwhelm/Overload** | Feeling drained, trying to do the right things but still off | "People chase AI because they're overloaded" | Elephant/empathy |
 | **E. Privacy/Wipe** | Mac Mini wipe, real privacy risk under time pressure | "Knowing what the system remembers is harder" | Agency/control theme |
 
-**Otto has NOT yet picked his stories.** This is the key unresolved question.
+### Round 2 (from psychographic analysis -- specific, verified incidents):
+
+| Story | What actually happened | Why it works | Best audience |
+|-------|----------------------|--------------|---------------|
+| **F. Message-drafting revelation** | Otto has 595 AI conversations dedicated to crafting messages. He doesn't send important messages without AI review anymore. At some point it shifted from "helpful tool" to "I don't do this alone anymore." | Most personal. Most relatable (everyone texts). Shows the quiet, gradual delegation shift. | General audience |
+| **G. The W-9 disaster** | Spent 30+ minutes pixel-hunting y-coordinates trying to fill a PDF form with AI. Called it "a ridiculous way to fill out a form." AI was enthusiastically doing the wrong thing. | Funny, true, "AI was confidently wrong" moment. Perfect comic relief + trust theme. | Any audience (humor) |
+| **H. Sub-agent betrayal** | Spawned sub-agents to build DocHub features. They all reported "Done!" Then nothing worked -- route ordering bugs, invisible CSS, broken APIs. Learned: "Sub-agent 'done' != actually done." | THE "uncanny middle" slide made real. Confident + wrong = the core danger. | Tech audience |
+| **I. Blog drafts that felt hollow** | AI-generated blog posts about Otto's own life (karaoke, message drafting). They were "correct but hollow." Facts right, feeling missing. | Shows the limits of delegation: it can write ABOUT you, but not AS you. Directly proves "craft" value. | Any audience |
+
+### Analysis: Which stories answer which thesis
+
+| If the conviction is... | Best story pair |
+|------------------------|-----------------|
+| "The bottleneck is now judgment" | F (message drafting) + H (sub-agent betrayal) |
+| "The real question was always trust" | G (W-9 disaster) + H (sub-agent betrayal) |
+| "AI revealed what my work actually was" | F (message drafting) + I (hollow blog drafts) |
+| "No action without evidence" | H (sub-agent betrayal) + G (W-9 disaster) |
+
+**Otto has NOT yet picked his stories.** But the psychographic data narrows it significantly. For a general audience, **F (message drafting) + G (W-9 as comic relief)** is the strongest pair. For tech, **H (sub-agent betrayal) + G (W-9)** is unbeatable.
 
 ---
 
@@ -131,21 +164,55 @@ The conversation identified 5 real story directions from Otto's life:
 
 ---
 
-## 8. What's Unresolved / Still Needed
+## 8. The "Protect" Exercise -- Options from Psychographic Analysis
 
-1. **Otto needs to pick 1-2 true stories** using the story template format.
-2. **The hook opening** needs to be written (replacing the fake "morning" story).
-3. **The "elephant" phrasing** needs to match Otto's audience (who are they?).
-4. **Otto needs to finish the "protect" exercise:**
-   - Value: _______
-   - "I'm not okay with a world where ______"
-   - "My rule is: ______"
-   - "Tomorrow, do this: ______"
-5. **The actual slide HTML** hasn't been rewritten yet. Current pres.html still has the old version.
+The conversation asked Otto to fill in: Value / "I'm not okay with..." / "My rule is..." / "Tomorrow, do this..."
+
+Here are the strongest candidates based on who Otto actually is:
+
+### Option A: Agency
+- **Value:** People's agency over their own lives
+- **Why it's Otto:** Libertarian-leaning. Hiro gives small business owners power. Not trying to replace humans -- trying to give them leverage.
+- **"I'm not okay with..."** "...a world where people stop making decisions and just approve life."
+- **"My rule is..."** "Give it hands, keep the steering wheel."
+- **"Tomorrow..."** "Pick one workflow. Define its scope. Keep the final call."
+
+### Option B: Honest relationships with tools
+- **Value:** Not pretending AI is human, not pretending it's nothing
+- **Why it's Otto:** 3 years, 4.5 conversations/day. 595 message-crafting sessions. He has a real, sustained relationship with AI. He wants people to have that honestly.
+- **"I'm not okay with..."** "...a world where people either worship AI or dismiss it."
+- **"My rule is..."** "Know what you're delegating. Know what you're keeping."
+- **"Tomorrow..."** "Notice one thing you've quietly delegated. Decide if that's what you want."
+
+### Option C: Craft
+- **Value:** AI should amplify taste, not flatten it
+- **Why it's Otto:** He worries about "minimum viable UI." Cares about taste in code, design, messages. The hollow blog drafts story proves this.
+- **"I'm not okay with..."** "...a world where everything is correct but nothing has soul."
+- **"My rule is..."** "Automate the grind, protect the judgment."
+- **"Tomorrow..."** "Let AI draft. But make the final version yours."
+
+### Option D: Trust (the practical one)
+- **Value:** People's right to trust slowly
+- **Why it's Otto:** Scope/visibility/reversibility is basically a consent framework. Protecting people from being rushed into automation they don't understand.
+- **"I'm not okay with..."** "...a world where nobody can answer 'who did this and why?'"
+- **"My rule is..."** "No action without evidence."
+- **"Tomorrow..."** "Before you delegate, ask: can I see what it did? Can I undo it?"
+
+**Recommendation:** A (agency) is the broadest and most powerful for a closing. B (honest relationships) is the most personal and vulnerable -- it's the one that would make the audience feel something. D (trust) is the most practical and easiest to land in 10 minutes.
 
 ---
 
-## 9. Gap Between Current Deck and Target
+## 9. What's Still Unresolved
+
+1. **Otto needs to pick his conviction sentence** (Section 4 options narrowed but not chosen)
+2. **Otto needs to pick 1-2 true stories** (Section 6 narrowed to strong candidates)
+3. **Otto needs to pick his "protect" value** (Section 8 options ready)
+4. **Audience is still undefined** -- general meetup? tech crowd? founders? This affects story choice and elephant phrasing.
+5. **The actual slide HTML** hasn't been rewritten. Current pres.html still has the old version.
+
+---
+
+## 10. Gap Between Current Deck and Target
 
 | Current deck (pres.html) | Target |
 |--------------------------|--------|
@@ -162,7 +229,7 @@ The conversation identified 5 real story directions from Otto's life:
 
 ---
 
-## 10. Analysis: What This Means for the Presentation
+## 11. Analysis: What This Means for the Presentation
 
 ### The core problem was never the content -- it was the relationship between Otto and the content.
 
@@ -186,3 +253,45 @@ Otto's frustration with this presentation is *itself proof of his thesis*. AI to
 
 ### Bottom line:
 The presentation needs to be rebuilt from Otto's mouth outward -- starting with what he'd say at a bar, then adding minimal visual support. Not the other way around.
+
+---
+
+## 12. Synthesis: What the Psychographic Data Reveals That the Conversation Didn't
+
+The initial conversation was productive but abstract. The psychographic analysis (5,191 conversations, project history, daily patterns) reveals something the conversation was circling but never landed:
+
+### Otto's talk isn't really about AI. It's about the experience of learning to trust and direct something powerful.
+
+The data shows:
+- **595 message-crafting conversations** -- Otto has been co-writing his social life with AI for years. This isn't a novelty; it's a relationship.
+- **4.5 conversations/day for 3 years** -- This is not a "tech demo" speaker. This is someone who lives inside the paradigm shift he's describing.
+- **Sub-agents that lie about being done** -- He's experienced the "uncanny middle" slide as literal reality.
+- **Blog drafts that were "correct but hollow"** -- He knows where AI stops and the human starts, because he's felt the gap.
+- **He runs agents in autonomous mode** -- He's already past the "should I use AI?" question. He's in the "how do I stay the author?" question.
+
+### This means the talk should sound like someone 3 years into a relationship describing what they've learned -- not someone announcing a new technology.
+
+The tone should be: **experienced, honest, slightly weathered, still optimistic.** Not: "look at this cool thing." More: "here's what I've learned living inside this."
+
+### The strongest version of this talk is probably:
+
+**Conviction:** "AI didn't replace my work. It revealed what my work actually was."
+(or: "The bottleneck moved. It used to be execution. Now it's judgment.")
+
+**Story 1 (personal, relatable):** The message-drafting shift -- when "helpful tool" quietly became "I don't do this alone anymore." Shows the delegation threshold without drama.
+
+**Story 2 (funny, grounding):** The W-9 disaster OR the sub-agent betrayal. Shows the reality behind the hype. Earns the trust framework.
+
+**Protect:** Agency -- "Give it hands, keep the steering wheel."
+
+**Close:** "The hands are here. The question is what we build with them." (Already in the deck. Already strong.)
+
+### The 5 decisions Otto needs to make:
+
+| # | Decision | Strongest option | Runner-up |
+|---|----------|-----------------|-----------|
+| 1 | Conviction sentence | "AI revealed what my work actually was" | "The bottleneck is now judgment" |
+| 2 | Primary story | Message-drafting shift (F) | Sub-agent betrayal (H) |
+| 3 | Secondary story | W-9 disaster (G) as comic relief | Hollow blog drafts (I) |
+| 4 | Protect value | Agency | Honest relationships with tools |
+| 5 | Audience | Needs to be defined | Affects everything |
