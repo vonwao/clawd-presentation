@@ -28,12 +28,19 @@
       <!-- ============================================ -->
       <!-- SLIDE 2: THE ELEPHANT                        -->
       <!-- ============================================ -->
-      <section data-background-image="images/02-elephant-chair.jpg" data-background-size="150%" data-background-position="40% 60%" data-background-opacity="0.7">
-        <h2 style="margin-bottom:0.6em; opacity:0.6;">The emotion in the room</h2>
-        <div style="font-size:1.15em; line-height:2.2; max-width:800px; margin:0 auto;">
-          <p style="margin:0;">Am I replaceable?</p>
-          <p style="margin:0;">Who's responsible when it acts?</p>
-          <p style="margin:0;">How do I stay in control?</p>
+      <section data-background-color="#000">
+        <div style="display:flex; align-items:center; justify-content:center; gap:80px; max-width:1600px; margin:0 auto;">
+          <div style="flex:0 0 auto;">
+            <img src="images/02-elephant-chair.jpg" style="width:560px; border-radius:16px; filter:brightness(1.6); object-fit:cover;" alt="">
+          </div>
+          <div style="text-align:left;">
+            <h2 style="margin-bottom:0.6em; opacity:0.6;">The emotion in the room</h2>
+            <div style="font-size:1.15em; line-height:2.2;">
+              <p style="margin:0;">Am I replaceable?</p>
+              <p style="margin:0;">Who's responsible when it acts?</p>
+              <p style="margin:0;">How do I stay in control?</p>
+            </div>
+          </div>
         </div>
         <aside class="notes">
           Name it. Validate it. Pivot to the talk.
@@ -285,7 +292,19 @@
       </section>
 
       <!-- ============================================ -->
-      <!-- SLIDE 9: TRUST FRAMEWORK                     -->
+      <!-- SLIDE 10: JUDGMENT                            -->
+      <!-- ============================================ -->
+      <section data-background-image="images/08-craft-plane.jpg" data-background-size="cover" data-background-opacity="0.2">
+        <h1 style="font-size:4em; font-weight:300; letter-spacing:0.02em;">
+          <span style="color:#e46a43;">Judgment.</span>
+        </h1>
+        <aside class="notes">
+          3 seconds silence. Then: that's the word. That's what doesn't get automated.
+        </aside>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SLIDE 11: TRUST FRAMEWORK                    -->
       <!-- ============================================ -->
       <section data-background-image="images/bg-12-bridge-fog.jpg" data-background-size="cover" data-background-opacity="0.45">
         <h2 style="margin-bottom:1em;">The real threshold is trust</h2>
@@ -309,22 +328,19 @@
       </section>
 
       <!-- ============================================ -->
-      <!-- SLIDE 10: CLOSE                              -->
+      <!-- SLIDE 12: CLOSE                              -->
       <!-- ============================================ -->
-      <section data-background-image="images/12-closing.jpg" data-background-size="cover" data-background-opacity="0.7">
-        <div style="max-width:800px; margin:0 auto;">
+      <section data-background-image="images/12-closing.jpg" data-background-size="cover" data-background-opacity="0.5">
+        <div style="max-width:900px; margin:0 auto;">
           <p style="font-size:2.2em; font-weight:300; line-height:1.5;">
-            Give it hands.
+            <span style="color:#e46a43;">Judgment.</span>
           </p>
-          <p style="font-size:2.2em; font-weight:300; line-height:1.5; margin-top:0.3em;">
-            Keep the <span style="color:#e46a43;">steering wheel.</span>
-          </p>
-          <p style="font-size:1.3em; font-weight:300; opacity:0.5; margin-top:1.5em;">
-            The hands are here.<br>The question is what we build with them.
+          <p style="font-size:1.6em; font-weight:300; line-height:1.5; margin-top:0.6em; opacity:0.7;">
+            Don't let it drift.
           </p>
         </div>
         <aside class="notes">
-          Pause. Let them read. End. Don't add anything.
+          Quiet. Vulnerable. End. Don't add anything.
         </aside>
       </section>
 
@@ -341,10 +357,7 @@
         { image: "images/01-brain-in-jar.jpg", opacity: 0.5 },
         { image: "images/00-title.jpg", opacity: 0.5 },
       ],
-      1: [
-        { image: "images/02-elephant-chair.jpg", opacity: 0.7 },
-        null,
-      ],
+      1: [null],  // Image inline on left
       2: [
         { image: "images/bg-02-dark-path.jpg", opacity: 0.35 },
         null,
@@ -369,11 +382,15 @@
         null,
       ],
       9: [
-        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.45 },
+        { image: "images/08-craft-plane.jpg", opacity: 0.2 },
         null,
       ],
       10: [
-        { image: "images/12-closing.jpg", opacity: 0.7 },
+        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.45 },
+        null,
+      ],
+      11: [
+        { image: "images/12-closing.jpg", opacity: 0.5 },
       ],
     };
 

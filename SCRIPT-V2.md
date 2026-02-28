@@ -179,7 +179,19 @@ And that's yours.
 
 ---
 
-## Slide 9: Trust
+## Slide 10: Judgment
+
+*[Let them read it. 3 seconds of silence.]*
+
+That's the word. That's what doesn't get automated.
+
+Gathering information — automated. Formatting — automated. First drafts — automated. But looking at the output and knowing whether it's right? Knowing when something's off even if you can't explain why? Knowing when to stop?
+
+That's judgment. And it's yours.
+
+---
+
+## Slide 11: Trust
 
 So how do you actually work with something like this without losing control?
 
@@ -197,17 +209,15 @@ This isn't new logic. This is how humans have delegated since forever. The deleg
 
 ---
 
-## Slide 10: Close
+## Slide 12: Close
 
-*[Slow. Almost quiet.]*
+*[Quiet. Vulnerable.]*
 
-Give it hands. Keep the steering wheel.
+I'm not worried about AI taking my job. I'm worried about something subtler. I'm worried about forgetting which parts were mine to begin with.
 
-That's it.
+The drift slide — that's real. It's easy to let go of things one at a time until you look up and realize you're just... approving.
 
-The hands are here. They're not going away.
-
-The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.
+Judgment. Don't let it drift.
 
 *[Pause. End. Don't add anything.]*
 
