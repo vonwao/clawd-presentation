@@ -337,15 +337,16 @@
 
     let currentAudio = null;
     let audioEnabled = true;
+    let autoplay = true;
+    let userHasInteracted = false;
 
     function playSlideAudio(slideIdx) {
-      // Stop any currently playing audio
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
         currentAudio = null;
       }
-      updateAudioIndicator();
+      updateControls();
 
       if (!audioEnabled) return;
 
@@ -353,58 +354,127 @@
       if (!src) return;
 
       currentAudio = new Audio(src);
-      currentAudio.play().catch(() => {});
-      updateAudioIndicator();
+      currentAudio.play().catch(() => {
+        // Browser blocked autoplay — show tap-to-start
+        if (!userHasInteracted) showStartOverlay();
+      });
+      updateControls();
 
       currentAudio.addEventListener('ended', () => {
+        const nextIdx = slideIdx + 1;
         currentAudio = null;
-        updateAudioIndicator();
+        updateControls();
+        // Auto-advance to next slide when audio finishes
+        if (autoplay && nextIdx < Reveal.getTotalSlides()) {
+          setTimeout(() => Reveal.next(), 800);
+        }
       });
     }
 
     function toggleAudio() {
       if (currentAudio && !currentAudio.paused) {
         currentAudio.pause();
-        updateAudioIndicator();
       } else if (currentAudio && currentAudio.paused) {
         currentAudio.play().catch(() => {});
-        updateAudioIndicator();
       }
+      updateControls();
     }
 
-    function updateAudioIndicator() {
-      let el = document.getElementById('audio-indicator');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'audio-indicator';
-        Object.assign(el.style, {
-          position: 'fixed', bottom: '24px', right: '24px',
-          background: 'rgba(0,0,0,0.8)', color: '#fff', padding: '8px 16px',
-          borderRadius: '8px', fontSize: '14px', fontFamily: 'Manrope, sans-serif',
-          zIndex: '9999', pointerEvents: 'none',
-          border: '1px solid rgba(255,255,255,0.15)',
-        });
-        document.body.appendChild(el);
-      }
+    // ── Mobile start overlay (needed because browsers block autoplay) ──
+    function showStartOverlay() {
+      if (document.getElementById('start-overlay')) return;
+      const el = document.createElement('div');
+      el.id = 'start-overlay';
+      Object.assign(el.style, {
+        position: 'fixed', inset: '0', zIndex: '10000',
+        background: 'rgba(0,0,0,0.85)', display: 'flex',
+        alignItems: 'center', justifyContent: 'center',
+        flexDirection: 'column', cursor: 'pointer',
+      });
+      el.innerHTML = `
+        <div style="font-size:64px;margin-bottom:20px;">▶</div>
+        <div style="font-family:Manrope,sans-serif;font-size:20px;color:#fff;opacity:0.8;">Tap to start</div>
+      `;
+      el.addEventListener('click', () => {
+        userHasInteracted = true;
+        el.remove();
+        playSlideAudio(Reveal.getIndices().h);
+      });
+      document.body.appendChild(el);
+    }
+
+    // ── Floating controls (works on mobile + desktop) ──
+    function createControls() {
+      const bar = document.createElement('div');
+      bar.id = 'audio-controls';
+      Object.assign(bar.style, {
+        position: 'fixed', bottom: '16px', left: '50%', transform: 'translateX(-50%)',
+        background: 'rgba(0,0,0,0.85)', color: '#fff',
+        padding: '8px 6px', borderRadius: '12px',
+        fontFamily: 'Manrope, sans-serif', fontSize: '14px',
+        zIndex: '9999', display: 'flex', alignItems: 'center', gap: '4px',
+        border: '1px solid rgba(255,255,255,0.15)',
+        backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+      });
+
+      const btnStyle = `
+        background:none; border:1px solid rgba(255,255,255,0.2);
+        color:#fff; border-radius:8px; padding:8px 12px; cursor:pointer;
+        font-size:16px; font-family:Manrope,sans-serif;
+        min-width:40px; text-align:center;
+        -webkit-tap-highlight-color:transparent;
+      `;
+
+      bar.innerHTML = `
+        <button id="ctl-prev" style="${btnStyle}" title="Previous">◀</button>
+        <button id="ctl-play" style="${btnStyle}min-width:48px;" title="Play/Pause">▶</button>
+        <button id="ctl-next" style="${btnStyle}" title="Next">▶▏</button>
+        <span id="ctl-status" style="padding:0 8px;opacity:0.6;font-size:13px;white-space:nowrap;"></span>
+        <button id="ctl-auto" style="${btnStyle}font-size:13px;" title="Toggle autoplay">auto</button>
+      `;
+
+      document.body.appendChild(bar);
+
+      document.getElementById('ctl-prev').addEventListener('click', (e) => {
+        e.stopPropagation(); userHasInteracted = true; Reveal.prev();
+      });
+      document.getElementById('ctl-next').addEventListener('click', (e) => {
+        e.stopPropagation(); userHasInteracted = true; Reveal.next();
+      });
+      document.getElementById('ctl-play').addEventListener('click', (e) => {
+        e.stopPropagation(); userHasInteracted = true;
+        if (!currentAudio) {
+          playSlideAudio(Reveal.getIndices().h);
+        } else {
+          toggleAudio();
+        }
+      });
+      document.getElementById('ctl-auto').addEventListener('click', (e) => {
+        e.stopPropagation();
+        autoplay = !autoplay;
+        updateControls();
+      });
+    }
+
+    function updateControls() {
+      const playBtn = document.getElementById('ctl-play');
+      const statusEl = document.getElementById('ctl-status');
+      const autoBtn = document.getElementById('ctl-auto');
+      if (!playBtn) return;
+
       const slideIdx = Reveal.getIndices().h;
       const hasAudio = !!slideAudio[slideIdx];
+      const total = Reveal.getTotalSlides();
 
-      if (!audioEnabled) {
-        el.textContent = 'audio off (A to toggle)';
-        el.style.opacity = '0.4';
-      } else if (currentAudio && !currentAudio.paused) {
-        el.textContent = '▶ playing (space to pause)';
-        el.style.opacity = '0.8';
-      } else if (currentAudio && currentAudio.paused) {
-        el.textContent = '⏸ paused (space to resume)';
-        el.style.opacity = '0.6';
-      } else if (hasAudio) {
-        el.textContent = '🔊 audio ready';
-        el.style.opacity = '0.4';
+      if (currentAudio && !currentAudio.paused) {
+        playBtn.textContent = '⏸';
       } else {
-        el.textContent = 'no audio';
-        el.style.opacity = '0.3';
+        playBtn.textContent = '▶';
       }
+
+      statusEl.textContent = `${slideIdx + 1}/${total}`;
+      autoBtn.style.opacity = autoplay ? '1' : '0.4';
+      autoBtn.style.borderColor = autoplay ? '#e46a43' : 'rgba(255,255,255,0.2)';
     }
 
     Reveal.initialize({
@@ -413,7 +483,7 @@
       height: 1080,
       margin: 0.06,
       center: true,
-      controls: true,
+      controls: false,       // We have our own controls
       progress: true,
       slideNumber: 'c/t',
       showSlideNumber: 'all',
@@ -421,15 +491,11 @@
       transition: 'fade',
       transitionSpeed: 'slow',
       backgroundTransition: 'fade',
+      touch: true,            // Enable swipe on mobile
       plugins: [ RevealNotes ],
       keyboard: {
-        // Space bar: pause/resume audio instead of default next-slide
         32: () => {
-          if (currentAudio) {
-            toggleAudio();
-          } else {
-            Reveal.next();
-          }
+          if (currentAudio) { toggleAudio(); } else { Reveal.next(); }
         },
       },
     }).then(() => {
@@ -439,41 +505,37 @@
       Object.entries(bgSelections).forEach(([idx, optIdx]) => {
         applyBg(parseInt(idx), optIdx);
       });
-      updateAudioIndicator();
+      createControls();
+      updateControls();
+
+      // Auto-play first slide audio (or show start overlay on mobile)
+      playSlideAudio(0);
     });
 
-    // Play audio when slide changes
     Reveal.on('slidechanged', (event) => {
       playSlideAudio(event.indexh);
+      updateControls();
     });
 
     document.addEventListener('keydown', (e) => {
-      // T/Shift+T: cycle backgrounds
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       if (e.key === 't' || e.key === 'T') {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         const idx = Reveal.getIndices().h;
         const opts = bgOptions[idx];
         if (!opts || opts.length < 2) return;
         e.preventDefault();
         const current = bgSelections[idx] || 0;
-        const next = e.shiftKey ? current - 1 : current + 1;
-        applyBg(idx, next);
+        applyBg(idx, e.shiftKey ? current - 1 : current + 1);
       }
-      // A: toggle audio on/off globally
       if (e.key === 'a' || e.key === 'A') {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         e.preventDefault();
         audioEnabled = !audioEnabled;
         if (!audioEnabled && currentAudio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0;
-          currentAudio = null;
+          currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null;
         }
-        updateAudioIndicator();
+        updateControls();
       }
-      // R: replay current slide audio
       if (e.key === 'r' || e.key === 'R') {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         e.preventDefault();
         playSlideAudio(Reveal.getIndices().h);
       }
