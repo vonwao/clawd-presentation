@@ -57,6 +57,24 @@ And that word "confident" — we'll come back to that.
 
 ---
 
+## Slide 3.5: The Pace
+
+And this happened fast.
+
+*[Gesture at timeline]*
+
+2023 — ChatGPT, Gemini, Claude, all the chatbots land. "Ask anything." That's the era of questions and answers.
+
+2025 — Claude Code, Cursor, Codex. Now it writes code for you. It's not just answering — it's building.
+
+2026 — OpenClaw, Manus, Operator. Now it does things. It acts in the world. Sends emails. Books meetings. Runs software.
+
+And after that? We don't know yet. But each step is a new kind of trust. We went from asking... to writing... to acting... in three years.
+
+That's the pace.
+
+---
+
 ## Slide 4: Hands
 
 So when I say "hands" — what do I actually mean?
