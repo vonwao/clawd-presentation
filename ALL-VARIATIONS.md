@@ -120,3 +120,11 @@ Alt B and Alt C exist only as outlines. To build either:
 4. Update the `bgOptions` map for the new slide count
 
 Estimated effort: ~30 min each, since the CSS components and JS infrastructure are already in place.
+
+
+
+
+Yes. So now are we ready to create the presentation?  I want to 
+  have less slides rather than more.  Let's archive all the        
+  presentations we have so far, and create a new one.  Ask me      
+  questions if needed      

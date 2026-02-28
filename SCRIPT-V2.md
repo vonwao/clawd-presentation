@@ -9,7 +9,7 @@
 
 So. "When Intelligence Grew Hands." What does that mean?
 
-I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it. And somewhere in the last year, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.
+I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it. And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.
 
 That's what this talk is about.
 
@@ -17,15 +17,15 @@ That's what this talk is about.
 
 ## Slide 2: The Elephant
 
-But before I get into that — let's just say the thing that's probably in a lot of people's heads right now.
+But before I get into that — let's say the thing that's probably in a lot of people's heads right now.
 
 *[Gesture at slide]*
 
 "Am I replaceable?" That's a real question. It's not dramatic. If you've been paying attention to what's happening, it's a reasonable thing to wonder.
 
-"Who's responsible when the AI does something?" Also real. Because it IS doing things now. Not just suggesting — acting.
+"Who's responsible when the AI does something?" Also real. Because it IS doing things now. Not just suggesting — it's acting.
 
-"How do I stay in control?" That's the one I think about most.
+"How do I (or we) stay in control?" That's the one I've been struggling with.
 
 If any of that is in your head — good. That means you're not asleep. I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.
 
@@ -39,7 +39,7 @@ OK so here's what actually changed.
 
 *[Point to right side]* Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.
 
-That's not a better chatbot. That's a different thing entirely. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
+It's not a better chatbot. That's a different thing entirely. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
 
 And that word "confident" — we'll come back to that.
 
