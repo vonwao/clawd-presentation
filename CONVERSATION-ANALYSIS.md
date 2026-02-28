@@ -143,12 +143,49 @@ This is the lived proof of the thesis. AI tools (including ChatGPT building this
 
 | If the conviction is... | Best story pair |
 |------------------------|-----------------|
-| "The bottleneck is now judgment" | F (message drafting) + H (sub-agent betrayal) |
-| "The real question was always trust" | G (W-9 disaster) + H (sub-agent betrayal) |
+| "The bottleneck is now judgment" | F (message drafting) + G (W-9 disaster) |
+| "The real question was always trust" | G (W-9 disaster) + F (message drafting) |
 | "AI revealed what my work actually was" | F (message drafting) + I (hollow blog drafts) |
-| "No action without evidence" | H (sub-agent betrayal) + G (W-9 disaster) |
+| "No action without evidence" | G (W-9 disaster) + F (message drafting) |
 
-**Otto has NOT yet picked his stories.** But the psychographic data narrows it significantly. For a general audience, **F (message drafting) + G (W-9 as comic relief)** is the strongest pair. For tech, **H (sub-agent betrayal) + G (W-9)** is unbeatable.
+### Decision: Audience is GENERAL (not primarily technical)
+
+Otto confirmed the sub-agent betrayal (H) -- while a powerful story -- is too technical for his audience. Route ordering bugs, CSS stacking, API conflicts... a general audience won't track it.
+
+**The underlying lesson is universal though:** "The agent said 'Done!' -- and it wasn't." That one-liner version could still appear as a passing remark. The full story stays in reserve for tech audiences.
+
+### Updated story recommendations:
+
+**Primary story: G (W-9 / form-filling disaster)**
+- Everyone has filled out a form. Everyone knows the feeling of a "helper" making things worse.
+- 30+ minutes of AI confidently pixel-hunting the wrong coordinates.
+- Otto called it "a ridiculous way to fill out a form."
+- Funny, self-deprecating, instantly relatable. Earns the trust framework without jargon.
+- Lesson it proves: "Confident ≠ correct. Speed ≠ accuracy. Enthusiasm ≠ competence."
+
+**Secondary story: F (message-drafting shift)**
+- 595 conversations of crafting messages with AI over 3 years.
+- The quiet moment when "helpful tool" became "I don't send important messages alone anymore."
+- Shows the gradual delegation threshold -- not a dramatic event, but a slow identity shift.
+- More personal, more vulnerable. Best for the "mirror" moment in the talk.
+
+**Comic relief / one-liner potential:**
+- W-9 story doubles as comic relief AND thesis proof
+- Sub-agent "Done!" can be a throwaway line: "I've had agents tell me they're finished when nothing worked. Confidence without evidence is the most dangerous combination."
+- Hollow blog drafts can be a one-liner: "AI wrote a blog post about my life. Every fact was right. It had zero soul."
+
+### Other relatable story directions to brainstorm:
+
+Otto noted there are "other examples from various projects." Candidates that would resonate with a general audience:
+
+| Potential story | Why it's relatable | What it proves |
+|----------------|-------------------|----------------|
+| **AI expanding scope beyond what was asked** | "I asked for X, it built X + Y + Z" -- everyone who's worked with a contractor knows this | Drift / noise thesis |
+| **AI giving the same advice/pattern repeatedly** | "It keeps leading me down the same roads" -- Otto said this explicitly | Loss of agency / being steered |
+| **Delegating something personal and feeling weird about it** | Birthday messages, condolence notes, etc. -- uncomfortable universally | Where's the line of delegation? |
+| **AI output that "passed" but wasn't actually right** | Looks correct at a glance, falls apart on inspection | "No action without evidence" |
+
+**Otto should brainstorm 1-2 more relatable stories from his projects** to have options during rehearsal.
 
 ---
 
@@ -207,7 +244,7 @@ Here are the strongest candidates based on who Otto actually is:
 1. **Otto needs to pick his conviction sentence** (Section 4 options narrowed but not chosen)
 2. **Otto needs to pick 1-2 true stories** (Section 6 narrowed to strong candidates)
 3. **Otto needs to pick his "protect" value** (Section 8 options ready)
-4. **Audience is still undefined** -- general meetup? tech crowd? founders? This affects story choice and elephant phrasing.
+4. **Audience is GENERAL** (confirmed -- sub-agent story too technical). Elephant phrasing should be universal.
 5. **The actual slide HTML** hasn't been rewritten. Current pres.html still has the old version.
 
 ---
@@ -280,7 +317,7 @@ The tone should be: **experienced, honest, slightly weathered, still optimistic.
 
 **Story 1 (personal, relatable):** The message-drafting shift -- when "helpful tool" quietly became "I don't do this alone anymore." Shows the delegation threshold without drama.
 
-**Story 2 (funny, grounding):** The W-9 disaster OR the sub-agent betrayal. Shows the reality behind the hype. Earns the trust framework.
+**Story 2 (funny, grounding):** The W-9 / form-filling disaster. Shows the reality behind the hype. Earns the trust framework. (Sub-agent betrayal reserved for tech audiences only.)
 
 **Protect:** Agency -- "Give it hands, keep the steering wheel."
 
@@ -291,7 +328,7 @@ The tone should be: **experienced, honest, slightly weathered, still optimistic.
 | # | Decision | Strongest option | Runner-up |
 |---|----------|-----------------|-----------|
 | 1 | Conviction sentence | "AI revealed what my work actually was" | "The bottleneck is now judgment" |
-| 2 | Primary story | Message-drafting shift (F) | Sub-agent betrayal (H) |
-| 3 | Secondary story | W-9 disaster (G) as comic relief | Hollow blog drafts (I) |
+| 2 | Primary story | W-9 / form-filling disaster (G) -- funny, relatable, earns trust framework | Message-drafting shift (F) -- personal, vulnerable |
+| 3 | Secondary story | Message-drafting shift (F) -- the slow delegation realization | Hollow blog drafts (I) -- "correct but no soul" |
 | 4 | Protect value | Agency | Honest relationships with tools |
 | 5 | Audience | Needs to be defined | Affects everything |
