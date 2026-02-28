@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Picker — Clawd Presentation</title>
+  <title>Image Picker — Clawd v2</title>
   <link rel="stylesheet" href="vendor/fonts/fonts.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,16 +20,9 @@
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 1.5em;
     }
-    .slide-section h2 {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin-bottom: 0.3em;
-    }
-    .slide-section .search-term {
-      font-size: 0.85em;
-      opacity: 0.4;
-      margin-bottom: 1em;
-    }
+    .slide-section h2 { font-size: 1.2em; font-weight: 600; margin-bottom: 0.3em; }
+    .slide-desc { font-size: 0.85em; opacity: 0.4; margin-bottom: 0.4em; }
+    .slide-notes { font-size: 0.8em; opacity: 0.55; color: #e46a43; margin-bottom: 1em; font-style: italic; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -54,359 +47,284 @@
       right: 10px;
       background: #e46a43;
       color: #fff;
-      width: 28px;
-      height: 28px;
+      width: 28px; height: 28px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: bold;
     }
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .card .img-index {
+    .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card .img-label {
       position: absolute;
-      bottom: 8px;
-      left: 8px;
+      bottom: 8px; left: 8px;
       background: rgba(0,0,0,0.7);
-      color: #fff;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 4px;
+      color: #fff; font-size: 12px;
+      padding: 2px 8px; border-radius: 4px;
     }
-    .existing-label {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: rgba(228,106,67,0.85);
-      color: #fff;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 600;
+    .tag {
+      position: absolute; top: 8px; left: 8px;
+      font-size: 11px; padding: 2px 8px; border-radius: 4px;
+      font-weight: 600; color: #fff;
+    }
+    .tag + .tag { left: auto; right: auto; position: relative; display: inline-block; margin-left: 4px; }
+    .tags-row {
+      position: absolute; top: 8px; left: 8px;
+      display: flex; gap: 4px; z-index: 2;
+    }
+    .tag-recommended { background: rgba(228,106,67,0.85); }
+    .tag-generated { background: rgba(26,188,156,0.85); }
+    .tag-existing { background: rgba(100,100,100,0.85); }
+    .tag-noimage { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+    .card-noimage {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1em; opacity: 0.4; font-style: italic;
     }
     #output-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
       background: rgba(20,20,20,0.95);
       border-top: 1px solid rgba(255,255,255,0.15);
       padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      backdrop-filter: blur(12px);
-      z-index: 100;
+      display: flex; align-items: center; gap: 16px;
+      backdrop-filter: blur(12px); z-index: 100;
     }
-    #output-bar .count {
-      font-size: 0.95em;
-      opacity: 0.7;
-    }
+    #output-bar .count { font-size: 0.95em; opacity: 0.7; }
     #output-bar button {
-      background: #e46a43;
-      color: #fff;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 1em;
-      font-weight: 600;
-      cursor: pointer;
+      background: #e46a43; color: #fff; border: none;
+      padding: 10px 24px; border-radius: 8px;
+      font-family: inherit; font-size: 1em; font-weight: 600; cursor: pointer;
     }
     #output-bar button:hover { background: #d05a35; }
     #json-output {
       display: none;
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 24px;
-      margin-top: 2em;
-      font-family: monospace;
-      font-size: 0.85em;
-      white-space: pre-wrap;
-      word-break: break-all;
-      line-height: 1.6;
+      border-radius: 10px; padding: 24px;
+      margin-top: 2em; font-family: monospace; font-size: 0.85em;
+      white-space: pre-wrap; word-break: break-all; line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <h1>Background Image Picker</h1>
-  <p class="subtitle">Click to select one image per slide. Selections are saved in localStorage.</p>
-
+  <h1>Clawd v2 — Background Image Picker</h1>
+  <p class="subtitle">Click to select one image per slide. Selections saved in localStorage.</p>
   <div id="sections"></div>
-
   <div id="json-output"></div>
-
   <div id="output-bar">
     <span class="count" id="selection-count">0 selected</span>
     <button onclick="showSelections()">Show Selections</button>
     <button onclick="copySelections()">Copy JSON</button>
   </div>
-
   <script>
     const slides = [
       {
-        id: "title",
-        title: "Slide 1: Title",
-        search: "dark ocean night moody cinematic",
-        existing: "images/00-title.jpg",
+        id: "s01-title",
+        title: 'Slide 1: Title \u2014 "When Intelligence Grew Hands"',
+        desc: "Opening. Cinematic, dark, sets the tone.",
+        notes: "\u2605 Recommended: crab claws from dark water (existing). Perfect match.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1667275280316-e6d9f94a0b89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1636342797737-21ca7a010e28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1611916813825-3434c1c4a8eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1717944954321-311e7f674d87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1668200440757-d2b55ba4270a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1605808186068-04d2b30151da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/00-title.jpg", label: "Crab claws from water (existing)", tags: ["recommended", "existing"] },
+          { url: "images/01-brain-in-jar.jpg", label: "Brain in jar (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "morning",
-        title: "Slide 2: I Stopped Managing My Morning",
-        search: "laptop open empty chair dawn + kitchen table morning no people",
-        existing: "images/bg-05-silhouette.jpg",
+        id: "s02-elephant",
+        title: 'Slide 2: The Elephant \u2014 "Am I replaceable?"',
+        desc: "Tension, unease. The questions everyone is thinking.",
+        notes: "\u2605 Recommended: new generated empty chair. 5/5 \u2014 Fincher-level.",
         images: [
-          "https://images.unsplash.com/photo-1760611656149-aff6d1b80493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1601594303726-cfc98be292e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1590140103794-ce43de8e44c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1752589342029-0b90dec3daa3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1600759734163-e45c089145c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1564272153-2771b7aab168?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1632893037506-aac33bf18107?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1549828043-ebfbb3032196?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/02-elephant-chair.jpg", label: "Empty chair + desk lamp (generated)", tags: ["recommended", "generated"] },
+          { url: "images/04-empty-office.jpg", label: "Night office skyline (existing)", tags: ["existing"] },
+          { url: "images/bg-05-silhouette.jpg", label: "Silhouette (existing)", tags: ["existing"] },
+          { url: "images/bg-05-contemplation.jpg", label: "Contemplation (existing)", tags: ["existing"] },
+          { url: "images/bg-05-reflection.jpg", label: "Reflection (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "brain",
-        title: "Slide 2b: Brain in a Jar",
-        search: "brain glass science bioluminescence",
-        existing: "images/01-brain-in-jar.jpg",
+        id: "s03-shift",
+        title: "Slide 3: The Shift \u2014 Before \u2192 Now",
+        desc: "Consult vs. direct. Brain in jar = the 'before'.",
+        notes: "\u2605 Recommended: brain in jar at low opacity + HTML overlay for Before/Now.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1680700163580-c99a7a79a5a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1682001801155-25a2e5c1c49a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/01-brain-in-jar.jpg", label: "Brain in jar \u2014 the 'before' (existing)", tags: ["recommended", "existing"] },
+          { url: "images/bg-02-crossroads.jpg", label: "Crossroads (existing)", tags: ["existing"] },
+          { url: "images/bg-03-crossroads-new.jpg", label: "Crossroads new (existing)", tags: ["existing"] },
+          { url: "images/bg-02-dark-path.jpg", label: "Dark path (existing)", tags: ["existing"] },
+          { url: "images/bg-02-dark-road.jpg", label: "Dark road / windshield (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "crossroads",
-        title: "Slide 3: Before \u2192 Now",
-        search: "dark crossroads foggy path moody",
-        existing: null,
+        id: "s04-hands",
+        title: 'Slide 4: Hands \u2014 "Tools plus loops"',
+        desc: "What 'hands' means concretely. Write, browse, run, loop.",
+        notes: "\u2605 Recommended: robotic hand reaching from darkness (generated v2). 4.5/5.",
         images: [
-          "https://images.unsplash.com/photo-1581608198007-4801faa3859a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1769077096395-421a4cd0a8a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1647968813399-d442099cf04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1518911694274-707e75b3f534?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1556946214-9cb7388e2c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1707047364201-01fceb09b305?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/04-robot-hand-v2.jpg", label: "Robotic hand reaching (generated v2)", tags: ["recommended", "generated"] },
+          { url: "images/04-robot-hands.jpg", label: "Robot hands at desk (generated v1 \u2014 busy)", tags: ["generated"] },
+          { url: "images/bg-04-hands-meaning.jpg", label: "Welder hands (existing)", tags: ["existing"] },
+          { url: "images/bg-03-keyboard.jpg", label: "Keyboard (existing)", tags: ["existing"] },
+          { url: "images/bg-03-workshop.jpg", label: "Workshop tools (existing)", tags: ["existing"] },
+          { url: "images/bg-03-craftsman.jpg", label: "Skull + candles (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "hands-meaning",
-        title: "Slide 4: What Hands Mean",
-        search: "craftsman workshop hands tools dark",
-        existing: null,
+        id: "s05-loop",
+        title: "Slide 5: The Loop \u2014 Agent loop diagram",
+        desc: "Goal \u2192 Context \u2192 Plan \u2192 Act \u2192 Observe \u2192 Evaluate \u2192 Loop",
+        notes: "SVG diagram on pure black. No photographic image needed.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1677173222361-83e349308553?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1714552526594-935fdf5cfc83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1660993431493-0ffd7635f700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1661446600373-125cfeadf275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1677698818999-6ef3da66a32d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: null, label: "No image \u2014 SVG diagram only", tags: ["recommended", "noimage"] },
         ]
       },
       {
-        id: "office",
-        title: "Slide 5: Agency Changes Your Tuesday",
-        search: "empty office dark desk night moody",
-        existing: "images/04-empty-office.jpg",
+        id: "s06-story",
+        title: 'Slide 6: The W-9 Story \u2014 "A ridiculous way to fill out a form"',
+        desc: "Human moment. Funny, relatable. AI confidently wrong.",
+        notes: "\u2605 Recommended: no bg image. Let the story breathe. Dark slide, white text.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1731860729467-857c8ff96086?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1692133226337-55e513450a32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1758833502047-8f1c7dc5edd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1728581713550-74c451a17fd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1731860726682-48bc67394840?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1761818645907-8bed418b415b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: null, label: "No image \u2014 text only (recommended)", tags: ["recommended", "noimage"] },
+          { url: "images/04-empty-office.jpg", label: "Office (subtle bg option)", tags: ["existing"] },
         ]
       },
       {
-        id: "uncanny",
-        title: "Slide 11: The Uncanny Middle",
-        search: "empty hallway liminal corridor moody",
-        existing: "images/08-uncanny-middle.jpg",
+        id: "s07-drift",
+        title: 'Slide 7: Drift \u2014 "Noise that feels like progress"',
+        desc: "The scariest part. AI leading you without noticing. WELDR story.",
+        notes: "\u2605 Recommended: night drive through windshield. 5/5 \u2014 perfect drift metaphor.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1731868124373-67a24d7ad315?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1769185327886-d0f212be3cfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1758834931398-a46814163373?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1703962169705-d1f3d89259a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1724634731495-0fdc538ad0be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1561824046-3197c18d5422?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/bg-02-dark-road.jpg", label: "Night drive windshield (existing)", tags: ["recommended", "existing"] },
+          { url: "images/bg-09-foggy-path.jpg", label: "Foggy field (existing)", tags: ["existing"] },
+          { url: "images/bg-09-foggy-forest.jpg", label: "Winter forest (existing)", tags: ["existing"] },
+          { url: "images/bg-09-labyrinth.jpg", label: "Labyrinth (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "mirror",
-        title: "Slide 12: What It Reveals About Us",
-        search: "mirror reflection dark contemplation",
-        existing: null,
+        id: "s08-conviction",
+        title: 'Slide 8: Conviction \u2014 "AI revealed what my work actually was"',
+        desc: "Judgment is the bottleneck. Quiet, warm, grounded.",
+        notes: "Craft shaving is gorgeous but needs dark overlay. Wood plane needs darkening. Or generate another.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1722859326975-2f3dc2af0456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1770892142032-d2bb2da74c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1761054297875-f698610d3f4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1770892142083-8974a6dcf67e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1745194601613-e9ecb4c32118?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1765914087871-12444522243d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/08-craft-shaving-v2.jpg", label: "Wood shaving close-up (generated v2 \u2014 needs overlay)", tags: ["generated"] },
+          { url: "images/08-craft-plane.jpg", label: "Wood plane on bench (generated v1 \u2014 bright)", tags: ["generated"] },
+          { url: "images/07-texture-future.jpg", label: "Future texture (existing)", tags: ["existing"] },
+          { url: "images/bg-03-workshop.jpg", label: "Workshop tools (existing)", tags: ["existing"] },
+          { url: null, label: "No image \u2014 text only", tags: ["noimage"] },
         ]
       },
       {
-        id: "trust",
-        title: "Slide 13: The Trust Threshold",
-        search: "foggy bridge trust threshold dark moody",
-        existing: null,
+        id: "s09-trust",
+        title: "Slide 9: Trust \u2014 Scope / Visibility / Reversibility",
+        desc: "Framework slide. Three pillars. Readable > atmospheric.",
+        notes: "\u2605 Recommended: clean HTML/SVG layout, no photographic bg.",
         images: [
-          "https://plus.unsplash.com/premium_photo-1732024931292-c3798d2ec47f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1665591239127-eaff5e3f208d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1761753508560-e2abfa9ab530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1652733361035-39064dcfa063?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1732024931302-f7089c78af76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1769270270266-a2b86bc3b814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: null, label: "No image \u2014 HTML/SVG pillars (recommended)", tags: ["recommended", "noimage"] },
+          { url: "images/bg-12-trust-new.jpg", label: "Trust (existing)", tags: ["existing"] },
+          { url: "images/bg-12-bridge-fog.jpg", label: "Bridge in fog (existing)", tags: ["existing"] },
+          { url: "images/bg-12-tightrope.jpg", label: "Tightrope (existing)", tags: ["existing"] },
+          { url: "images/bg-12-anchor.jpg", label: "Anchor (existing)", tags: ["existing"] },
         ]
       },
       {
-        id: "future",
-        title: "Slide 14: What To Do With This",
-        search: "desk laptop morning light no people moody",
-        existing: "images/07-texture-future.jpg",
+        id: "s10-close",
+        title: 'Slide 10: Close \u2014 "Give it hands. Keep the steering wheel."',
+        desc: "Final moment. Powerful, quiet. Let the image land.",
+        notes: "\u2605 Recommended: two robotic hands reaching (existing). 5/5 \u2014 Michelangelo.",
         images: [
-          "https://images.unsplash.com/photo-1542325488573-a28b3cd3c91d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1619080270642-6af8d090b7d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1632893037506-aac33bf18107?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1649230955455-b5c798af2de2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1767190041030-f2f3a6654c5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1642280066966-01a353386b76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-        ]
-      },
-      {
-        id: "closing",
-        title: "Slide 15: Closing",
-        search: "hands reaching dark connection cinematic",
-        existing: "images/12-closing.jpg",
-        images: [
-          "https://images.unsplash.com/photo-1668941349956-75d2382ca6ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1759338666693-9faec028c157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1604171886922-64e1edcb3357?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://plus.unsplash.com/premium_photo-1741366434738-150f38464ba5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1565147021024-d8e5b9d908b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-          "https://images.unsplash.com/photo-1540332311647-540efef612f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          { url: "images/12-closing.jpg", label: "Two hands reaching (existing)", tags: ["recommended", "existing"] },
+          { url: "images/00-title.jpg", label: "Crab claws \u2014 bookend (existing)", tags: ["existing"] },
         ]
       },
     ];
 
-    // Load saved selections
     let selections = {};
-    try { selections = JSON.parse(localStorage.getItem('imgPickerSelections') || '{}'); } catch(e) {}
+    try { selections = JSON.parse(localStorage.getItem('imgPickerV2') || '{}'); } catch(e) {}
 
     function render() {
       const container = document.getElementById('sections');
       container.innerHTML = '';
-
       slides.forEach(slide => {
         const section = document.createElement('div');
         section.className = 'slide-section';
-        section.innerHTML = `
-          <h2>${slide.title}</h2>
-          <p class="search-term">Search: "${slide.search}"</p>
-          <div class="grid" id="grid-${slide.id}"></div>
-        `;
+        section.innerHTML =
+          '<h2>' + slide.title + '</h2>' +
+          '<p class="slide-desc">' + slide.desc + '</p>' +
+          '<p class="slide-notes">' + slide.notes + '</p>' +
+          '<div class="grid" id="grid-' + slide.id + '"></div>';
         container.appendChild(section);
-
         const grid = section.querySelector('.grid');
 
-        // Show existing image first if any
-        if (slide.existing) {
-          const card = makeCard(slide.id, slide.existing, 'current');
-          const label = document.createElement('span');
-          label.className = 'existing-label';
-          label.textContent = 'CURRENT';
-          card.appendChild(label);
-          grid.appendChild(card);
-        }
+        slide.images.forEach(function(img, i) {
+          var card = document.createElement('div');
+          card.className = 'card';
+          if (selections[slide.id] === String(i)) card.classList.add('selected');
 
-        // Show unsplash candidates
-        slide.images.forEach((url, i) => {
-          grid.appendChild(makeCard(slide.id, url, i));
+          if (img.url) {
+            var imgEl = document.createElement('img');
+            imgEl.loading = 'lazy';
+            imgEl.src = img.url;
+            imgEl.alt = img.label;
+            card.appendChild(imgEl);
+          } else {
+            card.classList.add('card-noimage');
+            card.textContent = 'No image';
+          }
+
+          var tagsRow = document.createElement('div');
+          tagsRow.className = 'tags-row';
+          (img.tags || []).forEach(function(t) {
+            var tag = document.createElement('span');
+            tag.className = 'tag tag-' + t;
+            tag.textContent = t === 'recommended' ? '\u2605 PICK' : t === 'generated' ? 'AI GEN' : t === 'existing' ? 'EXISTING' : 'NO IMG';
+            tagsRow.appendChild(tag);
+          });
+          card.appendChild(tagsRow);
+
+          var label = document.createElement('span');
+          label.className = 'img-label';
+          label.textContent = img.label;
+          card.appendChild(label);
+
+          card.addEventListener('click', function() {
+            card.parentElement.querySelectorAll('.card').forEach(function(c) { c.classList.remove('selected'); });
+            card.classList.add('selected');
+            selections[slide.id] = String(i);
+            localStorage.setItem('imgPickerV2', JSON.stringify(selections));
+            updateCount();
+          });
+          grid.appendChild(card);
         });
       });
-
       updateCount();
     }
 
-    function makeCard(slideId, url, index) {
-      const card = document.createElement('div');
-      card.className = 'card';
-      if (selections[slideId] === String(index)) {
-        card.classList.add('selected');
-      }
-
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.src = url;
-      img.alt = '';
-      card.appendChild(img);
-
-      const badge = document.createElement('span');
-      badge.className = 'img-index';
-      badge.textContent = index === 'current' ? 'current' : `#${index + 1}`;
-      card.appendChild(badge);
-
-      card.addEventListener('click', () => {
-        // Deselect siblings
-        card.parentElement.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        selections[slideId] = String(index);
-        localStorage.setItem('imgPickerSelections', JSON.stringify(selections));
-        updateCount();
-      });
-
-      return card;
-    }
-
     function updateCount() {
-      const n = Object.keys(selections).length;
-      document.getElementById('selection-count').textContent = `${n} / ${slides.length} selected`;
+      var n = Object.keys(selections).length;
+      document.getElementById('selection-count').textContent = n + ' / ' + slides.length + ' selected';
     }
 
     function getSelectionsDetail() {
-      const result = {};
-      slides.forEach(slide => {
-        const idx = selections[slide.id];
+      var result = {};
+      slides.forEach(function(slide) {
+        var idx = selections[slide.id];
         if (idx === undefined) return;
-        if (idx === 'current') {
-          result[slide.id] = { slide: slide.title, url: slide.existing, source: 'current' };
-        } else {
-          result[slide.id] = { slide: slide.title, url: slide.images[parseInt(idx)], source: 'unsplash' };
-        }
+        var img = slide.images[parseInt(idx)];
+        result[slide.id] = { slide: slide.title, file: img.url, label: img.label, tags: img.tags };
       });
       return result;
     }
 
     function showSelections() {
-      const el = document.getElementById('json-output');
+      var el = document.getElementById('json-output');
       el.style.display = 'block';
       el.textContent = JSON.stringify(getSelectionsDetail(), null, 2);
       el.scrollIntoView({ behavior: 'smooth' });
     }
 
     function copySelections() {
-      const text = JSON.stringify(getSelectionsDetail(), null, 2);
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector('#output-bar button:last-child');
-        const orig = btn.textContent;
+      var text = JSON.stringify(getSelectionsDetail(), null, 2);
+      navigator.clipboard.writeText(text).then(function() {
+        var btn = document.querySelector('#output-bar button:last-child');
+        var orig = btn.textContent;
         btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = orig, 1500);
+        setTimeout(function() { btn.textContent = orig; }, 1500);
       });
     }
 
