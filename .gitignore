@@ -1,5 +1,4 @@
 node_modules/
-screenshots/
 screenshot-slides.mjs
 package.json
 package-lock.json
