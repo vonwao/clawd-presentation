@@ -16,7 +16,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 1: TITLE                               -->
       <!-- ============================================ -->
-      <section data-background-image="images/00-title.jpg" data-background-size="cover" data-background-opacity="0.5">
+      <section data-background-image="images/01-brain-in-jar.jpg" data-background-size="cover" data-background-opacity="0.5">
         <h1 style="font-size:2.4em; line-height:1.1;">Clawd</h1>
         <p style="font-size:1.6em; font-weight:300; opacity:0.8;">When Intelligence Grew Hands</p>
         <p style="font-size:0.9em; opacity:0.4; margin-top:2em;">Otto von Wachter</p>
@@ -28,7 +28,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 2: THE ELEPHANT                        -->
       <!-- ============================================ -->
-      <section class="ambient" data-background-color="#000">
+      <section data-background-image="images/02-elephant-chair.jpg" data-background-size="cover" data-background-opacity="0.4">
         <h2 style="margin-bottom:0.6em; opacity:0.6;">The emotion in the room</h2>
         <div style="font-size:1.5em; line-height:2.2; max-width:800px; margin:0 auto;">
           <p style="margin:0;">Am I replaceable?</p>
@@ -43,7 +43,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 3: THE SHIFT                           -->
       <!-- ============================================ -->
-      <section class="ambient" data-background-color="#000">
+      <section data-background-image="images/bg-02-dark-path.jpg" data-background-size="cover" data-background-opacity="0.35">
         <div style="display:flex; justify-content:center; gap:100px; align-items:center;">
           <div style="text-align:center;">
             <p style="font-size:1.3em; opacity:0.45;">Before</p>
@@ -65,7 +65,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 4: WHAT "HANDS" MEANS                  -->
       <!-- ============================================ -->
-      <section class="ambient" data-background-color="#000">
+      <section data-background-image="images/04-robot-hands.jpg" data-background-size="cover" data-background-opacity="0.35">
         <h2 style="margin-bottom:0.6em;">What I mean by "hands"</h2>
         <div style="text-align:left; max-width:900px; margin:0 auto; font-size:1.3em; line-height:2.1;">
           <p><span style="color:#e46a43;">write, browse, run tools</span></p>
@@ -129,7 +129,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 6: THE STORY (W-9)                     -->
       <!-- ============================================ -->
-      <section class="ambient" data-background-color="#000">
+      <section data-background-image="images/04-empty-office.jpg" data-background-size="cover" data-background-opacity="0.3">
         <h2 style="margin-bottom:0.5em; opacity:0.6;">The form</h2>
         <p style="font-size:1.5em; line-height:1.6; max-width:850px; margin:0 auto;">
           30 minutes. A W-9.<br>
@@ -158,7 +158,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 8: THE CONVICTION                      -->
       <!-- ============================================ -->
-      <section data-background-image="images/bg-11-water-reflection.jpg" data-background-size="cover" data-background-opacity="0.4">
+      <section data-background-image="images/08-craft-plane.jpg" data-background-size="cover" data-background-opacity="0.35">
         <div style="max-width:900px; margin:0 auto;">
           <p style="font-size:2em; font-weight:300; line-height:1.5;">
             AI didn't replace my work.
@@ -175,7 +175,7 @@
       <!-- ============================================ -->
       <!-- SLIDE 9: TRUST FRAMEWORK                     -->
       <!-- ============================================ -->
-      <section class="ambient" data-background-color="#000">
+      <section data-background-image="images/bg-12-bridge-fog.jpg" data-background-size="cover" data-background-opacity="0.35">
         <h2 style="margin-bottom:0.8em;">The real threshold is trust</h2>
         <div class="trust-pillars">
           <div class="trust-pillar">
@@ -225,34 +225,38 @@
     // ── Background cycling system ──────────────────────────────
     const bgOptions = {
       0: [
+        { image: "images/01-brain-in-jar.jpg", opacity: 0.5 },
         { image: "images/00-title.jpg", opacity: 0.5 },
       ],
-      1: [null],
-      2: [
+      1: [
+        { image: "images/02-elephant-chair.jpg", opacity: 0.4 },
         null,
-        { image: "images/bg-03-crossroads-new.jpg", opacity: 0.35 },
+      ],
+      2: [
+        { image: "images/bg-02-dark-path.jpg", opacity: 0.35 },
+        null,
       ],
       3: [
+        { image: "images/04-robot-hands.jpg", opacity: 0.35 },
         null,
-        { image: "images/bg-04-hands-meaning.jpg", opacity: 0.4 },
-        { image: "images/bg-03-craftsman.jpg", opacity: 0.4 },
       ],
       4: [null],
-      5: [null],
+      5: [
+        { image: "images/04-empty-office.jpg", opacity: 0.3 },
+        null,
+      ],
       6: [
         { image: "images/bg-09-foggy-path.jpg", opacity: 0.35 },
-        { image: "images/bg-09-foggy-forest.jpg", opacity: 0.35 },
         null,
       ],
       7: [
+        { image: "images/08-craft-plane.jpg", opacity: 0.35 },
         { image: "images/bg-11-water-reflection.jpg", opacity: 0.4 },
-        { image: "images/bg-11-mirror-new.jpg", opacity: 0.4 },
-        { image: "images/bg-05-reflection.jpg", opacity: 0.4 },
+        null,
       ],
       8: [
+        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.35 },
         null,
-        { image: "images/bg-12-trust-new.jpg", opacity: 0.4 },
-        { image: "images/bg-12-bridge-fog.jpg", opacity: 0.4 },
       ],
       9: [
         { image: "images/12-closing.jpg", opacity: 0.7 },
