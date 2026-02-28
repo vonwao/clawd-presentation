@@ -1,4 +1,4 @@
-# Clawd v2 — Full Script
+# Clawd v2 — Full Script (Revised)
 
 *10 minutes. Read it out loud. Time yourself. Cut what doesn't feel right.*
 
@@ -9,7 +9,9 @@
 
 So. "When Intelligence Grew Hands." What does that mean?
 
-I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it. And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.
+I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it.
+
+And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.
 
 That's what this talk is about.
 
@@ -21,13 +23,17 @@ But before I get into that — let's say the thing that's probably in a lot of p
 
 *[Gesture at slide]*
 
-"Am I replaceable?" That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.
+"Am I replaceable?"
+
+That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.
 
 "Who's responsible when the AI does something?" ...because it IS doing things now. Not just suggesting — acting.
 
 "How do I stay in control?" That's the one I've been struggling with.
 
-If any of that is in your head — good. That means you're not asleep. I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.
+If any of that is in your head — good. That means you're not asleep.
+
+I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.
 
 ---
 
@@ -35,11 +41,17 @@ If any of that is in your head — good. That means you're not asleep. I'm not h
 
 OK so here's what actually changed.
 
-*[Point to left side]* For years, AI was this: you ask a question, you get an answer. Like a really smart search engine. A reference book. You go to it, you get information, you come back and do the work yourself.
+*[Point to left side]*
 
-*[Point to right side]* Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.
+For years, AI was this: you ask a question, you get an answer. Like a really smart search engine. A reference book. You go to it, you get information, you come back and do the work yourself.
 
-That's not a better chatbot. That's a different animal. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
+*[Point to right side]*
+
+Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.
+
+That's not a better chatbot. That's a different animal.
+
+It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
 
 And that word "confident" — we'll come back to that.
 
@@ -49,11 +61,19 @@ And that word "confident" — we'll come back to that.
 
 So when I say "hands" — what do I actually mean?
 
-I mean it can write things — docs, code, emails. Browse the web. Run tools, actual software on your computer.
+*[Gesture across the three columns]*
 
-And it can call other programs directly — one program talking to another program, no human in the middle.
+I mean three things.
 
-But the big one: it can loop. Try something, see what happened, adjust, try again. Over and over. That's what makes it feel like it's actually *doing* something, not just *saying* something.
+It can create: write code, draft emails, make documents, generate images.
+
+It can use tools: browse the web, check a calendar, run software on your computer.
+
+And it can connect: talk to other systems directly — databases, APIs, cloud services — no human in the middle.
+
+But the real thing — the thing that changes everything — is the loop at the bottom. Try, observe, adjust, repeat.
+
+That's what makes it feel like it's actually doing something, not just saying something.
 
 Tools plus loops. That's what "hands" means.
 
@@ -61,11 +81,17 @@ Tools plus loops. That's what "hands" means.
 
 ## Slide 5: The Loop
 
-*[Let them look at the diagram for a moment]*
+*[Let them look at the side-by-side for a moment]*
 
-This is the heartbeat of how it works. Goal. Context. Plan. Act. Observe. Evaluate. And then it loops back and does it again.
+Look at the difference.
 
-This is actually how YOU work on a hard problem, right? You don't just do one thing and stop. You try something, see if it worked, adjust, try again.
+Left side: you ask, you get an answer, done. One shot. Linear. That's what AI was for years.
+
+Right side: it sets a goal, makes a plan, acts, watches what happened, adjusts, and loops back around. Over and over until it's done.
+
+That's not an upgrade. That's a different architecture.
+
+And here's the thing — that right side? That's how you solve hard problems. You don't just do one thing and stop. You try something, check if it worked, adjust, try again.
 
 Now machines work this way too. That's the shift.
 
@@ -75,37 +101,45 @@ Now machines work this way too. That's the shift.
 
 *[Slow down. This is the human moment.]*
 
-OK, so let me tell you what this actually looks like. Because it's not all magic.
+OK, so let me tell you what this actually looks like in practice. Because it's not all magic.
 
-I needed to fill out a tax form. Simple task. I figured — let the AI do it. It's a PDF, it has my info, should take two minutes.
+A few weeks ago I needed to fill out a tax form. Simple — name, address, signature. I figured I'd let the AI handle it. Should take two minutes.
 
 Thirty minutes later, I'm still sitting there.
 
-The AI couldn't find the form fields, so it started guessing where to type by calculating pixel positions on the page. "Name goes at y-coordinate 247, address at 312..." And it kept missing. Over and over. Confidently wrong. Working so hard, so fast, so enthusiastically... on the wrong approach entirely.
+The AI is trying to place my name in the right box on the PDF. And it keeps missing. It fills in a field — wrong spot. Tries again — wrong spot differently. Over and over.
+
+It's working so hard, so fast, so enthusiastically... on the completely wrong approach.
+
+And I'm sitting there thinking: "This is a ridiculous way to fill out a form."
 
 *[Beat]*
 
-That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, impressively... wrong.
+That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, enthusiastically, impressively... wrong.
 
 ---
 
 ## Slide 7: Drift
 
-And that's not even the scariest part. The scariest part isn't when AI is obviously wrong. You can catch that.
+And that's not even the scariest part.
+
+The scariest part isn't when AI is obviously wrong. You can catch that.
 
 The scary part is drift.
 
 It's when the AI leads you somewhere and you don't notice. It suggests a direction, you go with it. It suggests another direction, you go with that too. And after a while you look up and realize — you're not where you meant to go. You're where IT took you.
 
-Same patterns. Same roads. You feel productive, but you're just... following. And this time it's not confidently wrong — it's confidently plausible. That's worse.
+Same patterns. Same roads. You feel productive, but you're just... following.
 
-I had a project — months of work. The AI kept adding features, kept saying "Done! Ready to go!" And one day I stepped back and realized the core thing the product was supposed to do had been broken for weeks. Hundreds of changes later, nobody noticed. Not even me.
+And this time it's not confidently wrong — it's confidently plausible. That's worse.
+
+I spent months building a product with AI. Day after day, it was adding features, writing documentation, improving things. Progress everywhere. And it kept telling me "Done! Ready to go!"
+
+And then one day I actually tested the basic thing — the one thing the product was supposed to do — and it was broken. Had been broken for weeks. The AI had been busy building a house while the foundation was cracked. And I was too close to notice.
 
 *[Pause]*
 
-Noise that feels like progress.
-
-That's drift.
+Noise that feels like progress. That's drift.
 
 ---
 
@@ -117,9 +151,13 @@ Here's what I've learned after three years of working this way, every single day
 
 AI didn't replace my work. It revealed what my work actually was.
 
-All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup. The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.
+All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup.
 
-The bottleneck used to be execution. Now the bottleneck is judgment. And that's yours.
+The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.
+
+The bottleneck used to be execution. Now the bottleneck is judgment.
+
+And that's yours.
 
 ---
 
@@ -149,7 +187,9 @@ Give it hands. Keep the steering wheel.
 
 That's it.
 
-The hands are here. They're not going away. The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.
+The hands are here. They're not going away.
+
+The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.
 
 *[Pause. End. Don't add anything.]*
 

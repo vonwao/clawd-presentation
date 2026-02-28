@@ -252,7 +252,7 @@
   <div class="nav-dots" id="nav-dots"></div>
   <div class="header-right">
     <span>~10 min</span>
-    <a href="pres-v2.html">Open Slides</a>
+    <a href="pres.html">Open Slides</a>
   </div>
 </header>
 
@@ -271,7 +271,8 @@
       <div class="slide-script">
         <p class="direction">Pause 3 seconds. Let them read.</p>
         <p>So. "When Intelligence Grew Hands." What does that mean?</p>
-        <p>I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it. And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.</p>
+        <p>I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it.</p>
+        <p>And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.</p>
         <p class="key-line">That's what this talk is about.</p>
       </div>
     </div>
@@ -291,10 +292,12 @@
       <div class="slide-script">
         <p>But before I get into that — let's say the thing that's probably in a lot of people's heads right now.</p>
         <p class="direction">Gesture at slide.</p>
-        <p>"Am I replaceable?" That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.</p>
+        <p>"Am I replaceable?"</p>
+        <p>That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.</p>
         <p>"Who's responsible when the AI does something?" ...because it IS doing things now. Not just suggesting — acting.</p>
         <p>"How do I stay in control?" That's the one I've been struggling with.</p>
-        <p>If any of that is in your head — good. That means you're not asleep. I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.</p>
+        <p>If any of that is in your head — good. That means you're not asleep.</p>
+        <p>I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.</p>
       </div>
     </div>
     <hr class="slide-divider">
@@ -335,9 +338,13 @@
       </div>
       <div class="slide-script">
         <p>So when I say "hands" — what do I actually mean?</p>
-        <p>I mean it can write things — docs, code, emails. Browse the web. Run tools, actual software on your computer.</p>
-        <p>And it can call other programs directly — one program talking to another program, no human in the middle.</p>
-        <p>But the big one: it can loop. Try something, see what happened, adjust, try again. Over and over. That's what makes it feel like it's actually <em>doing</em> something, not just <em>saying</em> something.</p>
+        <p class="direction">Gesture across the three columns.</p>
+        <p>I mean three things.</p>
+        <p>It can create: write code, draft emails, make documents, generate images.</p>
+        <p>It can use tools: browse the web, check a calendar, run software on your computer.</p>
+        <p>And it can connect: talk to other systems directly — databases, APIs, cloud services — no human in the middle.</p>
+        <p>But the real thing — the thing that changes everything — is the loop at the bottom. Try, observe, adjust, repeat.</p>
+        <p>That's what makes it feel like it's actually doing something, not just saying something.</p>
         <p class="key-line">Tools plus loops. That's what "hands" means.</p>
       </div>
     </div>
@@ -355,9 +362,12 @@
         <img src="screenshots/slide-05.png" alt="Slide 5: The Loop" loading="lazy" onclick="openLightbox(this.src)">
       </div>
       <div class="slide-script">
-        <p class="direction">Let them look at the diagram for a moment.</p>
-        <p>This is the heartbeat of how it works. Goal. Context. Plan. Act. Observe. Evaluate. And then it loops back and does it again.</p>
-        <p>This is actually how YOU work on a hard problem, right? You don't just do one thing and stop. You try something, see if it worked, adjust, try again.</p>
+        <p class="direction">Let them look at the side-by-side for a moment.</p>
+        <p>Look at the difference.</p>
+        <p>Left side: you ask, you get an answer, done. One shot. Linear. That's what AI was for years.</p>
+        <p>Right side: it sets a goal, makes a plan, acts, watches what happened, adjusts, and loops back around. Over and over until it's done.</p>
+        <p>That's not an upgrade. That's a different architecture.</p>
+        <p>And here's the thing — that right side? That's how you solve hard problems. You don't just do one thing and stop. You try something, check if it worked, adjust, try again.</p>
         <p class="key-line">Now machines work this way too. That's the shift.</p>
       </div>
     </div>
@@ -376,12 +386,14 @@
       </div>
       <div class="slide-script">
         <p class="direction">Slow down. This is the human moment.</p>
-        <p>OK, so let me tell you what this actually looks like. Because it's not all magic.</p>
-        <p>I needed to fill out a tax form. Simple task. I figured — let the AI do it. It's a PDF, it has my info, should take two minutes.</p>
+        <p>OK, so let me tell you what this actually looks like in practice. Because it's not all magic.</p>
+        <p>A few weeks ago I needed to fill out a tax form. Simple — name, address, signature. I figured I'd let the AI handle it. Should take two minutes.</p>
         <p class="key-line">Thirty minutes later, I'm still sitting there.</p>
-        <p>The AI couldn't find the form fields, so it started guessing where to type by calculating pixel positions on the page. "Name goes at y-coordinate 247, address at 312..." And it kept missing. Over and over. Confidently wrong. Working so hard, so fast, so enthusiastically... on the wrong approach entirely.</p>
+        <p>The AI is trying to place my name in the right box on the PDF. And it keeps missing. It fills in a field — wrong spot. Tries again — wrong spot differently. Over and over.</p>
+        <p>It's working so hard, so fast, so enthusiastically... on the completely wrong approach.</p>
+        <p>And I'm sitting there thinking: "This is a ridiculous way to fill out a form."</p>
         <p class="direction">Beat.</p>
-        <p class="key-line">That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, impressively... wrong.</p>
+        <p class="key-line">That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, enthusiastically, impressively... wrong.</p>
       </div>
     </div>
     <hr class="slide-divider">
@@ -398,14 +410,16 @@
         <img src="screenshots/slide-07.png" alt="Slide 7: Drift" loading="lazy" onclick="openLightbox(this.src)">
       </div>
       <div class="slide-script">
-        <p>And that's not even the scariest part. The scariest part isn't when AI is obviously wrong. You can catch that.</p>
+        <p>And that's not even the scariest part.</p>
+        <p>The scariest part isn't when AI is obviously wrong. You can catch that.</p>
         <p class="key-line">The scary part is drift.</p>
         <p>It's when the AI leads you somewhere and you don't notice. It suggests a direction, you go with it. It suggests another direction, you go with that too. And after a while you look up and realize — you're not where you meant to go. You're where IT took you.</p>
-        <p>Same patterns. Same roads. You feel productive, but you're just... following. And this time it's not confidently wrong — it's confidently plausible. That's worse.</p>
-        <p>I had a project — months of work. The AI kept adding features, kept saying "Done! Ready to go!" And one day I stepped back and realized the core thing the product was supposed to do had been broken for weeks. Hundreds of changes later, nobody noticed. Not even me.</p>
+        <p>Same patterns. Same roads. You feel productive, but you're just... following.</p>
+        <p>And this time it's not confidently wrong — it's confidently plausible. That's worse.</p>
+        <p>I spent months building a product with AI. Day after day, it was adding features, writing documentation, improving things. Progress everywhere. And it kept telling me "Done! Ready to go!"</p>
+        <p>And then one day I actually tested the basic thing — the one thing the product was supposed to do — and it was broken. Had been broken for weeks. The AI had been busy building a house while the foundation was cracked. And I was too close to notice.</p>
         <p class="direction">Pause.</p>
-        <p class="key-line">Noise that feels like progress.</p>
-        <p class="key-line">That's drift.</p>
+        <p class="key-line">Noise that feels like progress. That's drift.</p>
       </div>
     </div>
     <hr class="slide-divider">
@@ -425,8 +439,10 @@
         <p class="direction">Pause before speaking. Let them read it first.</p>
         <p>Here's what I've learned after three years of working this way, every single day.</p>
         <p class="key-line">AI didn't replace my work. It revealed what my work actually was.</p>
-        <p>All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup. The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.</p>
-        <p class="key-line">The bottleneck used to be execution. Now the bottleneck is judgment. And that's yours.</p>
+        <p>All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup.</p>
+        <p>The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.</p>
+        <p>The bottleneck used to be execution. Now the bottleneck is judgment.</p>
+        <p class="key-line">And that's yours.</p>
       </div>
     </div>
     <hr class="slide-divider">
@@ -469,7 +485,8 @@
         <p class="direction">Slow. Almost quiet.</p>
         <p class="key-line">Give it hands. Keep the steering wheel.</p>
         <p>That's it.</p>
-        <p>The hands are here. They're not going away. The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.</p>
+        <p>The hands are here. They're not going away.</p>
+        <p>The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.</p>
         <p class="direction">Pause. End. Don't add anything.</p>
       </div>
     </div>
