@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Picker — Clawd Presentation</title>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      padding: 40px 32px 120px;
+    }
+    h1 { font-size: 1.8em; font-weight: 800; margin-bottom: 0.2em; }
+    .subtitle { opacity: 0.5; margin-bottom: 2em; }
+    .slide-section {
+      margin-bottom: 3em;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5em;
+    }
+    .slide-section h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+    }
+    .slide-section .search-term {
+      font-size: 0.85em;
+      opacity: 0.4;
+      margin-bottom: 1em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: border-color 0.2s, transform 0.15s;
+      aspect-ratio: 16/9;
+      background: #181818;
+    }
+    .card:hover { transform: scale(1.02); }
+    .card.selected { border-color: #e46a43; }
+    .card.selected::after {
+      content: '\2713';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e46a43;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card .img-index {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .existing-label {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(228,106,67,0.85);
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    #output-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(20,20,20,0.95);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    #output-bar .count {
+      font-size: 0.95em;
+      opacity: 0.7;
+    }
+    #output-bar button {
+      background: #e46a43;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #output-bar button:hover { background: #d05a35; }
+    #json-output {
+      display: none;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 2em;
+      font-family: monospace;
+      font-size: 0.85em;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Background Image Picker</h1>
+  <p class="subtitle">Click to select one image per slide. Selections are saved in localStorage.</p>
+
+  <div id="sections"></div>
+
+  <div id="json-output"></div>
+
+  <div id="output-bar">
+    <span class="count" id="selection-count">0 selected</span>
+    <button onclick="showSelections()">Show Selections</button>
+    <button onclick="copySelections()">Copy JSON</button>
+  </div>
+
+  <script>
+    const slides = [
+      {
+        id: "title",
+        title: "Slide 1: Title",
+        search: "dark ocean night moody cinematic",
+        existing: "images/00-title.jpg",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1667275280316-e6d9f94a0b89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1636342797737-21ca7a010e28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1611916813825-3434c1c4a8eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1717944954321-311e7f674d87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1668200440757-d2b55ba4270a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1605808186068-04d2b30151da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "brain",
+        title: "Slide 2: Brain in a Jar",
+        search: "brain glass science bioluminescence",
+        existing: "images/01-brain-in-jar.jpg",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1680700163580-c99a7a79a5a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1682001801155-25a2e5c1c49a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "crossroads",
+        title: "Slide 3: Before \u2192 Now",
+        search: "dark crossroads foggy path moody",
+        existing: null,
+        images: [
+          "https://images.unsplash.com/photo-1581608198007-4801faa3859a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1769077096395-421a4cd0a8a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1647968813399-d442099cf04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1518911694274-707e75b3f534?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1556946214-9cb7388e2c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1707047364201-01fceb09b305?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "hands-meaning",
+        title: "Slide 4: What Hands Mean",
+        search: "craftsman workshop hands tools dark",
+        existing: null,
+        images: [
+          "https://plus.unsplash.com/premium_photo-1677173222361-83e349308553?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1714552526594-935fdf5cfc83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1660993431493-0ffd7635f700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1661446600373-125cfeadf275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1677698818999-6ef3da66a32d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "office",
+        title: "Slide 5: Agency Changes Your Tuesday",
+        search: "empty office dark desk night moody",
+        existing: "images/04-empty-office.jpg",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1731860729467-857c8ff96086?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1692133226337-55e513450a32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1758833502047-8f1c7dc5edd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1728581713550-74c451a17fd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1731860726682-48bc67394840?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1761818645907-8bed418b415b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "uncanny",
+        title: "Slide 11: The Uncanny Middle",
+        search: "empty hallway liminal corridor moody",
+        existing: "images/08-uncanny-middle.jpg",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1731868124373-67a24d7ad315?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1769185327886-d0f212be3cfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1758834931398-a46814163373?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1703962169705-d1f3d89259a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1724634731495-0fdc538ad0be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1561824046-3197c18d5422?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "mirror",
+        title: "Slide 12: What It Reveals About Us",
+        search: "mirror reflection dark contemplation",
+        existing: null,
+        images: [
+          "https://plus.unsplash.com/premium_photo-1722859326975-2f3dc2af0456?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1770892142032-d2bb2da74c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1761054297875-f698610d3f4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1770892142083-8974a6dcf67e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1745194601613-e9ecb4c32118?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1765914087871-12444522243d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "trust",
+        title: "Slide 13: The Trust Threshold",
+        search: "foggy bridge trust threshold dark moody",
+        existing: null,
+        images: [
+          "https://plus.unsplash.com/premium_photo-1732024931292-c3798d2ec47f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1665591239127-eaff5e3f208d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1761753508560-e2abfa9ab530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1652733361035-39064dcfa063?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1732024931302-f7089c78af76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1769270270266-a2b86bc3b814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "future",
+        title: "Slide 14: What To Do With This",
+        search: "desk laptop morning light no people moody",
+        existing: "images/07-texture-future.jpg",
+        images: [
+          "https://images.unsplash.com/photo-1542325488573-a28b3cd3c91d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1619080270642-6af8d090b7d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1632893037506-aac33bf18107?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1649230955455-b5c798af2de2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1767190041030-f2f3a6654c5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1642280066966-01a353386b76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+      {
+        id: "closing",
+        title: "Slide 15: Closing",
+        search: "hands reaching dark connection cinematic",
+        existing: "images/12-closing.jpg",
+        images: [
+          "https://images.unsplash.com/photo-1668941349956-75d2382ca6ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1759338666693-9faec028c157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1604171886922-64e1edcb3357?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://plus.unsplash.com/premium_photo-1741366434738-150f38464ba5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1565147021024-d8e5b9d908b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+          "https://images.unsplash.com/photo-1540332311647-540efef612f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+        ]
+      },
+    ];
+
+    // Load saved selections
+    let selections = {};
+    try { selections = JSON.parse(localStorage.getItem('imgPickerSelections') || '{}'); } catch(e) {}
+
+    function render() {
+      const container = document.getElementById('sections');
+      container.innerHTML = '';
+
+      slides.forEach(slide => {
+        const section = document.createElement('div');
+        section.className = 'slide-section';
+        section.innerHTML = `
+          <h2>${slide.title}</h2>
+          <p class="search-term">Search: "${slide.search}"</p>
+          <div class="grid" id="grid-${slide.id}"></div>
+        `;
+        container.appendChild(section);
+
+        const grid = section.querySelector('.grid');
+
+        // Show existing image first if any
+        if (slide.existing) {
+          const card = makeCard(slide.id, slide.existing, 'current');
+          const label = document.createElement('span');
+          label.className = 'existing-label';
+          label.textContent = 'CURRENT';
+          card.appendChild(label);
+          grid.appendChild(card);
+        }
+
+        // Show unsplash candidates
+        slide.images.forEach((url, i) => {
+          grid.appendChild(makeCard(slide.id, url, i));
+        });
+      });
+
+      updateCount();
+    }
+
+    function makeCard(slideId, url, index) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      if (selections[slideId] === String(index)) {
+        card.classList.add('selected');
+      }
+
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = url;
+      img.alt = '';
+      card.appendChild(img);
+
+      const badge = document.createElement('span');
+      badge.className = 'img-index';
+      badge.textContent = index === 'current' ? 'current' : `#${index + 1}`;
+      card.appendChild(badge);
+
+      card.addEventListener('click', () => {
+        // Deselect siblings
+        card.parentElement.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selections[slideId] = String(index);
+        localStorage.setItem('imgPickerSelections', JSON.stringify(selections));
+        updateCount();
+      });
+
+      return card;
+    }
+
+    function updateCount() {
+      const n = Object.keys(selections).length;
+      document.getElementById('selection-count').textContent = `${n} / ${slides.length} selected`;
+    }
+
+    function getSelectionsDetail() {
+      const result = {};
+      slides.forEach(slide => {
+        const idx = selections[slide.id];
+        if (idx === undefined) return;
+        if (idx === 'current') {
+          result[slide.id] = { slide: slide.title, url: slide.existing, source: 'current' };
+        } else {
+          result[slide.id] = { slide: slide.title, url: slide.images[parseInt(idx)], source: 'unsplash' };
+        }
+      });
+      return result;
+    }
+
+    function showSelections() {
+      const el = document.getElementById('json-output');
+      el.style.display = 'block';
+      el.textContent = JSON.stringify(getSelectionsDetail(), null, 2);
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copySelections() {
+      const text = JSON.stringify(getSelectionsDetail(), null, 2);
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('#output-bar button:last-child');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
