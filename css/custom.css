@@ -270,8 +270,8 @@
 .trust-pillars {
   display: flex;
   justify-content: center;
-  gap: 1.4em;
-  max-width: 1000px;
+  gap: 1.8em;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -280,20 +280,20 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-top: 3px solid var(--accent);
   border-radius: 12px;
-  padding: 1em 1.2em;
+  padding: 1.4em 1.6em;
   background: var(--panel);
   text-align: center;
 }
 
 .trust-pillar-label {
-  font-size: 1.2em !important;
+  font-size: 1.5em !important;
   font-weight: 600;
   color: var(--accent);
-  margin: 0 0 0.3em 0 !important;
+  margin: 0 0 0.4em 0 !important;
 }
 
 .trust-pillar-detail {
-  font-size: 0.9em !important;
+  font-size: 1.05em !important;
   opacity: 0.6;
   margin: 0 !important;
 }
