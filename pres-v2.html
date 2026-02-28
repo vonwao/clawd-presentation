@@ -320,6 +320,88 @@
       el._timer = setTimeout(() => { el.style.opacity = '0'; }, 1800);
     }
 
+    // ── Audio narration system ───────────────────────────────
+    // Maps slide index to audio file. Slides without entries have no audio.
+    const slideAudio = {
+      0: 'audio/slides/slide-01-title.mp3',
+      1: 'audio/slides/slide-02-elephant.mp3',
+      2: 'audio/slides/slide-03-shift.mp3',
+      3: 'audio/slides/slide-04-hands.mp3',
+      4: 'audio/slides/slide-05-loop.mp3',
+    };
+
+    let currentAudio = null;
+    let audioEnabled = true;
+
+    function playSlideAudio(slideIdx) {
+      // Stop any currently playing audio
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      updateAudioIndicator();
+
+      if (!audioEnabled) return;
+
+      const src = slideAudio[slideIdx];
+      if (!src) return;
+
+      currentAudio = new Audio(src);
+      currentAudio.play().catch(() => {});
+      updateAudioIndicator();
+
+      currentAudio.addEventListener('ended', () => {
+        currentAudio = null;
+        updateAudioIndicator();
+      });
+    }
+
+    function toggleAudio() {
+      if (currentAudio && !currentAudio.paused) {
+        currentAudio.pause();
+        updateAudioIndicator();
+      } else if (currentAudio && currentAudio.paused) {
+        currentAudio.play().catch(() => {});
+        updateAudioIndicator();
+      }
+    }
+
+    function updateAudioIndicator() {
+      let el = document.getElementById('audio-indicator');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'audio-indicator';
+        Object.assign(el.style, {
+          position: 'fixed', bottom: '24px', right: '24px',
+          background: 'rgba(0,0,0,0.8)', color: '#fff', padding: '8px 16px',
+          borderRadius: '8px', fontSize: '14px', fontFamily: 'Manrope, sans-serif',
+          zIndex: '9999', pointerEvents: 'none',
+          border: '1px solid rgba(255,255,255,0.15)',
+        });
+        document.body.appendChild(el);
+      }
+      const slideIdx = Reveal.getIndices().h;
+      const hasAudio = !!slideAudio[slideIdx];
+
+      if (!audioEnabled) {
+        el.textContent = 'audio off (A to toggle)';
+        el.style.opacity = '0.4';
+      } else if (currentAudio && !currentAudio.paused) {
+        el.textContent = '▶ playing (space to pause)';
+        el.style.opacity = '0.8';
+      } else if (currentAudio && currentAudio.paused) {
+        el.textContent = '⏸ paused (space to resume)';
+        el.style.opacity = '0.6';
+      } else if (hasAudio) {
+        el.textContent = '🔊 audio ready';
+        el.style.opacity = '0.4';
+      } else {
+        el.textContent = 'no audio';
+        el.style.opacity = '0.3';
+      }
+    }
+
     Reveal.initialize({
       hash: true,
       width: 1920,
@@ -335,6 +417,16 @@
       transitionSpeed: 'slow',
       backgroundTransition: 'fade',
       plugins: [ RevealNotes ],
+      keyboard: {
+        // Space bar: pause/resume audio instead of default next-slide
+        32: () => {
+          if (currentAudio) {
+            toggleAudio();
+          } else {
+            Reveal.next();
+          }
+        },
+      },
     }).then(() => {
       Reveal.getSlides().forEach((slide, i) => {
         if (slide.classList.contains('ambient')) ambientSlides.add(i);
@@ -342,9 +434,16 @@
       Object.entries(bgSelections).forEach(([idx, optIdx]) => {
         applyBg(parseInt(idx), optIdx);
       });
+      updateAudioIndicator();
+    });
+
+    // Play audio when slide changes
+    Reveal.on('slidechanged', (event) => {
+      playSlideAudio(event.indexh);
     });
 
     document.addEventListener('keydown', (e) => {
+      // T/Shift+T: cycle backgrounds
       if (e.key === 't' || e.key === 'T') {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         const idx = Reveal.getIndices().h;
@@ -354,6 +453,24 @@
         const current = bgSelections[idx] || 0;
         const next = e.shiftKey ? current - 1 : current + 1;
         applyBg(idx, next);
+      }
+      // A: toggle audio on/off globally
+      if (e.key === 'a' || e.key === 'A') {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        e.preventDefault();
+        audioEnabled = !audioEnabled;
+        if (!audioEnabled && currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          currentAudio = null;
+        }
+        updateAudioIndicator();
+      }
+      // R: replay current slide audio
+      if (e.key === 'r' || e.key === 'R') {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        e.preventDefault();
+        playSlideAudio(Reveal.getIndices().h);
       }
     });
   </script>
