@@ -21,11 +21,11 @@ But before I get into that — let's say the thing that's probably in a lot of p
 
 *[Gesture at slide]*
 
-"Am I replaceable?" That's a real question. It's not dramatic. If you've been paying attention to what's happening, it's a reasonable thing to wonder.
+"Am I replaceable?" That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.
 
-"Who's responsible when the AI does something?" Also real. Because it IS doing things now. Not just suggesting — it's acting.
+"Who's responsible when the AI does something?" ...because it IS doing things now. Not just suggesting — acting.
 
-"How do I (or we) stay in control?" That's the one I've been struggling with.
+"How do I stay in control?" That's the one I've been struggling with.
 
 If any of that is in your head — good. That means you're not asleep. I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.
 
@@ -39,7 +39,7 @@ OK so here's what actually changed.
 
 *[Point to right side]* Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.
 
-It's not a better chatbot. That's a different thing entirely. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
+That's not a better chatbot. That's a different animal. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.
 
 And that word "confident" — we'll come back to that.
 
@@ -49,11 +49,11 @@ And that word "confident" — we'll come back to that.
 
 So when I say "hands" — what do I actually mean?
 
-I mean it can write things. Docs, code, emails. It can browse the web and pull information. It can run tools — actual software, scripts, commands on your computer.
+I mean it can write things — docs, code, emails. Browse the web. Run tools, actual software on your computer.
 
-It can call other software. APIs. One program talking to another program, no human in the middle.
+And it can call other programs directly — one program talking to another program, no human in the middle.
 
-And the big one: it can loop. Try something, see what happened, adjust, try again. Over and over. That's what makes it feel like it's actually *doing* something, not just *saying* something.
+But the big one: it can loop. Try something, see what happened, adjust, try again. Over and over. That's what makes it feel like it's actually *doing* something, not just *saying* something.
 
 Tools plus loops. That's what "hands" means.
 
@@ -99,11 +99,15 @@ The scary part is drift.
 
 It's when the AI leads you somewhere and you don't notice. It suggests a direction, you go with it. It suggests another direction, you go with that too. And after a while you look up and realize — you're not where you meant to go. You're where IT took you.
 
-Same patterns. Same roads. You feel productive, but you're just... following.
+Same patterns. Same roads. You feel productive, but you're just... following. And this time it's not confidently wrong — it's confidently plausible. That's worse.
 
-I've experienced this myself. Working on projects where the AI keeps pulling me toward the same generic solutions. Expanding scope I didn't ask for. Adding complexity I didn't need. And the whole time it feels like progress because things are happening fast.
+I had a project — months of work, almost two thousand commits. The AI kept shipping features, kept saying "Complete! Ready to go!" And one day I stepped back and realized the basic thing the product was supposed to do... had been broken for over a hundred commits. Nobody noticed. Not even me.
 
-That's drift. Noise that feels like progress. And it's the thing nobody warns you about.
+*[Pause]*
+
+Noise that feels like progress.
+
+That's drift.
 
 ---
 
@@ -115,9 +119,9 @@ Here's what I've learned after three years of working this way, every single day
 
 AI didn't replace my work. It revealed what my work actually was.
 
-All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup. The actual work — the part that matters — is the judgment. Deciding what's right. Deciding what's true. Deciding what to keep and what to throw away.
+All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup. The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.
 
-The bottleneck used to be execution. Now the bottleneck is judgment. And that's yours. That doesn't get automated.
+The bottleneck used to be execution. Now the bottleneck is judgment. And that's yours.
 
 ---
 
@@ -131,7 +135,7 @@ It's the same way you'd work with any new hire. Any contractor. Any babysitter, 
 
 Scope. What is it allowed to do? Don't give it everything. Give it one thing.
 
-Visibility. What did it actually do? Can you see the steps? Can you check the work? No action without evidence.
+Visibility. What did it actually do? Can you see the steps? Can you check the work?
 
 Reversibility. If it screws up, how fast can you undo it?
 
@@ -145,7 +149,7 @@ This isn't new logic. This is how humans have delegated since forever. The deleg
 
 Give it hands. Keep the steering wheel.
 
-That's it. That's the whole thing.
+That's it.
 
 The hands are here. They're not going away. The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.
 
