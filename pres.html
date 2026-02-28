@@ -68,42 +68,44 @@
       <section class="ambient" data-background-color="#000">
         <h3 style="margin-bottom:0.6em; opacity:0.6;">This happened fast.</h3>
         <div style="max-width:1200px; margin:0 auto; position:relative;">
-          <svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;">
+          <svg viewBox="0 0 1200 380" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;">
             <style>
               .tl-year { font-family:'Syne','Manrope',sans-serif; fill:#e46a43; font-size:28px; font-weight:700; }
               .tl-label { font-family:'Manrope','Helvetica Neue',sans-serif; fill:#fff; font-size:22px; font-weight:600; }
-              .tl-sub { font-family:'Manrope',sans-serif; fill:#888; font-size:16px; }
-              .tl-names { font-family:'Manrope',sans-serif; fill:#aaa; font-size:15px; }
+              .tl-main { font-family:'Manrope','Helvetica Neue',sans-serif; fill:#fff; font-size:26px; font-weight:700; }
+              .tl-others { font-family:'Manrope',sans-serif; fill:#666; font-size:14px; }
               .tl-line { stroke:#333; stroke-width:2; }
               .tl-dot { fill:#e46a43; }
               .tl-dot-future { fill:none; stroke:#e46a43; stroke-width:2; stroke-dasharray:4,3; }
               .tl-future { font-family:'Manrope',sans-serif; fill:#e46a43; font-size:22px; font-weight:600; }
+              .tl-sub { font-family:'Manrope',sans-serif; fill:#888; font-size:16px; }
             </style>
             <!-- Timeline bar -->
             <line class="tl-line" x1="80" y1="170" x2="1120" y2="170"/>
             <!-- 2023: Chatbots -->
             <circle class="tl-dot" cx="160" cy="170" r="8"/>
-            <text class="tl-year" x="160" y="130" text-anchor="middle">2023</text>
-            <text class="tl-label" x="160" y="210" text-anchor="middle">"ask anything"</text>
-            <text class="tl-names" x="160" y="235" text-anchor="middle">ChatGPT, Gemini, Claude,</text>
-            <text class="tl-names" x="160" y="255" text-anchor="middle">Copilot, Llama, Mistral</text>
+            <text class="tl-year" x="160" y="125" text-anchor="middle">2023</text>
+            <text class="tl-main" x="160" y="215" text-anchor="middle">ChatGPT</text>
+            <text class="tl-label" x="160" y="248" text-anchor="middle">"ask anything"</text>
+            <text class="tl-others" x="160" y="278" text-anchor="middle">Gemini, Claude, Copilot,</text>
+            <text class="tl-others" x="160" y="296" text-anchor="middle">Llama, Mistral</text>
             <!-- 2025: Code agents -->
             <circle class="tl-dot" cx="500" cy="170" r="8"/>
-            <text class="tl-year" x="500" y="130" text-anchor="middle">2025</text>
-            <text class="tl-label" x="500" y="210" text-anchor="middle">"write code for me"</text>
-            <text class="tl-names" x="500" y="235" text-anchor="middle">Claude Code, Cursor,</text>
-            <text class="tl-names" x="500" y="255" text-anchor="middle">Codex, Windsurf</text>
+            <text class="tl-year" x="500" y="125" text-anchor="middle">2025</text>
+            <text class="tl-main" x="500" y="215" text-anchor="middle">Claude Code</text>
+            <text class="tl-label" x="500" y="248" text-anchor="middle">"write code for me"</text>
+            <text class="tl-others" x="500" y="278" text-anchor="middle">Cursor, Codex, Windsurf</text>
             <!-- 2026: Agents -->
             <circle class="tl-dot" cx="800" cy="170" r="8"/>
-            <text class="tl-year" x="800" y="130" text-anchor="middle">2026</text>
-            <text class="tl-label" x="800" y="210" text-anchor="middle">"do things for me"</text>
-            <text class="tl-names" x="800" y="235" text-anchor="middle">OpenClaw, Manus,</text>
-            <text class="tl-names" x="800" y="255" text-anchor="middle">Operator, Devin</text>
+            <text class="tl-year" x="800" y="125" text-anchor="middle">2026</text>
+            <text class="tl-main" x="800" y="215" text-anchor="middle">OpenClaw</text>
+            <text class="tl-label" x="800" y="248" text-anchor="middle">"do things for me"</text>
+            <text class="tl-others" x="800" y="278" text-anchor="middle">Manus, Operator, Devin</text>
             <!-- Future -->
             <circle class="tl-dot-future" cx="1060" cy="170" r="8"/>
-            <text class="tl-year" x="1060" y="130" text-anchor="middle" style="opacity:0.6;">2026+</text>
-            <text class="tl-future" x="1060" y="210" text-anchor="middle">"handle it"</text>
-            <text class="tl-sub" x="1060" y="240" text-anchor="middle">???</text>
+            <text class="tl-year" x="1060" y="125" text-anchor="middle" style="opacity:0.6;">2026+</text>
+            <text class="tl-future" x="1060" y="215" text-anchor="middle">"handle it"</text>
+            <text class="tl-sub" x="1060" y="248" text-anchor="middle">???</text>
           </svg>
         </div>
         <p style="font-size:1.05em; opacity:0.45; margin-top:0.3em;">Each step is a new kind of trust.</p>
