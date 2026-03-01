@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawd — Cue Cards</title>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #111;
+      color: #e8e8e8;
+      font-family: 'Manrope', -apple-system, sans-serif;
+      font-size: 22px;
+      line-height: 1.6;
+      padding: 1em;
+      -webkit-text-size-adjust: 100%;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2em;
+      color: #e46a43;
+      text-align: center;
+      margin-bottom: 0.2em;
+    }
+    .sub { text-align: center; font-size: 0.7em; color: #666; margin-bottom: 1.5em; }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-left: 4px solid #e46a43;
+      border-radius: 10px;
+      padding: 0.8em 1em;
+      margin-bottom: 0.8em;
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-bottom: 0.4em;
+    }
+    .num {
+      background: #e46a43;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.65em;
+      width: 1.8em;
+      height: 1.8em;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85em;
+      color: #ccc;
+    }
+    .cue {
+      font-size: 0.82em;
+      line-height: 1.7;
+      color: #bbb;
+    }
+    .cue span {
+      display: inline-block;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 0.15em 0.5em;
+      margin: 0.15em 0.1em;
+      font-size: 0.95em;
+    }
+    .cue .key {
+      background: rgba(228,106,67,0.15);
+      border-color: rgba(228,106,67,0.3);
+      color: #e46a43;
+      font-weight: 600;
+    }
+    .cue .stage {
+      background: none;
+      border: 1px dashed #555;
+      color: #888;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Cue Cards</h1>
+<p class="sub">Glance &rarr; remember &rarr; speak</p>
+
+<div class="card">
+  <div class="card-head"><div class="num">1</div><div class="title">Title</div></div>
+  <div class="cue">
+    <span class="stage">pause 3s</span>
+    <span>"grew hands" — what does that mean?</span>
+    <span>3 years daily AI</span>
+    <span class="key">ask &rarr; does stuff</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">2</div><div class="title">Elephant</div></div>
+  <div class="cue">
+    <span>say what they're thinking</span>
+    <span>am I replaceable?</span>
+    <span>who's responsible?</span>
+    <span>how stay in control?</span>
+    <span class="key">not asleep = good</span>
+    <span>not calming or hyping</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">3</div><div class="title">Shift</div></div>
+  <div class="cue">
+    <span class="stage">point left</span>
+    <span>ask &rarr; answer (search engine)</span>
+    <span class="stage">point right</span>
+    <span>goal &rarr; plan &rarr; act &rarr; adjust</span>
+    <span>not better chatbot — different animal</span>
+    <span class="key">consult &rarr; direct</span>
+    <span class="key">"confident" — come back to that</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">4</div><div class="title">Pace</div></div>
+  <div class="cue">
+    <span>happened fast</span>
+    <span>'23 chatbots</span>
+    <span>'25 code agents</span>
+    <span>'26 do things</span>
+    <span class="key">3 years, each = new trust</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">5</div><div class="title">Hands</div></div>
+  <div class="cue">
+    <span>create: code, email, docs, images</span>
+    <span>tools: browse, calendar, terminal</span>
+    <span>connect: APIs, DBs, cloud</span>
+    <span class="key">+ the loop: try &rarr; observe &rarr; adjust</span>
+    <span class="key">tools + loops = "hands"</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">6</div><div class="title">Loop</div></div>
+  <div class="cue">
+    <span class="stage">let them look</span>
+    <span>left: one-shot, linear</span>
+    <span>right: goal &rarr; loop until done</span>
+    <span>not upgrade — different architecture</span>
+    <span class="key">that's how YOU solve problems</span>
+    <span>now machines do too</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">7</div><div class="title">Tax Form</div></div>
+  <div class="cue">
+    <span class="stage">slow down — human moment</span>
+    <span>simple form, name + address</span>
+    <span class="key">30 min later, still sitting</span>
+    <span>wrong spot, again, again</span>
+    <span>hard, fast, enthusiastic... wrong approach</span>
+    <span class="stage">beat</span>
+    <span class="key">confidently, impressively... wrong</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">8</div><div class="title">Drift</div></div>
+  <div class="cue">
+    <span>obvious mistakes you catch</span>
+    <span class="key">scary part = drift</span>
+    <span>leads you, don't notice</span>
+    <span>not wrong — plausible. worse.</span>
+    <span>months building, "done! ready!"</span>
+    <span class="key">basic thing broken for weeks</span>
+    <span>house, foundation cracked</span>
+    <span class="key">noise that feels like progress</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">9</div><div class="title">Conviction</div></div>
+  <div class="cue">
+    <span class="stage">pause — let them read</span>
+    <span>3 years, every day</span>
+    <span class="key">didn't replace — revealed</span>
+    <span>gathering/formatting = setup</span>
+    <span class="key">judgment = the work</span>
+    <span>bottleneck: execution &rarr; judgment</span>
+    <span class="key">that's yours</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">10</div><div class="title">Judgment</div></div>
+  <div class="cue">
+    <span class="stage">3 sec silence</span>
+    <span>that's the word</span>
+    <span class="key">judgment — it's yours</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">11</div><div class="title">Trust</div></div>
+  <div class="cue">
+    <span>how without losing control?</span>
+    <span>like new hire / contractor</span>
+    <span class="key">scope — allowed to do</span>
+    <span class="key">visibility — see the steps</span>
+    <span class="key">reversibility — undo fast</span>
+    <span>delegate new, logic ancient</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="num">12</div><div class="title">Close</div></div>
+  <div class="cue">
+    <span class="stage">quiet, vulnerable</span>
+    <span>not worried about replacing</span>
+    <span class="key">worried about forgetting what was mine</span>
+    <span>drift is real</span>
+    <span>let go one at a time... just approving</span>
+    <span class="key">don't let that happen</span>
+    <span class="stage">pause. end.</span>
+  </div>
+</div>
+
+</body>
+</html>
