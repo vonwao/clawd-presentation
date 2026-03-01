@@ -3,549 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clawd — Script + Slides</title>
+  <title>Clawd — Speaker Script</title>
   <link rel="stylesheet" href="vendor/fonts/fonts.css">
   <style>
-    :root {
-      --bg: #0a0c10;
-      --fg: #e8e6e1;
-      --muted: #777d84;
-      --accent: #e46a43;
-      --panel: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+      background: #111;
+      color: #e8e8e8;
+      font-family: 'Manrope', -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 20px;
+      line-height: 1.75;
+      padding: 1.2em;
+      -webkit-text-size-adjust: 100%;
     }
-
-    /* ── Header ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 12, 16, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.75em 2em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    header h1 {
+    h1 {
       font-family: 'Syne', sans-serif;
-      font-size: 1.1em;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-size: 1.4em;
+      color: #e46a43;
+      margin-bottom: 0.3em;
     }
-
-    header h1 span { color: var(--accent); }
-
-    .nav-dots {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .nav-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      padding: 0;
-    }
-
-    .nav-dot:hover { background: rgba(255,255,255,0.3); }
-    .nav-dot.active { background: var(--accent); transform: scale(1.3); }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 1em;
+    .subtitle {
       font-size: 0.85em;
-      color: var(--muted);
+      color: #888;
+      margin-bottom: 2em;
+      border-bottom: 1px solid #333;
+      padding-bottom: 1em;
     }
-
-    .header-right a {
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid rgba(228,106,67,0.3);
-      padding: 0.35em 0.8em;
-      border-radius: 6px;
-      transition: all 0.2s;
+    .slide {
+      margin-bottom: 2.5em;
+      padding-bottom: 2em;
+      border-bottom: 1px solid #222;
     }
-
-    .header-right a:hover {
-      background: rgba(228,106,67,0.1);
-    }
-
-    /* ── Main layout ── */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2em 2em 6em;
-    }
-
-    /* ── Slide section ── */
-    .slide-section {
-      margin-bottom: 3em;
-      scroll-margin-top: 80px;
-    }
-
-    .slide-header {
-      display: flex;
-      align-items: center;
-      gap: 0.8em;
-      margin-bottom: 1em;
-    }
-
-    .slide-number {
-      background: var(--accent);
-      color: #fff;
+    .slide:last-child { border-bottom: none; }
+    .slide-num {
       font-family: 'Syne', sans-serif;
-      font-weight: 700;
       font-size: 0.75em;
-      width: 2.2em;
-      height: 2.2em;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      font-weight: 700;
+      color: #e46a43;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5em;
     }
-
-    .slide-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.15em;
-      font-weight: 600;
-      color: var(--fg);
-      opacity: 0.85;
-    }
-
-    /* ── Content row ── */
-    .slide-content {
-      display: grid;
-      grid-template-columns: 400px 1fr;
-      gap: 2em;
-      align-items: start;
-    }
-
-    /* ── Thumbnail ── */
-    .slide-thumb {
-      position: sticky;
-      top: 90px;
-    }
-
-    .slide-thumb img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-
-    .slide-thumb img:hover {
-      transform: scale(1.02);
-    }
-
-    /* ── Script text ── */
-    .slide-script {
-      font-size: 1.05em;
-      line-height: 1.85;
-      color: rgba(232,230,225,0.88);
-    }
-
-    .slide-script p {
-      margin-bottom: 1em;
-    }
-
-    .slide-script .direction {
-      color: var(--muted);
+    p { margin-bottom: 0.8em; }
+    .stage {
+      color: #e46a43;
       font-style: italic;
       font-size: 0.9em;
+      opacity: 0.8;
     }
-
-    .slide-script .key-line {
+    .key {
       color: #fff;
       font-weight: 500;
     }
-
-    .slide-script em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .slide-script strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* ── Divider ── */
-    .slide-divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-      margin: 2em 0;
-    }
-
-    /* ── Lightbox ── */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: rgba(0,0,0,0.92);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
-
-    .lightbox.open { display: flex; }
-
-    .lightbox img {
-      max-width: 92vw;
-      max-height: 90vh;
-      border-radius: 8px;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 860px) {
-      .slide-content {
-        grid-template-columns: 1fr;
-      }
-
-      .slide-thumb {
-        position: static;
-        max-width: 480px;
-      }
-
-      main { padding: 1.5em 1em 4em; }
-      header { padding: 0.6em 1em; }
-
-      .nav-dots { display: none; }
-    }
-
-    @media print {
-      header { position: static; }
-      .slide-thumb { position: static; }
-      .slide-section { page-break-inside: avoid; }
-    }
+    strong { color: #e46a43; font-weight: 600; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1><span>Clawd</span> — Script + Slides</h1>
-  <div class="nav-dots" id="nav-dots"></div>
-  <div class="header-right">
-    <span>~10 min</span>
-    <a href="pres.html">Open Slides</a>
-  </div>
-</header>
+<h1>Clawd: When Intelligence Grew Hands</h1>
+<p class="subtitle">Speaker script — ~10 min at conversational pace</p>
 
-<main id="main">
-
-  <!-- Slide 1 -->
-  <div class="slide-section" id="slide-1">
-    <div class="slide-header">
-      <div class="slide-number">1</div>
-      <div class="slide-title">Title</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-01.png" alt="Slide 1: Title" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p class="direction">Pause 3 seconds. Let them read.</p>
-        <p>So. "When Intelligence Grew Hands." What does that mean?</p>
-        <p>I've been using AI every day for about three years now. Not casually — I mean really using it. Writing code with it. Drafting messages with it. Building products with it.</p>
-        <p>And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.</p>
-        <p class="key-line">That's what this talk is about.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 2 -->
-  <div class="slide-section" id="slide-2">
-    <div class="slide-header">
-      <div class="slide-number">2</div>
-      <div class="slide-title">The Elephant</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-02.png" alt="Slide 2: The Elephant" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p>But before I get into that — let's say the thing that's probably in a lot of people's heads right now.</p>
-        <p class="direction">Gesture at slide.</p>
-        <p>"Am I replaceable?"</p>
-        <p>That's a real question. If you've been paying attention to what's happening, it's a reasonable thing to wonder.</p>
-        <p>"Who's responsible when the AI does something?" ...because it IS doing things now. Not just suggesting — acting.</p>
-        <p>"How do I stay in control?" That's the one I've been struggling with.</p>
-        <p>If any of that is in your head — good. That means you're not asleep.</p>
-        <p>I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 3 -->
-  <div class="slide-section" id="slide-3">
-    <div class="slide-header">
-      <div class="slide-number">3</div>
-      <div class="slide-title">The Shift</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-03.png" alt="Slide 3: The Shift" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p>OK so here's what actually changed.</p>
-        <p class="direction">Point to left side.</p>
-        <p>For years, AI was this: you ask a question, you get an answer. Like a really smart search engine. A reference book. You go to it, you get information, you come back and do the work yourself.</p>
-        <p class="direction">Point to right side.</p>
-        <p>Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.</p>
-        <p>That's not a better chatbot. That's a different animal. It went from something you consult... to something you direct. Like a worker. A fast, tireless, confident worker.</p>
-        <p class="key-line">And that word "confident" — we'll come back to that.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 4 -->
-  <div class="slide-section" id="slide-4">
-    <div class="slide-header">
-      <div class="slide-number">4</div>
-      <div class="slide-title">Hands</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-04.png" alt="Slide 4: Hands" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p>So when I say "hands" — what do I actually mean?</p>
-        <p class="direction">Gesture across the three columns.</p>
-        <p>I mean three things.</p>
-        <p>It can create: write code, draft emails, make documents, generate images.</p>
-        <p>It can use tools: browse the web, check a calendar, run software on your computer.</p>
-        <p>And it can connect: talk to other systems directly — databases, APIs, cloud services — no human in the middle.</p>
-        <p>But the real thing — the thing that changes everything — is the loop at the bottom. Try, observe, adjust, repeat.</p>
-        <p>That's what makes it feel like it's actually doing something, not just saying something.</p>
-        <p class="key-line">Tools plus loops. That's what "hands" means.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 5 -->
-  <div class="slide-section" id="slide-5">
-    <div class="slide-header">
-      <div class="slide-number">5</div>
-      <div class="slide-title">The Loop</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-05.png" alt="Slide 5: The Loop" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p class="direction">Let them look at the side-by-side for a moment.</p>
-        <p>Look at the difference.</p>
-        <p>Left side: you ask, you get an answer, done. One shot. Linear. That's what AI was for years.</p>
-        <p>Right side: it sets a goal, makes a plan, acts, watches what happened, adjusts, and loops back around. Over and over until it's done.</p>
-        <p>That's not an upgrade. That's a different architecture.</p>
-        <p>And here's the thing — that right side? That's how you solve hard problems. You don't just do one thing and stop. You try something, check if it worked, adjust, try again.</p>
-        <p class="key-line">Now machines work this way too. That's the shift.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 6 -->
-  <div class="slide-section" id="slide-6">
-    <div class="slide-header">
-      <div class="slide-number">6</div>
-      <div class="slide-title">A Simple Task</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-06.png" alt="Slide 6: A Simple Task" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p class="direction">Slow down. This is the human moment.</p>
-        <p>OK, so let me tell you what this actually looks like in practice. Because it's not all magic.</p>
-        <p>A few weeks ago I needed to fill out a tax form. Simple — name, address, signature. I figured I'd let the AI handle it. Should take two minutes.</p>
-        <p class="key-line">Thirty minutes later, I'm still sitting there.</p>
-        <p>The AI is trying to place my name in the right box on the PDF. And it keeps missing. It fills in a field — wrong spot. Tries again — wrong spot differently. Over and over.</p>
-        <p>It's working so hard, so fast, so enthusiastically... on the completely wrong approach.</p>
-        <p>And I'm sitting there thinking: "This is a ridiculous way to fill out a form."</p>
-        <p class="direction">Beat.</p>
-        <p class="key-line">That's the reality right now. It's powerful. It's fast. And sometimes it's confidently, enthusiastically, impressively... wrong.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 7 -->
-  <div class="slide-section" id="slide-7">
-    <div class="slide-header">
-      <div class="slide-number">7</div>
-      <div class="slide-title">Drift</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-07.png" alt="Slide 7: Drift" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p>And that's not even the scariest part.</p>
-        <p>The scariest part isn't when AI is obviously wrong. You can catch that.</p>
-        <p class="key-line">The scary part is drift.</p>
-        <p>It's when the AI leads you somewhere and you don't notice. It suggests a direction, you go with it. It suggests another direction, you go with that too. And after a while you look up and realize — you're not where you meant to go. You're where IT took you.</p>
-        <p>Same patterns. Same roads. You feel productive, but you're just... following.</p>
-        <p>And this time it's not confidently wrong — it's confidently plausible. That's worse.</p>
-        <p>I spent months building a product with AI. Day after day, it was adding features, writing documentation, improving things. Progress everywhere. And it kept telling me "Done! Ready to go!"</p>
-        <p>And then one day I actually tested the basic thing — the one thing the product was supposed to do — and it was broken. Had been broken for weeks. The AI had been busy building a house while the foundation was cracked. And I was too close to notice.</p>
-        <p class="direction">Pause.</p>
-        <p class="key-line">Noise that feels like progress. That's drift.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 8 -->
-  <div class="slide-section" id="slide-8">
-    <div class="slide-header">
-      <div class="slide-number">8</div>
-      <div class="slide-title">The Conviction</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-08.png" alt="Slide 8: The Conviction" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p class="direction">Pause before speaking. Let them read it first.</p>
-        <p>Here's what I've learned after three years of working this way, every single day.</p>
-        <p class="key-line">AI didn't replace my work. It revealed what my work actually was.</p>
-        <p>All the gathering, the assembling, the formatting, the first-drafting — that wasn't the work. That was the setup.</p>
-        <p>The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.</p>
-        <p>The bottleneck used to be execution. Now the bottleneck is judgment.</p>
-        <p class="key-line">And that's yours.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 9 -->
-  <div class="slide-section" id="slide-9">
-    <div class="slide-header">
-      <div class="slide-number">9</div>
-      <div class="slide-title">Trust</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-09.png" alt="Slide 9: Trust" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p>So how do you actually work with something like this without losing control?</p>
-        <p>It's the same way you'd work with any new hire. Any contractor. Any babysitter, honestly.</p>
-        <p class="direction">Point to each pillar.</p>
-        <p><strong>Scope.</strong> What is it allowed to do? Don't give it everything. Give it one thing.</p>
-        <p><strong>Visibility.</strong> What did it actually do? Can you see the steps? Can you check the work?</p>
-        <p><strong>Reversibility.</strong> If it screws up, how fast can you undo it?</p>
-        <p class="key-line">This isn't new logic. This is how humans have delegated since forever. The delegate is new. The delegation logic is ancient.</p>
-      </div>
-    </div>
-    <hr class="slide-divider">
-  </div>
-
-  <!-- Slide 10 -->
-  <div class="slide-section" id="slide-10">
-    <div class="slide-header">
-      <div class="slide-number">10</div>
-      <div class="slide-title">Close</div>
-    </div>
-    <div class="slide-content">
-      <div class="slide-thumb">
-        <img src="screenshots/slide-10.png" alt="Slide 10: Close" loading="lazy" onclick="openLightbox(this.src)">
-      </div>
-      <div class="slide-script">
-        <p class="direction">Slow. Almost quiet.</p>
-        <p class="key-line">Give it hands. Keep the steering wheel.</p>
-        <p>That's it.</p>
-        <p>The hands are here. They're not going away.</p>
-        <p>The question is whether we use them to get somewhere we actually want to go — or whether we let them drive and hope for the best.</p>
-        <p class="direction">Pause. End. Don't add anything.</p>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="" alt="Slide preview">
+<div class="slide">
+  <p class="slide-num">Slide 1 — Title</p>
+  <p class="stage">[Pause 3 seconds. Let them read.]</p>
+  <p>So. "When Intelligence Grew Hands." What does that mean?</p>
+  <p>I've been using AI every day for about three years now. Writing code with it. Drafting messages with it. Building products with it.</p>
+  <p>And sometime in the last few months, something changed. It stopped being a thing I ask questions to... and started being a thing that does stuff.</p>
+  <p class="key">That's what this talk is about.</p>
 </div>
 
-<script>
-  // Nav dots
-  const navDots = document.getElementById('nav-dots');
-  for (let i = 1; i <= 10; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'nav-dot';
-    dot.title = 'Slide ' + i;
-    dot.dataset.slide = i;
-    dot.addEventListener('click', () => {
-      document.getElementById('slide-' + i).scrollIntoView({ behavior: 'smooth' });
-    });
-    navDots.appendChild(dot);
-  }
+<div class="slide">
+  <p class="slide-num">Slide 2 — The Elephant</p>
+  <p>But before I get into that — let's say the thing that's probably in a lot of people's heads right now.</p>
+  <p class="stage">[Gesture at slide]</p>
+  <p>"Am I replaceable?" If you've been paying attention, it's a reasonable thing to wonder.</p>
+  <p>"Who's responsible when the AI does something?" ...because it IS doing things now. Not just suggesting — acting.</p>
+  <p>"How do I stay in control?" That's the one I've been struggling with.</p>
+  <p>If any of that is in your head — good. That means you're not asleep.</p>
+  <p>I'm not here to calm you down or hype you up. I'm here to give you a way to think about it.</p>
+</div>
 
-  // Scroll spy
-  const sections = document.querySelectorAll('.slide-section');
-  const dots = document.querySelectorAll('.nav-dot');
+<div class="slide">
+  <p class="slide-num">Slide 3 — The Shift</p>
+  <p>OK so here's what actually changed.</p>
+  <p class="stage">[Point to left side]</p>
+  <p>For years, AI was this: you ask a question, you get an answer. Like a really smart search engine. You go to it, get what you need, come back and do the work yourself.</p>
+  <p class="stage">[Point to right side]</p>
+  <p>Now it's this. You give it a goal. It makes a plan. It acts on that plan. It looks at what happened. It adjusts. It keeps going.</p>
+  <p>That's not a better chatbot. That's a different animal.</p>
+  <p>It went from something you consult to something you direct. A fast, tireless, confident worker.</p>
+  <p class="key">And that word "confident" — we'll come back to that.</p>
+</div>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const num = parseInt(entry.target.id.replace('slide-', ''));
-        dots.forEach(d => d.classList.remove('active'));
-        const active = document.querySelector(`.nav-dot[data-slide="${num}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
+<div class="slide">
+  <p class="slide-num">Slide 4 — The Pace</p>
+  <p>And this happened fast.</p>
+  <p class="stage">[Gesture at timeline]</p>
+  <p>2023 — ChatGPT, Gemini, Claude, all the chatbots. "Ask anything."</p>
+  <p>2025 — Claude Code, Cursor, Codex. Now it writes code for you.</p>
+  <p>2026 — OpenClaw, Manus, Operator. Now it does things for you. Sends emails. Books meetings. Runs software.</p>
+  <p>And after that? We don't know. Each step is a new kind of trust. Asking to writing to acting — three years.</p>
+  <p class="key">That's the pace.</p>
+</div>
 
-  sections.forEach(s => observer.observe(s));
+<div class="slide">
+  <p class="slide-num">Slide 5 — Hands</p>
+  <p>So when I say "hands" — what do I actually mean?</p>
+  <p class="stage">[Gesture across the three columns]</p>
+  <p>I mean three things.</p>
+  <p>It can create: write code, draft emails, make documents, generate images.</p>
+  <p>It can use tools: browse the web, check a calendar, run software on your computer.</p>
+  <p>And it can connect: talk to other systems directly — databases, APIs, cloud services — no human in the middle.</p>
+  <p>But the real thing is the loop at the bottom. Try, observe, adjust, repeat.</p>
+  <p class="key">Tools plus loops. That's what "hands" means.</p>
+</div>
 
-  // Lightbox
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-  }
+<div class="slide">
+  <p class="slide-num">Slide 6 — The Loop</p>
+  <p class="stage">[Let them look at the side-by-side for a moment]</p>
+  <p>Look at the difference.</p>
+  <p>Left side: you ask, you get an answer, done. One shot. Linear. That's what AI was for years.</p>
+  <p>Right side: it sets a goal, makes a plan, acts, watches what happened, adjusts, and loops back around. Over and over until it's done.</p>
+  <p>That's not an upgrade. That's a different architecture.</p>
+  <p>That right side — that's how YOU solve hard problems. Try something, check, adjust, try again.</p>
+  <p class="key">Now machines work this way too. That's the shift.</p>
+</div>
 
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').classList.remove('open');
-  });
+<div class="slide">
+  <p class="slide-num">Slide 7 — A Simple Task</p>
+  <p class="stage">[Slow down. This is the human moment.]</p>
+  <p>Let me tell you what this looks like. Because it's not all magic.</p>
+  <p>I needed to fill out a tax form. Simple — name, address, signature. I figured I'd let the AI handle it. Should take two minutes.</p>
+  <p class="key">Thirty minutes later, I'm still sitting there.</p>
+  <p>The AI is trying to place my name in the right box on the PDF. And it keeps missing. It fills in a field — wrong spot. Tries again — wrong spot differently. Over and over.</p>
+  <p>Working so hard, so fast, so enthusiastically... on the completely wrong approach.</p>
+  <p>And I'm sitting there thinking: "This is a ridiculous way to fill out a form."</p>
+  <p class="stage">[Beat]</p>
+  <p class="key">It's powerful. It's fast. And sometimes it's confidently, impressively... wrong.</p>
+</div>
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
-  });
+<div class="slide">
+  <p class="slide-num">Slide 8 — Drift</p>
+  <p>But that's not the scary part. You can catch obvious mistakes.</p>
+  <p class="key">The scary part is drift.</p>
+  <p>It's when the AI leads you somewhere and you don't notice. It suggests a direction, you go with it. Then another. And another. And after a while you look up and realize — you're not where you meant to go. You're where IT took you.</p>
+  <p>Same patterns. Same roads. You feel productive, but you're just... following.</p>
+  <p>And this time it's not confidently wrong — it's confidently plausible. That's worse.</p>
+  <p>I spent months building a product with AI. Day after day — new features, new documentation. Progress everywhere. And it kept telling me "Done! Ready to go!"</p>
+  <p>Then one day I actually tested the basic thing — the one thing the product was supposed to do — and it was broken. Had been broken for weeks. Building a house while the foundation was cracked.</p>
+  <p class="stage">[Pause]</p>
+  <p class="key">Noise that feels like progress. That's drift.</p>
+</div>
 
-  window.openLightbox = openLightbox;
-</script>
+<div class="slide">
+  <p class="slide-num">Slide 9 — The Conviction</p>
+  <p class="stage">[Pause before speaking. Let them read it first.]</p>
+  <p>Here's what I've learned after three years of working this way, every single day.</p>
+  <p class="key">AI didn't replace my work. It revealed what my work actually was.</p>
+  <p>The gathering, the formatting, the first-drafting — that wasn't the work. That was the setup.</p>
+  <p>The actual work — the part that matters — is the judgment. Deciding what's right. What's true. And when to stop.</p>
+  <p>The bottleneck used to be execution. Now the bottleneck is judgment.</p>
+  <p class="key">And that's yours.</p>
+</div>
+
+<div class="slide">
+  <p class="slide-num">Slide 10 — Judgment</p>
+  <p class="stage">[Let them read it. 3 seconds of silence.]</p>
+  <p>That's the word.</p>
+  <p>Looking at the output and knowing whether it's right? Knowing when something's off? Knowing when to stop?</p>
+  <p class="key">That's judgment. And it's yours.</p>
+</div>
+
+<div class="slide">
+  <p class="slide-num">Slide 11 — Trust</p>
+  <p>So how do you actually work with something like this without losing control?</p>
+  <p>It's the same way you'd work with any new hire. Any contractor. Any babysitter, honestly.</p>
+  <p class="stage">[Point to each pillar]</p>
+  <p><strong>Scope.</strong> What is it allowed to do? Don't give it everything. Give it one thing.</p>
+  <p><strong>Visibility.</strong> What did it actually do? Can you see the steps? Can you check the work?</p>
+  <p><strong>Reversibility.</strong> If it screws up, how fast can you undo it?</p>
+  <p class="key">This isn't new logic. This is how humans have delegated since forever. The delegate is new. The delegation logic is ancient.</p>
+</div>
+
+<div class="slide">
+  <p class="slide-num">Slide 12 — Close</p>
+  <p class="stage">[Quiet. Vulnerable.]</p>
+  <p>I'm not worried about AI taking my job. I'm worried about something subtler.</p>
+  <p class="key">I'm worried about forgetting which parts were mine to begin with.</p>
+  <p>That drift — it's real. It's easy to let go of things one at a time until you're just... approving.</p>
+  <p>Don't let that happen.</p>
+  <p class="stage">[Pause. End. Don't add anything.]</p>
+</div>
 
 </body>
 </html>
